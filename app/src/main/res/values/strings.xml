@@ -7,6 +7,15 @@
     
     <!--Error message-->
     <string name="request_failed">Request Failed</string>
+
+    <!--Preferences Key-->
+    <string name="MY_TIMESHEET">MY_TIMESHEET</string>
+
+    <!--Intent Key-->
+    <string name="NOTICATION_TITLE">NOTICATION_TITLE</string>
+    <string name="NOTICATION_BODY">NOTICATION_BODY</string>
+    <string name="NOTICATION_ID">NOTICATION_ID</string>
+
     <!--Child database value-->
     <string name="CHILD_SUBJECTS">Subjects</string>
     <string name="CHILD_CLASS">Class</string>

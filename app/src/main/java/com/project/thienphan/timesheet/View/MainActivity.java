@@ -1,5 +1,8 @@
 package com.project.thienphan.timesheet.View;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
@@ -20,9 +23,12 @@ import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.timesheet.Adapter.TimesheetAdapter;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.TimesheetItem;
+import com.project.thienphan.timesheet.Notification.TimesheetReceiver;
 import com.project.thienphan.timesheet.Support.InfoDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     TimesheetAdapter timesheetAdapter;
 
     Button btnMonday,btnTuesday,btnWednesday,btnThurday,btnFriday,btnSaturday;
-    Button btnActive;
+    Button btnActive = null;
     Button btnCreate;
     TextView txtListEmpty;
 
@@ -56,19 +62,58 @@ public class MainActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvTimesheet.setLayoutManager(layoutManager);
         rcvTimesheet.setAdapter(timesheetAdapter);
-        GetData(2);
     }
 
     private void SetupButton() {
         btnMonday = findViewById(R.id.btn_ts_monday);
-        btnMonday.setEnabled(false);
-        btnActive = btnMonday;
         btnTuesday = findViewById(R.id.btn_ts_tuesday);
         btnWednesday = findViewById(R.id.btn_ts_wednesday);
         btnThurday = findViewById(R.id.btn_ts_thurday);
         btnFriday = findViewById(R.id.btn_ts_friday);
         btnSaturday = findViewById(R.id.btn_ts_saturday);
         btnCreate = findViewById(R.id.btn_ts_create);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+        switch (today){
+            case 1:
+                btnActive = btnMonday;
+                btnMonday.setEnabled(false);
+                GetData(2);
+                break;
+            case 2:
+                btnActive = btnMonday;
+                btnMonday.setEnabled(false);
+                GetData(2);
+                break;
+            case 3:
+                btnActive = btnTuesday;
+                btnTuesday.setEnabled(false);
+                GetData(3);
+                break;
+            case 4:
+                btnActive = btnWednesday;
+                btnWednesday.setEnabled(false);
+                GetData(4);
+                break;
+            case 5:
+                btnActive = btnThurday;
+                btnThurday.setEnabled(false);
+                GetData(5);
+                break;
+            case 6:
+                btnActive = btnFriday;
+                btnFriday.setEnabled(false);
+                GetData(6);
+                break;
+            case 7:
+                btnActive = btnSaturday;
+                btnSaturday.setEnabled(false);
+                GetData(7);
+                break;
+            default:
+                break;
+        }
     }
 
     private void GetData(final int dayofweek) {
@@ -102,28 +147,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (view == btnMonday){
-                    setActionButton(btnMonday);
-                    GetData(2);
+                    setActionButton(btnMonday,2);
                 }
                 else if (view == btnTuesday){
-                    setActionButton(btnTuesday);
-                    GetData(3);
+                    setActionButton(btnTuesday,3);
                 }
                 else if (view == btnWednesday){
-                    setActionButton(btnWednesday);
-                    GetData(4);
+                    setActionButton(btnWednesday,4);
                 }
                 else if (view == btnThurday){
-                    setActionButton(btnThurday);
-                    GetData(5);
+                    setActionButton(btnThurday,5);
                 }
                 else if (view == btnFriday){
-                    setActionButton(btnFriday);
-                    GetData(6);
+                    setActionButton(btnFriday,6);
                 }
                 else if (view == btnSaturday){
-                    setActionButton(btnSaturday);
-                    GetData(7);
+                    setActionButton(btnSaturday,7);
                 }
             }
         };
@@ -143,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setActionButton(Button button) {
+    private void setActionButton(Button button,int dayofweek) {
+        GetData(dayofweek);
         button.setEnabled(false);
         button.setTextColor(getResources().getColor(R.color.dayofweek));
         btnActive.setTextColor(getResources().getColor(android.R.color.white));
