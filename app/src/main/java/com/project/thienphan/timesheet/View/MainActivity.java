@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnMonday,btnTuesday,btnWednesday,btnThurday,btnFriday,btnSaturday;
     Button btnActive = null;
     Button btnCreate;
+    Button btnCustom;
     TextView txtListEmpty;
 
     @Override
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         btnFriday = findViewById(R.id.btn_ts_friday);
         btnSaturday = findViewById(R.id.btn_ts_saturday);
         btnCreate = findViewById(R.id.btn_ts_create);
+        btnCustom = findViewById(R.id.btn_ts_custom);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         int today = calendar.get(Calendar.DAY_OF_WEEK);
@@ -177,6 +179,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,CreateTimesheet.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCustom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,CustomizeActivity.class);
                 startActivity(intent);
             }
         });
