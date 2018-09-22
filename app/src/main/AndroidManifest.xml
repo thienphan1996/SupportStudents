@@ -17,20 +17,25 @@
         <activity
             android:name="com.project.thienphan.timesheet.View.MainActivity"
             android:label="@string/timesheet">
+        </activity>
+        <activity
+            android:name="com.project.thienphan.timesheet.View.CreateTimesheet"
+            android:label="Thêm thời khoá biểu"
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.CustomizeActivity"
+            android:label="Tuỳ chỉnh"
+            android:parentActivityName="com.project.thienphan.timesheet.View.MainActivity" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.HomeActivity"
+            android:label="@string/timesheet"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.project.thienphan.timesheet.View.CreateTimesheet"
-            android:label="Thêm thời khoá biểu"
-            android:parentActivityName="com.project.thienphan.timesheet.View.MainActivity" />
-        <activity
-            android:name="com.project.thienphan.timesheet.View.CustomizeActivity"
-            android:label="Tuỳ chỉnh"
-            android:parentActivityName="com.project.thienphan.timesheet.View.MainActivity"></activity>
     </application>
 
 </manifest>

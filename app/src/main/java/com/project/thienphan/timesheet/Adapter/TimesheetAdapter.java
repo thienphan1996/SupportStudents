@@ -18,10 +18,12 @@ public class TimesheetAdapter extends RecyclerView.Adapter<TimesheetAdapter.Time
 
     ArrayList<TimesheetItem> Data;
     AdapterView.OnItemClickListener onClickListener;
-    ArrayList<Integer> itemClick;
+    boolean[] itemClick;
 
-    public TimesheetAdapter(ArrayList<TimesheetItem> data) {
+    public TimesheetAdapter(ArrayList<TimesheetItem> data, AdapterView.OnItemClickListener onClickListener) {
         Data = data;
+        this.onClickListener = onClickListener;
+        itemClick = new boolean[30];
     }
 
 
@@ -44,13 +46,16 @@ public class TimesheetAdapter extends RecyclerView.Adapter<TimesheetAdapter.Time
         timesheetHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setOnItemClick(timesheetHolder.getAdapterPosition());
+                itemClick[timesheetHolder.getAdapterPosition()] = !itemClick[timesheetHolder.getAdapterPosition()];
+                if (itemClick[timesheetHolder.getAdapterPosition()]){
+                    timesheetHolder.imgChecked.setVisibility(View.VISIBLE);
+                }
+                else timesheetHolder.imgChecked.setVisibility(View.GONE);
+                if (onClickListener != null){
+                    onClickListener.onItemClick(null,view,timesheetHolder.getAdapterPosition(),0);
+                }
             }
         });
-    }
-
-    private void setOnItemClick(int position) {
-
     }
 
     @Override

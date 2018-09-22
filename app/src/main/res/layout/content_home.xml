@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="52dp"
+    android:background="@android:color/white"
+    tools:context="com.project.thienphan.timesheet.View.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ts_monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dayofweek"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/btn_ts_tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dayofweek"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/btn_ts_wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dayofweek"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/btn_ts_thurday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dayofweek"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/btn_ts_friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dayofweek"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/btn_ts_saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_dayofweek"
+                android:text="7" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:paddingTop="5dp"
+                android:id="@+id/rcv_timesheet"
+                android:background="@drawable/recyclerview_bg_gray"
+                android:scrollbars="vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_ts_empty_list"
+                android:text="Trống"
+                android:textColor="#fff"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btn_ts_create"
+                android:padding="10dp"
+                android:background="@drawable/button_bg_ts"
+                android:text="Thêm"
+                android:textColor="@color/dayofweek"
+                android:textStyle="bold"
+                android:drawableTop="@android:drawable/ic_menu_add"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btn_ts_custom"
+                android:padding="10dp"
+                android:background="@drawable/button_bg_ts"
+                android:text="Tuỳ chọn"
+                android:textStyle="bold"
+                android:textColor="@color/dayofweek"
+                android:drawableTop="@android:drawable/ic_menu_manage"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -152,7 +152,7 @@ public class CreateTimesheet extends AppCompatActivity {
         this.mydb.child(getString(R.string.CHILD_TIMESHEET)).child("thienphan").child(recyclerviewList.get(currentPosition).getSubjectCode()).setValue(recyclerviewList.get(currentPosition));
         lnlAddtsProgress.setVisibility(View.GONE);
 
-        String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
+        /*String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
         if (mytimesheet.isEmpty()){
             ArrayList<String> tsList = new ArrayList<>();
             tsList.add(recyclerviewList.get(currentPosition).getSubjectCode());
@@ -164,7 +164,7 @@ public class CreateTimesheet extends AppCompatActivity {
             tsList.add(recyclerviewList.get(currentPosition).getSubjectCode());
             String data = gson.toJson(tsList);
             timesheetPreferences.put(getString(R.string.MY_TIMESHEET),data);
-        }
+        }*/
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());

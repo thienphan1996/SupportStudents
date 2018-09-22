@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         rcvTimesheet = findViewById(R.id.rcv_timesheet);
         SetupButton();
         timesheetList = new ArrayList<>();
-        timesheetAdapter = new TimesheetAdapter(timesheetList);
+        timesheetAdapter = new TimesheetAdapter(timesheetList,null);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvTimesheet.setLayoutManager(layoutManager);
