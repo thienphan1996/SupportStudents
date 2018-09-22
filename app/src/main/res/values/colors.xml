@@ -6,5 +6,5 @@
 
     <!--button color day of week-->
     <color name="dayofweek">#4527A0</color>
-    <color name="bg_gray">#E0E0E0</color>
+    <color name="bg_gray">#E3F2FD</color>
 </resources>

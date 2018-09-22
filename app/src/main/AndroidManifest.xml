@@ -14,10 +14,19 @@
         android:theme="@style/AppTheme">
         <receiver android:name="com.project.thienphan.timesheet.Notification.TimesheetReceiver" />
 
+        <service android:name="com.project.thienphan.timesheet.Service.TimesheetNotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+
         <activity
             android:name="com.project.thienphan.timesheet.View.MainActivity"
-            android:label="@string/timesheet">
-        </activity>
+            android:label="@string/timesheet" />
         <activity
             android:name="com.project.thienphan.timesheet.View.CreateTimesheet"
             android:label="Thêm thời khoá biểu"
@@ -29,13 +38,22 @@
         <activity
             android:name="com.project.thienphan.timesheet.View.HomeActivity"
             android:label="@string/timesheet"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.project.thienphan.timesheet.View.TimesheetDetails"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.AboutActivity"
+            android:label="About"
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity" />
+        <activity android:name="com.project.thienphan.timesheet.View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.project.thienphan.timesheet.View.LoginActivity" android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>

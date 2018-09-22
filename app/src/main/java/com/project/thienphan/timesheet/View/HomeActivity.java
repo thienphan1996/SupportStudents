@@ -1,9 +1,12 @@
 package com.project.thienphan.timesheet.View;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
@@ -11,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,16 +24,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.timesheet.Adapter.HomeAdapter;
 import com.project.thienphan.timesheet.Adapter.TimesheetAdapter;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
@@ -50,12 +60,12 @@ public class HomeActivity extends AppCompatActivity
 
     RecyclerView rcvTimesheet;
     ArrayList<TimesheetItem> timesheetList;
-    TimesheetAdapter timesheetAdapter;
+    HomeAdapter homeAdapter;
 
     Button btnMonday,btnTuesday,btnWednesday,btnThurday,btnFriday,btnSaturday;
     Button btnActive = null;
-    Button btnCreate;
-    Button btnCustom;
+    //Button btnCreate;
+    //Button btnCustom;
     TextView txtListEmpty;
 
     @Override
@@ -69,8 +79,10 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(HomeActivity.this,CreateTimesheet.class);
+                startActivity(intent);
             }
         });
 
@@ -124,14 +136,37 @@ public class HomeActivity extends AppCompatActivity
         txtListEmpty = findViewById(R.id.tv_ts_empty_list);
         rcvTimesheet = findViewById(R.id.rcv_timesheet);
         SetupButton();
+        RegisterNotification("thienphan");
         timesheetList = new ArrayList<>();
-        timesheetAdapter = new TimesheetAdapter(timesheetList,null);
+        homeAdapter = new HomeAdapter(timesheetList, new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(HomeActivity.this,TimesheetDetails.class);
+                intent.putExtra(getString(R.string.TS_DETAILS),timesheetList.get(i).getSubjectCode());
+                startActivity(intent);
+            }
+        });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvTimesheet.setLayoutManager(layoutManager);
-        rcvTimesheet.setAdapter(timesheetAdapter);
+        rcvTimesheet.setAdapter(homeAdapter);
         timesheetPreferences = new TimesheetPreferences(getApplicationContext());
         gson = new Gson();
+    }
+
+    private void RegisterNotification(String user) {
+        FirebaseMessaging.getInstance().subscribeToTopic(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "subscribed";
+                        if (!task.isSuccessful()) {
+                            msg = "subscribe failed";
+                        }
+                        Log.d("msg Status: ", msg);
+                        Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void addEvents() {
@@ -165,7 +200,7 @@ public class HomeActivity extends AppCompatActivity
         btnFriday.setOnClickListener(onClickListener);
         btnSaturday.setOnClickListener(onClickListener);
 
-        btnCreate.setOnClickListener(new View.OnClickListener() {
+        /*btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,CreateTimesheet.class);
@@ -179,7 +214,7 @@ public class HomeActivity extends AppCompatActivity
                 Intent intent = new Intent(HomeActivity.this,CustomizeActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     private void SetupButton() {
@@ -189,8 +224,8 @@ public class HomeActivity extends AppCompatActivity
         btnThurday = findViewById(R.id.btn_ts_thurday);
         btnFriday = findViewById(R.id.btn_ts_friday);
         btnSaturday = findViewById(R.id.btn_ts_saturday);
-        btnCreate = findViewById(R.id.btn_ts_create);
-        btnCustom = findViewById(R.id.btn_ts_custom);
+        //btnCreate = findViewById(R.id.btn_ts_create);
+        //btnCustom = findViewById(R.id.btn_ts_custom);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         int today = calendar.get(Calendar.DAY_OF_WEEK);
@@ -253,7 +288,7 @@ public class HomeActivity extends AppCompatActivity
                 ArrayList<TimesheetItem> temp = TimesheetItem.getTimesheetByDayofWeek(timesheetList,dayofweek);
                 timesheetList.clear();
                 timesheetList.addAll(temp);
-                timesheetAdapter.notifyDataSetChanged();
+                homeAdapter.notifyDataSetChanged();
                 if (timesheetList.size()==0){
                     txtListEmpty.setVisibility(View.VISIBLE);
                 }
@@ -318,18 +353,38 @@ public class HomeActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.nav_elctu) {
+            Uri uri = Uri.parse("https://www.ctu.edu.vn/");
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_about) {
+            Intent intent = new Intent(HomeActivity.this,AboutActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_out) {
+            showConfirmDialog();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showConfirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Bạn có muốn thoát ứng dụng không?")
+                .setCancelable(false)
+                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                    }
+                })
+                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

@@ -2,6 +2,7 @@ package com.project.thienphan.timesheet.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TimesheetItem implements Serializable {
     private String SubjectCode;
@@ -34,6 +35,26 @@ public class TimesheetItem implements Serializable {
             }
         }
         return listItem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TimesheetItem)) return false;
+        TimesheetItem item = (TimesheetItem) o;
+        return getSubjectGroup() == item.getSubjectGroup() &&
+                getDayofWeek() == item.getDayofWeek() &&
+                Objects.equals(getSubjectCode(), item.getSubjectCode()) &&
+                Objects.equals(getSubjectName(), item.getSubjectName()) &&
+                Objects.equals(getSubjectTeacher(), item.getSubjectTeacher()) &&
+                Objects.equals(getSubjectTime(), item.getSubjectTime()) &&
+                Objects.equals(getSubjectLocation(), item.getSubjectLocation());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getSubjectCode(), getSubjectName(), getSubjectGroup(), getSubjectTeacher(), getSubjectTime(), getSubjectLocation(), getDayofWeek());
     }
 
     public String getSubjectCode() {

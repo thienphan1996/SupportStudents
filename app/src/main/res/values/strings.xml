@@ -10,11 +10,13 @@
 
     <!--Preferences Key-->
     <string name="MY_TIMESHEET">MY_TIMESHEET</string>
+    <string name="EXIST_TIMESHEET">EXIST_TIMESHEET</string>
 
     <!--Intent Key-->
     <string name="NOTICATION_TITLE">NOTICATION_TITLE</string>
     <string name="NOTICATION_BODY">NOTICATION_BODY</string>
     <string name="NOTICATION_ID">NOTICATION_ID</string>
+    <string name="TS_DETAILS">TS_DETAILS</string>
 
     <!--Child database value-->
     <string name="CHILD_SUBJECTS">Subjects</string>

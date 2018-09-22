@@ -58,6 +58,7 @@ public class CustomizeActivity extends AppCompatActivity {
                         .child("thienphan")
                         .child(listRecyclerView.get(i).getSubjectCode())
                         .removeValue();
+                listRecyclerView.remove(i);
             }
         }
         InfoDialog.ShowInfoDiaLog(this,"Thông báo", "Xoá thành công!");
@@ -70,7 +71,9 @@ public class CustomizeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()){
                     TimesheetItem item = data.getValue(TimesheetItem.class);
-                    listRecyclerView.add(item);
+                    if (!listRecyclerView.contains(item)){
+                        listRecyclerView.add(item);
+                    }
                 }
                 adapterRecyclerView.notifyDataSetChanged();
             }

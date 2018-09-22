@@ -152,19 +152,19 @@ public class CreateTimesheet extends AppCompatActivity {
         this.mydb.child(getString(R.string.CHILD_TIMESHEET)).child("thienphan").child(recyclerviewList.get(currentPosition).getSubjectCode()).setValue(recyclerviewList.get(currentPosition));
         lnlAddtsProgress.setVisibility(View.GONE);
 
-        /*String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
+        String mytimesheet = timesheetPreferences.get(getString(R.string.EXIST_TIMESHEET),String.class);
         if (mytimesheet.isEmpty()){
             ArrayList<String> tsList = new ArrayList<>();
             tsList.add(recyclerviewList.get(currentPosition).getSubjectCode());
             String data = gson.toJson(tsList);
-            timesheetPreferences.put(getString(R.string.MY_TIMESHEET),data);
+            timesheetPreferences.put(getString(R.string.EXIST_TIMESHEET),data);
         }
         else {
             ArrayList<String> tsList = gson.fromJson(mytimesheet,ArrayList.class);
             tsList.add(recyclerviewList.get(currentPosition).getSubjectCode());
             String data = gson.toJson(tsList);
-            timesheetPreferences.put(getString(R.string.MY_TIMESHEET),data);
-        }*/
+            timesheetPreferences.put(getString(R.string.EXIST_TIMESHEET),data);
+        }
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -206,14 +206,15 @@ public class CreateTimesheet extends AppCompatActivity {
     }
 
     private void getSubjects(String key) {
-        String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
+        String mytimesheet = timesheetPreferences.get(getString(R.string.EXIST_TIMESHEET),String.class);
         final ArrayList<String> mtsList = gson.fromJson(mytimesheet,ArrayList.class);
         this.mydb.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot item : dataSnapshot.getChildren()){
                     if (!isExist(item.getKey().toString(),mtsList)){
-                        spinnerList.add(item.getValue().toString());
+                        TimesheetItem tsItem = item.getValue(TimesheetItem.class);
+                        spinnerList.add(tsItem.getSubjectName().trim());
                         subjectList.add(item.getKey().toString());
                     }
                 }
