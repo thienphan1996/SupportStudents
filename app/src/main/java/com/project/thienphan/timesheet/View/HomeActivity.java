@@ -389,6 +389,7 @@ public class HomeActivity extends AppCompatActivity
                             finish();
                         }
                         else if (type == 2){
+                            dialog.dismiss();
                             finish();
                         }
                     }

@@ -4,6 +4,7 @@
     <string name="timesheet">Thời khoá biểu</string>
     <!--Common string-->
     <string name="select_subject">Chọn môn học</string>
+    <string name="url_login_ctu">https://htql.ctu.edu.vn/htql/login.php</string>
 
     <!--Error message-->
     <string name="request_failed">Request Failed</string>
@@ -33,6 +34,7 @@
     <string name="CHILD_CLASS">Class</string>
     <string name="CHILD_TIMESHEET">Timesheet</string>
     <string name="CHILD_ACCOUNTS">Accounts</string>
+    <string name="CHILD_STUDENTINFO">StudentInfomation</string>
 
     <!--Navigation title-->
     <string name="title_activity_home">HomeActivity</string>
