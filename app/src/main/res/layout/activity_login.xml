@@ -5,79 +5,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center"
-    android:background="@color/colorPrimary"
     tools:context="com.project.thienphan.timesheet.View.LoginActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/education_icon"/>
-
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Can Tho University"
-    android:textStyle="bold"
-    android:textColor="@android:color/white"
-    android:textSize="30dp"/>
-
-    <EditText
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/text_input"
-        android:drawableLeft="@drawable/ic_person_white_18dp"
-        android:drawablePadding="5dp"
-        android:textSize="16dp"
-        android:hint="MSSV"
-        android:textColor="@android:color/white"
-        android:textColorHint="#99ffffff"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="16dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/text_input"
-        android:drawableLeft="@drawable/ic_lock_white_18dp"
-        android:drawablePadding="5dp"
-        android:hint="Mật khẩu"
-        android:textColor="@android:color/white"
-        android:textColorHint="#99ffffff"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:padding="5dp">
-        <TextView
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center"
+            android:background="@color/colorPrimary">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/education_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Can Tho University"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_account"
+                android:padding="10dp"
+                android:layout_marginTop="50dp"
+                android:maxLength="45"
+                android:background="@drawable/text_input"
+                android:drawableLeft="@drawable/ic_person_white_18dp"
+                android:drawablePadding="5dp"
+                android:textSize="16dp"
+                android:hint="Mã số đăng nhập"
+                android:textColor="@android:color/white"
+                android:textColorHint="#99ffffff"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_password"
+                android:padding="10dp"
+                android:maxLength="45"
+                android:inputType="textPassword"
+                android:textSize="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_input"
+                android:drawableLeft="@drawable/ic_lock_white_18dp"
+                android:drawablePadding="5dp"
+                android:hint="Mật khẩu"
+                android:textColor="@android:color/white"
+                android:textColorHint="#99ffffff"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nhớ mật khẩu"
+                    android:textSize="16dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="10dp"/>
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/swt_save_password"
+                    android:theme="@style/MySwitch"/>
+            </LinearLayout>
+            <com.rilixtech.materialfancybutton.MaterialFancyButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                fancy:mfb_radius="50dp"
+                android:layout_marginTop="15dp"
+                fancy:mfb_focusColor="@color/bg_gray"
+                fancy:mfb_defaultColor="@android:color/white"
+                fancy:mfb_text="Đăng nhập"
+                fancy:mfb_textSize="16dp"
+                fancy:mfb_textColor="@color/colorPrimary"/>
+        </LinearLayout>
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/pro_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhớ mật khẩu"
-            android:textSize="16dp"
-            android:textColor="@android:color/white"
-            android:gravity="center_vertical"
-            android:layout_marginRight="10dp"/>
-        <android.support.v7.widget.SwitchCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:theme="@style/MySwitch"/>
-    </LinearLayout>
-    <com.rilixtech.materialfancybutton.MaterialFancyButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        fancy:mfb_radius="50dp"
-        android:layout_marginTop="15dp"
-        fancy:mfb_focusColor="@color/bg_gray"
-        fancy:mfb_defaultColor="@android:color/white"
-        fancy:mfb_text="Đăng nhập"
-        fancy:mfb_textSize="16dp"
-        fancy:mfb_textColor="@color/colorPrimary"/>
+            android:layout_marginBottom="20dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            card_view:cardCornerRadius="5dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="3dp">
+                <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foregroundGravity="center"
+                    android:indeterminate="true"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
 </LinearLayout>

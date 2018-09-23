@@ -3,12 +3,15 @@ package com.project.thienphan.timesheet.Common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.project.thienphan.supportstudent.R;
+
 public class TimesheetPreferences {
-    private String prefsName = "TIMESHEET_PREFS";
+    private String prefsName;
     private SharedPreferences myPreferences;
     private Context context;
 
     public TimesheetPreferences(Context context) {
+        prefsName = context.getString(R.string.TIMESHEET_PREFS);
         this.context = context;
         myPreferences = context.getSharedPreferences(prefsName,Context.MODE_PRIVATE);
     }

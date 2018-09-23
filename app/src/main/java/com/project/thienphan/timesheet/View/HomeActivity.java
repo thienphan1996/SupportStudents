@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -67,6 +68,7 @@ public class HomeActivity extends AppCompatActivity
     //Button btnCreate;
     //Button btnCustom;
     TextView txtListEmpty;
+    int backClick = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +166,7 @@ public class HomeActivity extends AppCompatActivity
                             msg = "subscribe failed";
                         }
                         Log.d("msg Status: ", msg);
-                        Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -313,11 +315,12 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        backClick++;
+        if (backClick == 1){
+            Toast.makeText(this,getString(R.string.DOUBLE_BACK),Toast.LENGTH_SHORT).show();
+        }
+        if (backClick == 2){
+            finish();
         }
     }
 
@@ -356,13 +359,13 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_elctu) {
             Uri uri = Uri.parse("https://www.ctu.edu.vn/");
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_logout) {
+            showConfirmDialog(getString(R.string.LOGOUT_CONFIRM),1);
         } else if (id == R.id.nav_about) {
             Intent intent = new Intent(HomeActivity.this,AboutActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_out) {
-            showConfirmDialog();
+            showConfirmDialog(getString(R.string.QUICK_CONFIRM),2);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -370,13 +373,22 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-    private void showConfirmDialog() {
+    private void showConfirmDialog(String message, final int type) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Bạn có muốn thoát ứng dụng không?")
+        builder.setMessage(message)
                 .setCancelable(false)
                 .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        android.os.Process.killProcess(android.os.Process.myPid());
+                        if (type == 1){
+                            SharedPreferences preferences = getSharedPreferences(getString(R.string.TIMESHEET_PREFS), 0);
+                            preferences.edit().clear().commit();
+                            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else if (type == 2){
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                        }
                     }
                 })
                 .setNegativeButton("Không", new DialogInterface.OnClickListener() {

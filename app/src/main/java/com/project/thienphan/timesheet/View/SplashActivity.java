@@ -10,16 +10,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 
 public class SplashActivity extends Activity {
 
     LinearLayout lnSplashActivity;
+    TimesheetPreferences timesheetPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
         lnSplashActivity = findViewById(R.id.ln_splash);
+        timesheetPreferences = new TimesheetPreferences(this);
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.in);
         lnSplashActivity.setAnimation(animation);
 
@@ -31,7 +34,14 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = null;
+                String savePassword = timesheetPreferences.get(getString(R.string.SAVE_PASSWORD),String.class);
+                if (savePassword == null || savePassword.isEmpty()){
+                    intent = new Intent(getApplicationContext(),LoginActivity.class);
+                }
+                else {
+                    intent = new Intent(getApplicationContext(),HomeActivity.class);
+                }
                 startActivity(intent);
                 overridePendingTransition(R.anim.in,R.anim.out);
                 finish();

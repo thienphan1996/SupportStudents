@@ -20,7 +20,7 @@
             android:title="Liên kết"
             android:iconTint="@color/colorPrimary"/>
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_logout"
             android:icon="@drawable/ic_reply_black_24dp"
             android:title="Đăng xuất"
             android:iconTint="@color/colorPrimary"/>

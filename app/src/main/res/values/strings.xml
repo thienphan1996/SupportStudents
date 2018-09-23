@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SupportStudent</string>
+    <string name="app_name">CTU Timesheet</string>
 
     <string name="timesheet">Thời khoá biểu</string>
     <!--Common string-->
@@ -8,9 +8,19 @@
     <!--Error message-->
     <string name="request_failed">Request Failed</string>
 
+    <!--Info message-->
+    <string name="LOGIN_FAILED">Mã số đăng nhập hoặc mật khẩu không chính xác</string>
+    <string name="CONNECT_FAILED">Không có internet, hãy thử lại.</string>
+    <string name="QUICK_CONFIRM">Bạn có muốn thoát ứng dụng không?</string>
+    <string name="LOGOUT_CONFIRM">Bạn có muốn đăng xuất không?</string>
+    <string name="DOUBLE_BACK">Nhấn lần nữa để thoát ứng dụng.</string>
+
     <!--Preferences Key-->
     <string name="MY_TIMESHEET">MY_TIMESHEET</string>
     <string name="EXIST_TIMESHEET">EXIST_TIMESHEET</string>
+    <string name="USER">USER</string>
+    <string name="SAVE_PASSWORD">SAVE_PASSWORD</string>
+    <string name="TIMESHEET_PREFS">TIMESHEET_PREFS</string>
 
     <!--Intent Key-->
     <string name="NOTICATION_TITLE">NOTICATION_TITLE</string>
@@ -22,6 +32,9 @@
     <string name="CHILD_SUBJECTS">Subjects</string>
     <string name="CHILD_CLASS">Class</string>
     <string name="CHILD_TIMESHEET">Timesheet</string>
+    <string name="CHILD_ACCOUNTS">Accounts</string>
+
+    <!--Navigation title-->
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
