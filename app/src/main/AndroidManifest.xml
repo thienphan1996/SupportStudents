@@ -9,7 +9,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <receiver android:name="com.project.thienphan.timesheet.Notification.TimesheetReceiver" />
@@ -38,7 +38,7 @@
         <activity
             android:name="com.project.thienphan.timesheet.View.HomeActivity"
             android:label="@string/timesheet"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.project.thienphan.timesheet.View.TimesheetDetails"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -53,7 +53,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.project.thienphan.timesheet.View.LoginActivity" android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity android:name="com.project.thienphan.timesheet.View.LoginActivity" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.PrivateActivity"
+            android:label="Cá nhân"
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.NewsActivity"
+            android:label="Tin tức"
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity"></activity>
     </application>
 
 </manifest>

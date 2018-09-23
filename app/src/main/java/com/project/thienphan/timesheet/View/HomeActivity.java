@@ -306,11 +306,11 @@ public class HomeActivity extends AppCompatActivity
 
     private void setActionButton(Button button,int dayofweek) {
         GetData(dayofweek);
-        button.setEnabled(false);
-        button.setTextColor(getResources().getColor(R.color.dayofweek));
         btnActive.setTextColor(getResources().getColor(android.R.color.white));
         btnActive.setEnabled(true);
         btnActive = button;
+        button.setEnabled(false);
+        button.setTextColor(getResources().getColor(R.color.dayofweek));
     }
 
     @Override
@@ -352,10 +352,12 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_news) {
+            Intent intent = new Intent(HomeActivity.this, NewsActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_private) {
+            Intent intent = new Intent(HomeActivity.this,PrivateActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_elctu) {
             Uri uri = Uri.parse("https://www.ctu.edu.vn/");
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
@@ -387,7 +389,7 @@ public class HomeActivity extends AppCompatActivity
                             finish();
                         }
                         else if (type == 2){
-                            android.os.Process.killProcess(android.os.Process.myPid());
+                            finish();
                         }
                     }
                 })

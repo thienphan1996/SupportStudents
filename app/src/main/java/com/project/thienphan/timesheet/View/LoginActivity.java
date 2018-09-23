@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         addControls();
         addEvents();
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                             UserAccount invalidAccount = item.getValue(UserAccount.class);
                             if (invalidAccount != null
                                 && invalidAccount.getAccount().toLowerCase().equals(account.toLowerCase())
-                                && invalidAccount.getPassword().toLowerCase().equals(password.toLowerCase()))
+                                && invalidAccount.getPassword().equals(password))
                             {
                                 timesheetPreferences.put(getString(R.string.USER),account);
                                 if (swtSavePassword.isChecked()){
@@ -90,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                     proLogin.setVisibility(View.GONE);
                 }
             });
-            proLogin.setVisibility(View.GONE);
         }
     }
 
