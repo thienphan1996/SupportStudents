@@ -6,6 +6,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.view.Window;
+
+import com.project.thienphan.supportstudent.R;
 
 public class InfoDialog {
 
@@ -22,5 +25,16 @@ public class InfoDialog {
         });
         Dialog dialogDisplay = dialog.create();
         dialogDisplay.show();
+    }
+
+    public static void ShowProgressDialog(Activity activity, boolean isShow){
+        Dialog dialog = new Dialog(activity);
+        //dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.progress_dialog);
+        if (isShow){
+            dialog.show();
+        }
+        else dialog.dismiss();
     }
 }

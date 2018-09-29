@@ -144,7 +144,9 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(HomeActivity.this,TimesheetDetails.class);
-                intent.putExtra(getString(R.string.TS_DETAILS),timesheetList.get(i).getSubjectCode());
+                String subCode = timesheetList.get(i).getSubjectCode();
+                String url = getString(R.string.sebject_doc_url) + subCode + ".pdf";
+                intent.putExtra(getString(R.string.TS_DETAILS),url);
                 startActivity(intent);
             }
         });
@@ -320,6 +322,8 @@ public class HomeActivity extends AppCompatActivity
             Toast.makeText(this,getString(R.string.DOUBLE_BACK),Toast.LENGTH_SHORT).show();
         }
         if (backClick == 2){
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
             finish();
         }
     }
@@ -389,6 +393,8 @@ public class HomeActivity extends AppCompatActivity
                             finish();
                         }
                         else if (type == 2){
+                            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                            drawer.closeDrawer(GravityCompat.START);
                             dialog.dismiss();
                             finish();
                         }

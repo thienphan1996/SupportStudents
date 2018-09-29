@@ -19,6 +19,7 @@ import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.UserAccount;
+import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 import com.rilixtech.materialfancybutton.MaterialFancyButton;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,10 +27,10 @@ public class LoginActivity extends AppCompatActivity {
     MaterialFancyButton btnLogin;
     EditText edtAccount, edtPassword;
     SwitchCompat swtSavePassword;
-    CardView proLogin;
 
     DatabaseReference mydb;
     TimesheetPreferences timesheetPreferences;
+    TimesheetProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         final String password = edtPassword.getText().toString().trim();
 
         if (!account.isEmpty() && !password.isEmpty()){
-            proLogin.setVisibility(View.VISIBLE);
+            dialog.show(getSupportFragmentManager(),"");
             mydb.child(getString(R.string.CHILD_ACCOUNTS)).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -75,20 +76,20 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             }
                             else {
-                                proLogin.setVisibility(View.GONE);
+                                dialog.dismiss();
                                 Snackbar.make(view, getString(R.string.LOGIN_FAILED), Snackbar.LENGTH_LONG)
                                         .setAction("OK", null).show();
                             }
                         }
                     }
-                    proLogin.setVisibility(View.GONE);
+                    dialog.dismiss();
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Snackbar.make(view, getString(R.string.CONNECT_FAILED), Snackbar.LENGTH_LONG)
                             .setAction("OK", null).show();
-                    proLogin.setVisibility(View.GONE);
+                    dialog.dismiss();
                 }
             });
         }
@@ -101,6 +102,6 @@ public class LoginActivity extends AppCompatActivity {
         edtAccount = findViewById(R.id.edt_account);
         edtPassword = findViewById(R.id.edt_password);
         swtSavePassword = findViewById(R.id.swt_save_password);
-        proLogin = findViewById(R.id.pro_login);
+        dialog = new TimesheetProgressDialog();
     }
 }

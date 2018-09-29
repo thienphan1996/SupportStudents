@@ -99,10 +99,10 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/recyclerview_bg_gray"
                 android:minHeight="60dp"
                 android:paddingTop="5dp"
                 android:id="@+id/rcv_timesheet"
-                android:background="@drawable/recyclerview_bg_gray"
                 android:scrollbars="vertical"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>

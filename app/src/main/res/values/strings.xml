@@ -3,8 +3,11 @@
 
     <string name="timesheet">Thời khoá biểu</string>
     <!--Common string-->
+    <string name="ctu_url">https://www.ctu.edu.vn</string>
     <string name="select_subject">Chọn môn học</string>
-    <string name="url_login_ctu">https://htql.ctu.edu.vn/htql/login.php</string>
+    <string name="html_notify">/thong-bao/</string>
+    <string name="sebject_doc_url">https://drive.google.com/viewer?url=http://www.cit.ctu.edu.vn/decuong/</string>
+    <string name="news_url">https://www.ctu.edu.vn/thong-bao.html?start=</string>
 
     <!--Error message-->
     <string name="request_failed">Request Failed</string>
@@ -28,6 +31,7 @@
     <string name="NOTICATION_BODY">NOTICATION_BODY</string>
     <string name="NOTICATION_ID">NOTICATION_ID</string>
     <string name="TS_DETAILS">TS_DETAILS</string>
+    <string name="TS_DETAILS_FROM_NEWS">TS_DETAILS_FROM_NEWS</string>
 
     <!--Child database value-->
     <string name="CHILD_SUBJECTS">Subjects</string>

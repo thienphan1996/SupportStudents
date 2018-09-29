@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#0091EA</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#dd0091EA</color>
     <color name="colorAccent">#0091EA</color>
 
     <!--button color day of week-->
-    <color name="dayofweek">#4527A0</color>
+    <color name="dayofweek">#0091EA</color>
     <color name="bg_gray">#E3F2FD</color>
 </resources>

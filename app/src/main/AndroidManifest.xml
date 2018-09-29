@@ -42,7 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.project.thienphan.timesheet.View.TimesheetDetails"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="CTU news"/>
         <activity
             android:name="com.project.thienphan.timesheet.View.AboutActivity"
             android:label="About"

@@ -1,43 +1,36 @@
 package com.project.thienphan.timesheet.View;
-
-import android.annotation.SuppressLint;
-import android.net.http.HttpResponseCache;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
 
 import com.project.thienphan.supportstudent.R;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.project.thienphan.timesheet.Adapter.NewsAdapter;
+import com.project.thienphan.timesheet.Model.TagContent;
+import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import java.util.ArrayList;
 
 public class NewsActivity extends AppCompatActivity {
+
+    ArrayList<TagContent> lstNotify;
+    NewsAdapter notifyAdapter;
+    RecyclerView rcvNews;
+    TimesheetProgressDialog dialog;
+
+    ImageButton imgPrevious,imgNext;
+    String targetUrl = "";
+    int paramNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,79 +39,159 @@ public class NewsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         addControls();
-        //GetNews();
-        new MyDownloadTask().execute();
+        addEvents();
     }
 
-    private void GetNews() {
-        try {
-            GetExample example = new GetExample();
-            String response = example.run(getString(R.string.url_login_ctu));
-            Log.d("Ket qua",response);
-        } catch (Exception e) {
-            Log.d("Loi o day: ",e.getMessage());
-        }
-    }
-
-    public class GetExample {
-        OkHttpClient client = new OkHttpClient();
-
-        String run(String url) throws IOException {
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-
-            Response response = client.newCall(request).execute();
-            return response.body().string();
-        }
-    }
-    private void addControls() {
-
-    }
-
-    class MyDownloadTask extends AsyncTask<Void,Void,Void>
-    {
-
-
-        protected void onPreExecute() {
-            //display progress dialog.
-            Log.d("Thanh cong","");
-        }
-        protected Void doInBackground(Void... params) {
-            URL urlLoc = null;
-            try {
-                urlLoc = new URL("https://htql.ctu.edu.vn/htql/login.php");
-                URLConnection conexion = urlLoc.openConnection();
-                conexion.setConnectTimeout(4000);
-                conexion.setReadTimeout(1000);
-                conexion.connect();
-                InputStream input = new BufferedInputStream(urlLoc
-                        .openStream());
-
-                StringBuffer responseBuffer = new StringBuffer();
-                byte[] byteArray = new byte[1024];
-                while (input.read(byteArray) != -1)
-                {
-                    String res = new String(byteArray, "UTF-8");
-                    responseBuffer.append(res);
-                    byteArray = new byte[1024];
-                }
-                String response = responseBuffer.toString().trim();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+    private void addEvents() {
+        imgNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HandlingNextPage();
             }
-            return null;
+        });
+        imgPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HandlingPreviousPage();
+            }
+        });
+    }
+
+    private void HandlingPreviousPage() {
+        paramNumber -= 15;
+        getWebsite(paramNumber);
+        imgNext.setEnabled(true);
+        imgNext.setImageResource(R.drawable.ic_navigate_next_black_24dp);
+        imgPrevious.setEnabled(true);
+        imgPrevious.setImageResource(R.drawable.ic_navigate_before_black_24dp);
+        if (paramNumber == 0){
+            imgPrevious.setEnabled(false);
+            imgPrevious.setImageResource(R.drawable.ic_navigate_before_black_24dp_disable);
         }
+    }
 
-
-
-        protected void onPostExecute(Void result) {
-            // dismiss progress dialog and update ui
-            Log.d("Thanh cong","");
+    private void HandlingNextPage() {
+        paramNumber += 15;
+        getWebsite(paramNumber);
+        imgNext.setEnabled(true);
+        imgNext.setImageResource(R.drawable.ic_navigate_next_black_24dp);
+        imgPrevious.setEnabled(true);
+        imgPrevious.setImageResource(R.drawable.ic_navigate_before_black_24dp);
+        if (paramNumber >= 75){
+            imgNext.setEnabled(false);
+            imgNext.setImageResource(R.drawable.ic_navigate_next_black_24dp_disable);
         }
+    }
+
+
+    private void addControls() {
+        imgNext = findViewById(R.id.img_next_news);
+        imgPrevious = findViewById(R.id.img_previous_news);
+        paramNumber = 0;
+        lstNotify = new ArrayList<>();
+        rcvNews = findViewById(R.id.rcv_news);
+        notifyAdapter = new NewsAdapter(lstNotify, getResources(), new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ViewSiteDetails(i);
+            }
+        });
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rcvNews.setLayoutManager(layoutManager);
+        rcvNews.setAdapter(notifyAdapter);
+        dialog = new TimesheetProgressDialog();
+        getWebsite(0);
+        imgPrevious.setEnabled(false);
+    }
+
+    private void getWebsite(int param) {
+        final String newsUrl = getString(R.string.news_url) + param;
+        dialog.show(getSupportFragmentManager(),"");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    lstNotify.clear();
+                    Document doc = Jsoup.connect(newsUrl).get();
+                    Elements links = doc.select("a[href]");
+                    for (Element link : links) {
+                        String keyLink = link.attr("href");
+                        String body = link.text();
+                        if (!keyLink.isEmpty() && keyLink.length() > 10 && !body.isEmpty() && keyLink.substring(0,11).equals(getString(R.string.html_notify))){
+                            TagContent content = new TagContent(keyLink,body);
+                            if (!lstNotify.contains(content) && lstNotify.size() <= 15){
+                                lstNotify.add(new TagContent(keyLink,body));
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    Log.d("Error: " , e.toString());
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                        notifyAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void ViewSiteDetails(int index){
+        final String ctuUrl = getString(R.string.ctu_url);
+        final String urlFromIndex = ctuUrl + lstNotify.get(index).getLink();
+        dialog.show(getSupportFragmentManager(),"");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Document doc = Jsoup.connect(urlFromIndex).get();
+                    Elements links = doc.select("a[href]");
+
+                    for (Element link : links) {
+                        String keyLink = link.attr("href");
+                        String body = link.text();
+                        try {
+                            if (keyLink.length() > 12 && body.trim().substring(body.length() - 12,body.length()).equals("Xem chi tiết") && keyLink.substring(keyLink.length()-4,keyLink.length()).equals(".pdf")){
+                                targetUrl = "https://drive.google.com/viewer?url=" + ctuUrl + keyLink;
+                                break;
+                            }
+                            else if (body.length() > 12 && body.trim().substring(body.length() - 12,body.length()).equals("Xem chi tiết")){
+                                if (keyLink.length() > 5){
+                                    if (keyLink.substring(0,4).equals("http")){
+                                        targetUrl = keyLink;
+                                        break;
+                                    }
+                                    else {
+                                        targetUrl = ctuUrl + keyLink;
+                                        break;
+                                    }
+                                }
+                            }
+                            else {
+                                targetUrl = urlFromIndex;
+                            }
+                        }
+                        catch (Exception e){
+
+                        }
+                    }
+                } catch (IOException e) {
+                    Log.d("Error: " , e.toString());
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                        Intent intent = new Intent(NewsActivity.this,TimesheetDetails.class);
+                        intent.putExtra(getString(R.string.TS_DETAILS),targetUrl);
+                        intent.putExtra(getString(R.string.TS_DETAILS_FROM_NEWS),1);
+                        startActivity(intent);
+                    }
+                });
+            }
+        }).start();
     }
 }
