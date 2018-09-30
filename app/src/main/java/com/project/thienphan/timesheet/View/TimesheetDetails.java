@@ -79,7 +79,7 @@ public class TimesheetDetails extends AppCompatActivity {
         webview.getSettings().setDomStorageEnabled(true);
         webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
         webview.getSettings().setSupportMultipleWindows(false);
-        webview.getSettings().setSupportZoom(false);
+        webview.getSettings().setSupportZoom(true);
 
         pDialog = new TimesheetProgressDialog();
         webview.loadUrl(url);

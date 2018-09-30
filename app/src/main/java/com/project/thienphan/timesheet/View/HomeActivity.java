@@ -238,36 +238,43 @@ public class HomeActivity extends AppCompatActivity
                 btnActive = btnMonday;
                 btnMonday.setEnabled(false);
                 GetData(2);
+                btnMonday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 2:
                 btnActive = btnMonday;
                 btnMonday.setEnabled(false);
                 GetData(2);
+                btnMonday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 3:
                 btnActive = btnTuesday;
                 btnTuesday.setEnabled(false);
                 GetData(3);
+                btnTuesday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 4:
                 btnActive = btnWednesday;
                 btnWednesday.setEnabled(false);
                 GetData(4);
+                btnMonday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 5:
                 btnActive = btnThurday;
                 btnThurday.setEnabled(false);
                 GetData(5);
+                btnThurday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 6:
                 btnActive = btnFriday;
                 btnFriday.setEnabled(false);
                 GetData(6);
+                btnFriday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 7:
                 btnActive = btnSaturday;
                 btnSaturday.setEnabled(false);
                 GetData(7);
+                btnSaturday.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
             default:
                 break;
@@ -312,7 +319,7 @@ public class HomeActivity extends AppCompatActivity
         btnActive.setEnabled(true);
         btnActive = button;
         button.setEnabled(false);
-        button.setTextColor(getResources().getColor(R.color.dayofweek));
+        button.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override

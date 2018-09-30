@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.project.thienphan.supportstudent"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -37,5 +37,6 @@ dependencies {
     implementation 'com.wrapp.floatlabelededittext:library:0.0.6'
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
     implementation 'org.jsoup:jsoup:1.10.1'
+    implementation 'com.subkhansarif.libs:bottomnavbarlib:1.1.4'
 }
 apply plugin: 'com.google.gms.google-services'

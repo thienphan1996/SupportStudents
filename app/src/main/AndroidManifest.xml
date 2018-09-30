@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -38,11 +38,11 @@
             android:parentActivityName="com.project.thienphan.timesheet.View.MainActivity" />
         <activity
             android:name="com.project.thienphan.timesheet.View.HomeActivity"
-            android:label="@string/timesheet"
+            android:label="CTU Student"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.project.thienphan.timesheet.View.TimesheetDetails"
-            android:label="CTU news"/>
+            android:label="CTU news" />
         <activity
             android:name="com.project.thienphan.timesheet.View.AboutActivity"
             android:label="About"
@@ -62,7 +62,8 @@
         <activity
             android:name="com.project.thienphan.timesheet.View.NewsActivity"
             android:label="Tin tức"
-            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity"></activity>
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity" />
+        <activity android:name="com.project.thienphan.teacher.View.TeacherActivity" android:label="CTU Teacher"></activity>
     </application>
 
 </manifest>

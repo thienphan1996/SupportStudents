@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.teacher.View.TeacherActivity;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 
 public class SplashActivity extends Activity {

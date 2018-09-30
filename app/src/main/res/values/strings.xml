@@ -39,6 +39,8 @@
     <string name="CHILD_TIMESHEET">Timesheet</string>
     <string name="CHILD_ACCOUNTS">Accounts</string>
     <string name="CHILD_STUDENTINFO">StudentInfomation</string>
+    <string name="CHILD_TEACHER">TeacherInfo</string>
+    <string name="CHILD_ALLCLASS">AllClass</string>
 
     <!--Navigation title-->
     <string name="title_activity_home">HomeActivity</string>
@@ -47,5 +49,9 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="teacher_home">Home</string>
+    <string name="teacher_class">Lịch dạy</string>
+    <string name="teacher_notify">Thông báo</string>
+    <string name="teacher_custom">Tuỳ chọn</string>
     <string name="action_settings">Settings</string>
 </resources>
