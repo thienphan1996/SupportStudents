@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity
     Button btnActive = null;
     //Button btnCreate;
     //Button btnCustom;
-    TextView txtListEmpty;
+    TextView txtListEmpty,txtNotificationTotal;
     int backClick = 0;
 
     @Override
@@ -81,9 +81,7 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                Intent intent = new Intent(HomeActivity.this,CreateTimesheet.class);
+                Intent intent = new Intent(HomeActivity.this,NotifictionActivity.class);
                 startActivity(intent);
             }
         });
@@ -136,9 +134,10 @@ public class HomeActivity extends AppCompatActivity
 
     private void addControls() {
         txtListEmpty = findViewById(R.id.tv_ts_empty_list);
+        txtNotificationTotal = findViewById(R.id.tv_notification_total);
         rcvTimesheet = findViewById(R.id.rcv_timesheet);
         SetupButton();
-        RegisterNotification("thienphan");
+        RegisterNotification(getString(R.string.student));
         timesheetList = new ArrayList<>();
         homeAdapter = new HomeAdapter(timesheetList, new AdapterView.OnItemClickListener() {
             @Override
@@ -156,6 +155,17 @@ public class HomeActivity extends AppCompatActivity
         rcvTimesheet.setAdapter(homeAdapter);
         timesheetPreferences = new TimesheetPreferences(getApplicationContext());
         gson = new Gson();
+        GetNotificationTotal();
+    }
+
+    private void GetNotificationTotal() {
+        int total = timesheetPreferences.get(getString(R.string.NOTIFICATION_TOTAL),Integer.class);
+        if (total > 0){
+            txtNotificationTotal.setText(total + "");
+        }
+        else {
+            txtNotificationTotal.setVisibility(View.GONE);
+        }
     }
 
     private void RegisterNotification(String user) {
@@ -303,7 +313,7 @@ public class HomeActivity extends AppCompatActivity
                 if (timesheetList.size()==0){
                     txtListEmpty.setVisibility(View.VISIBLE);
                 }
-                GenerateNotification();
+                //GenerateNotification();
             }
 
             @Override

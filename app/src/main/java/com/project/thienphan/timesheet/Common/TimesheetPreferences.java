@@ -51,4 +51,8 @@ public class TimesheetPreferences {
     public void clear() {
         myPreferences.edit().clear().apply();
     }
+
+    public void remove(String key){
+        myPreferences.edit().remove(key).apply();
+    }
 }

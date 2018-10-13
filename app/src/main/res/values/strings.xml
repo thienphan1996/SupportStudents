@@ -3,6 +3,7 @@
 
     <string name="timesheet">Thời khoá biểu</string>
     <!--Common string-->
+    <string name="student">student</string>
     <string name="ctu_url">https://www.ctu.edu.vn</string>
     <string name="select_subject">Chọn môn học</string>
     <string name="html_notify">/thong-bao/</string>
@@ -25,6 +26,8 @@
     <string name="USER">USER</string>
     <string name="SAVE_PASSWORD">SAVE_PASSWORD</string>
     <string name="TIMESHEET_PREFS">TIMESHEET_PREFS</string>
+    <string name="NOTIFICATION_STUDENT">NOTIFICATION_STUDENT</string>
+    <string name="NOTIFICATION_TOTAL">NOTIFICATION_TOTAL</string>
 
     <!--Intent Key-->
     <string name="NOTICATION_TITLE">NOTICATION_TITLE</string>

@@ -8,4 +8,5 @@
     <!--button color day of week-->
     <color name="dayofweek">#0091EA</color>
     <color name="bg_gray">#E3F2FD</color>
+    <color name="bg_gray_light">#EEEEEE</color>
 </resources>

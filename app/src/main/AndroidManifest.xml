@@ -63,7 +63,13 @@
             android:name="com.project.thienphan.timesheet.View.NewsActivity"
             android:label="Tin tức"
             android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity" />
-        <activity android:name="com.project.thienphan.teacher.View.TeacherActivity" android:label="CTU Teacher"></activity>
+        <activity
+            android:name="com.project.thienphan.teacher.View.TeacherActivity"
+            android:label="CTU Teacher" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.NotifictionActivity"
+            android:label="Thông báo"
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity"></activity>
     </application>
 
 </manifest>

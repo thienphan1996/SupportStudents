@@ -1,5 +1,6 @@
 package com.project.thienphan.timesheet.Notification;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -19,6 +20,9 @@ public class TimesheetReceiver extends BroadcastReceiver {
 
     public void createNotification(Context context, Intent intent)
     {
+        String channelId = "studentsChanel";
+        String channelName = "CTU students";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
         String title = intent.getStringExtra(context.getString(R.string.NOTICATION_TITLE));
         String body = intent.getStringExtra(context.getString(R.string.NOTICATION_BODY));
         int id = intent.getIntExtra(context.getString(R.string.NOTICATION_ID),0);
@@ -39,6 +43,11 @@ public class TimesheetReceiver extends BroadcastReceiver {
         mBuilder.setAutoCancel(true);
 
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(
+                    channelId, channelName, importance);
+            mNotificationManager.createNotificationChannel(mChannel);
+        }
         mNotificationManager.notify(id, mBuilder.build());
     }
 }
