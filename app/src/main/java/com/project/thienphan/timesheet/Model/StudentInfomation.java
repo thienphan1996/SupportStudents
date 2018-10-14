@@ -11,6 +11,7 @@ public class StudentInfomation {
     private String MaNganh;
     private String MaSV;
     private String NgaySinh;
+    private boolean isCheck;
 
     public StudentInfomation() {
     }
@@ -24,6 +25,15 @@ public class StudentInfomation {
         MaNganh = maNganh;
         MaSV = maSV;
         NgaySinh = ngaySinh;
+        isCheck = true;
+    }
+
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
     }
 
     public String getGioiTinh() {

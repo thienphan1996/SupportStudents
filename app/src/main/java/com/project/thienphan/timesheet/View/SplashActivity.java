@@ -38,10 +38,13 @@ public class SplashActivity extends Activity {
                 Intent intent = null;
                 String savePassword = timesheetPreferences.get(getString(R.string.SAVE_PASSWORD),String.class);
                 if (savePassword == null || savePassword.isEmpty()){
-                    intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    intent = new Intent(getApplicationContext(), LoginActivity.class);
+                }
+                else if (savePassword != null && savePassword.length() > 2 && savePassword.toLowerCase().substring(0,2).equals("tc")){
+                    intent = new Intent(getApplicationContext(), TeacherActivity.class);
                 }
                 else {
-                    intent = new Intent(getApplicationContext(),HomeActivity.class);
+                    intent = new Intent(getApplicationContext(), HomeActivity.class);
                 }
                 startActivity(intent);
                 overridePendingTransition(R.anim.in,R.anim.out);

@@ -1,11 +1,13 @@
 package com.project.thienphan.teacher.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.Adapter.TeacherAdapter;
+import com.project.thienphan.teacher.View.CheckStudentActivity;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.ClassItem;
 import com.project.thienphan.timesheet.Model.Subject;
@@ -53,7 +56,13 @@ public class HomeFragment extends Fragment {
         teacherAdapter = new TeacherAdapter(lstClass, new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                String students = lstClass.get(i).getStudents();
+                if (students != null){
+                    Intent intent = new Intent(getActivity(), CheckStudentActivity.class);
+                    intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
+                    intent.putExtra(getString(R.string.LIST_STUDENT),students);
+                    startActivity(intent);
+                }
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

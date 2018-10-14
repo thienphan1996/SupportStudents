@@ -14,11 +14,12 @@ public class ClassItem {
     private String subjectTeacher;
     private String subjectTime;
     private String teacherCode;
+    private String students;
 
     public ClassItem() {
     }
 
-    public ClassItem(String subjectCode, Long dayofWeek, ArrayList<StudentInfomation> listStudent, Long studentNumber, Long subjectGroup, String subjectLocation, String subjectName, String subjectTeacher, String subjectTime, String teacherCode) {
+    public ClassItem(String subjectCode, Long dayofWeek, ArrayList<StudentInfomation> listStudent, Long studentNumber, Long subjectGroup, String subjectLocation, String subjectName, String subjectTeacher, String subjectTime, String teacherCode, String students) {
         this.subjectCode = subjectCode;
         DayofWeek = dayofWeek;
         this.listStudent = listStudent;
@@ -29,6 +30,7 @@ public class ClassItem {
         this.subjectTeacher = subjectTeacher;
         this.subjectTime = subjectTime;
         this.teacherCode = teacherCode;
+        this.students = students;
     }
 
     public String getSubjectCode() {
@@ -109,6 +111,14 @@ public class ClassItem {
 
     public void setTeacherCode(String teacherCode) {
         this.teacherCode = teacherCode;
+    }
+
+    public String getStudents() {
+        return students;
+    }
+
+    public void setStudents(String students) {
+        this.students = students;
     }
 
     @Override

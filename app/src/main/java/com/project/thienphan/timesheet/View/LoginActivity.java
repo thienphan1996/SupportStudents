@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.teacher.View.TeacherActivity;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.UserAccount;
@@ -71,16 +72,20 @@ public class LoginActivity extends AppCompatActivity {
                                 if (swtSavePassword.isChecked()){
                                     timesheetPreferences.put(getString(R.string.SAVE_PASSWORD),account);
                                 }
-                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                Intent intent;
+                                if ( account.toLowerCase().substring(0,2).equals("tc") ){
+                                    intent = new Intent(LoginActivity.this,TeacherActivity.class);
+                                }
+                                else {
+                                    intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                }
                                 startActivity(intent);
                                 finish();
                             }
-                            else {
-                                dialog.dismiss();
-                                Snackbar.make(view, getString(R.string.LOGIN_FAILED), Snackbar.LENGTH_LONG)
-                                        .setAction("OK", null).show();
-                            }
                         }
+                        dialog.dismiss();
+                        Snackbar.make(view, getString(R.string.LOGIN_FAILED), Snackbar.LENGTH_LONG)
+                                .setAction("OK", null).show();
                     }
                     dialog.dismiss();
                 }

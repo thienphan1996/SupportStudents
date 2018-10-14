@@ -35,16 +35,14 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d("From", "From: " + remoteMessage.getFrom());
-        Log.d("Body", "Notification Message Body: " + remoteMessage.getNotification().getBody());
-        Log.d("Date", "Data: " + remoteMessage.getData().toString());
+        Log.d("Data", "Data: " + remoteMessage.getData().toString());
         // Check if message contains a notification payload.
         if (remoteMessage.getData() != null) {
-            Log.d("Notification body: ", "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            Map<String, String> data = remoteMessage.getData();
+            Map<String,String> data = remoteMessage.getData();
             String subject = data.get("subject");
             String title = data.get("title");
             String message = data.get("message");
-            if (!subject.isEmpty() && !title.isEmpty() && !message.isEmpty()){
+            if (title != null && message != null){
                 Calendar calendar = Calendar.getInstance();
                 TimesheetPreferences timesheetPreferences = new TimesheetPreferences(getApplicationContext());
                 int notificationTotal = timesheetPreferences.get(getString(R.string.NOTIFICATION_TOTAL),Integer.class);
@@ -71,13 +69,13 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
                         timesheetPreferences.put(getString(R.string.NOTIFICATION_STUDENT),listToString);
                     }
                 }
+                sendNotification(title,message, remoteMessage.getData().toString());
             }
-            sendNotification(title,message);
         }
 
     }
 
-    private void sendNotification(String title,String message) {
+    private void sendNotification(String title,String message,String data) {
         String channelId = "studentsChanel";
         String channelName = "CTU students";
         int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -101,8 +99,10 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
                 .setContentText(message)
                 .setTicker(title)
                 .setSmallIcon(R.drawable.education_icon)
-                .setLargeIcon(BitmapFactory.decodeResource( this.getResources(), R.mipmap.ic_launcher));
-
+                .setLargeIcon(BitmapFactory.decodeResource( this.getResources(), R.drawable.education_icon));
+        if (data.length() > 0){
+            mBuilder.setLargeIcon(BitmapFactory.decodeResource( this.getResources(), R.mipmap.ic_launcher));
+        }
         mBuilder.setChannelId(channelId);
         mBuilder.setContentIntent(notificIntent);
         mBuilder.setDefaults(NotificationCompat.DEFAULT_VIBRATE);

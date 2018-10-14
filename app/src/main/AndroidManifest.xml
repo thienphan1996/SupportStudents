@@ -23,7 +23,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/ic_launcher" />
+            android:resource="@drawable/education_icon" />
 
         <activity
             android:name="com.project.thienphan.timesheet.View.MainActivity"
@@ -69,7 +69,11 @@
         <activity
             android:name="com.project.thienphan.timesheet.View.NotifictionActivity"
             android:label="Thông báo"
-            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity"></activity>
+            android:parentActivityName="com.project.thienphan.timesheet.View.HomeActivity" />
+        <activity
+            android:name="com.project.thienphan.teacher.View.CheckStudentActivity"
+            android:label="Điểm danh"
+            android:parentActivityName="com.project.thienphan.teacher.View.TeacherActivity"></activity>
     </application>
 
 </manifest>

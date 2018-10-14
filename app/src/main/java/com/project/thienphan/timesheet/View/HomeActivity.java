@@ -40,6 +40,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.teacher.Service.PushNotificationService;
 import com.project.thienphan.timesheet.Adapter.HomeAdapter;
 import com.project.thienphan.timesheet.Adapter.TimesheetAdapter;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
@@ -83,6 +84,7 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,NotifictionActivity.class);
                 startActivity(intent);
+                //SendNotification();
             }
         });
 
@@ -96,6 +98,14 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         addControls();
         addEvents();
+    }
+
+    private void SendNotification() {
+        String subject = "CT126";
+        String title = "Thông báo thời gian chấm điểm thi giữa kỳ";
+        String message = "Chào các bạn, sau khi kiểm tra giữa kỳ thầy sẽ chấm điểm và đến đầu tuần sau sẽ có kết quả.";
+        String topic = "student";
+        PushNotificationService.Send(subject,title,message,topic,this);
     }
 
     private void GenerateNotification() {
@@ -155,6 +165,11 @@ public class HomeActivity extends AppCompatActivity
         rcvTimesheet.setAdapter(homeAdapter);
         timesheetPreferences = new TimesheetPreferences(getApplicationContext());
         gson = new Gson();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         GetNotificationTotal();
     }
 
