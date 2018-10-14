@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 timesheetPreferences.put(getString(R.string.USER),account);
                                 if (swtSavePassword.isChecked()){
-                                    timesheetPreferences.put(getString(R.string.SAVE_PASSWORD),account);
+                                    timesheetPreferences.put(getString(R.string.SAVE_PASSWORD),account.toUpperCase());
                                 }
                                 Intent intent;
                                 if ( account.toLowerCase().substring(0,2).equals("tc") ){

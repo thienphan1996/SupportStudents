@@ -73,7 +73,11 @@
         <activity
             android:name="com.project.thienphan.teacher.View.CheckStudentActivity"
             android:label="Điểm danh"
-            android:parentActivityName="com.project.thienphan.teacher.View.TeacherActivity"></activity>
+            android:parentActivityName="com.project.thienphan.teacher.View.TeacherActivity" />
+        <activity
+            android:name="com.project.thienphan.teacher.View.LeaveReportActivity"
+            android:label="Thống kê"
+            android:parentActivityName="com.project.thienphan.teacher.View.CheckStudentActivity"></activity>
     </application>
 
 </manifest>

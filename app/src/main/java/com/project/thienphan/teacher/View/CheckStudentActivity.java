@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -77,7 +80,7 @@ public class CheckStudentActivity extends AppCompatActivity {
     }
 
     private void GetListStudents() {
-        if (!students.isEmpty()){
+        if (students != null && !students.isEmpty()){
             dialog.show(getSupportFragmentManager(),"dialog");
             final String[] list = students.split(",");
             this.mydb.child(getString(R.string.CHILD_STUDENTINFO)).addValueEventListener(new ValueEventListener() {
@@ -124,7 +127,11 @@ public class CheckStudentActivity extends AppCompatActivity {
             }
         }
         if (id == R.id.menu_report) {
-            return true;
+            Intent intent = new Intent(getApplicationContext(),LeaveReportActivity.class);
+            if (subject != null){
+                intent.putExtra(getString(R.string.SUBJECT_CODE),subject);
+            }
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -135,8 +142,34 @@ public class CheckStudentActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         String time = sdf.format(calendar.getTime());
         String students = this.lstCheckLeave.toString();
-        if (!account.isEmpty() && !subject.isEmpty()){
-            this.mydb.child(getString(R.string.CHILD_LEAVESTUDENT)).child(account).child(subject).child(time).setValue(students);
+        if (!account.isEmpty() && !subject.isEmpty() && lstCheckLeave.size() > 0){
+            dialog.show(getSupportFragmentManager(),"dialog");
+            Task push = this.mydb.child(getString(R.string.CHILD_LEAVESTUDENT)).child(account.toUpperCase()).child(subject).child(time).setValue(students);
+            push.addOnSuccessListener(new OnSuccessListener() {
+                @Override
+                public void onSuccess(Object o) {
+                    dialog.dismiss();
+                    InfoDialog.ShowInfoDiaLog(CheckStudentActivity.this,"Thông báo","Lưu thành công");
+                    RefreshData();
+                    lstCheckLeave.clear();
+                }
+            });
+            push.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    dialog.dismiss();
+                    InfoDialog.ShowInfoDiaLog(CheckStudentActivity.this,"Thông báo","Lưu thất bại");
+                    RefreshData();
+                    lstCheckLeave.clear();
+                }
+            });
         }
+    }
+
+    private void RefreshData() {
+        for (StudentInfomation item : lstStudent){
+            item.setCheck(false);
+        }
+        checkStudentAdapter.notifyDataSetChanged();
     }
 }
