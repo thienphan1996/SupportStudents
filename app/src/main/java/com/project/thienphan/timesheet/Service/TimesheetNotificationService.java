@@ -80,6 +80,7 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
         String channelName = "CTU students";
         int importance = NotificationManager.IMPORTANCE_HIGH;
         Intent i = new Intent(this, SplashActivity.class);
+        i.putExtra(getString(R.string.FROM_NOTIFICATION),true);
 
         PendingIntent notificIntent = PendingIntent.getActivity(this,55, i ,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);

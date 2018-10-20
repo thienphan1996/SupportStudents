@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity
     //Button btnCustom;
     TextView txtListEmpty,txtNotificationTotal;
     int backClick = 0;
+    ArrayList<String> lstSubjectCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,6 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,NotifictionActivity.class);
                 startActivity(intent);
-                //SendNotification();
             }
         });
 
@@ -100,13 +100,6 @@ public class HomeActivity extends AppCompatActivity
         addEvents();
     }
 
-    private void SendNotification() {
-        String subject = "CT126";
-        String title = "Thông báo thời gian chấm điểm thi giữa kỳ";
-        String message = "Chào các bạn, sau khi kiểm tra giữa kỳ thầy sẽ chấm điểm và đến đầu tuần sau sẽ có kết quả.";
-        String topic = "student";
-        PushNotificationService.Send(subject,title,message,topic,this);
-    }
 
     private void GenerateNotification() {
         String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
@@ -147,7 +140,6 @@ public class HomeActivity extends AppCompatActivity
         txtNotificationTotal = findViewById(R.id.tv_notification_total);
         rcvTimesheet = findViewById(R.id.rcv_timesheet);
         SetupButton();
-        RegisterNotification(getString(R.string.student));
         timesheetList = new ArrayList<>();
         homeAdapter = new HomeAdapter(timesheetList, new AdapterView.OnItemClickListener() {
             @Override
@@ -320,6 +312,11 @@ public class HomeActivity extends AppCompatActivity
                 if (mytimesheet.isEmpty() && timesheetList != null){
                     String data = gson.toJson(timesheetList);
                     timesheetPreferences.put(getString(R.string.MY_TIMESHEET),data);
+                    //subscribe TOPIC
+                    for (TimesheetItem item: timesheetList){
+                        RegisterNotification(item.getSubjectCode().toUpperCase());
+                        lstSubjectCode.add(item.getSubjectCode().toUpperCase());
+                    }
                 }
                 ArrayList<TimesheetItem> temp = TimesheetItem.getTimesheetByDayofWeek(timesheetList,dayofweek);
                 timesheetList.clear();
@@ -418,6 +415,12 @@ public class HomeActivity extends AppCompatActivity
                 .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         if (type == 1){
+                            try {
+                                for (String code : lstSubjectCode){
+                                    DeleteNotification(code);
+                                }
+                            }catch (Exception e){
+                            }
                             SharedPreferences preferences = getSharedPreferences(getString(R.string.TIMESHEET_PREFS), 0);
                             preferences.edit().clear().commit();
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
@@ -439,5 +442,19 @@ public class HomeActivity extends AppCompatActivity
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+    private void DeleteNotification(String topic) {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "subscribed";
+                        if (!task.isSuccessful()) {
+                            msg = "subscribe failed";
+                        }
+                        Log.d("msg Status: ", msg);
+                        //Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

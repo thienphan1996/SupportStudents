@@ -27,6 +27,7 @@
     <string name="SAVE_PASSWORD">SAVE_PASSWORD</string>
     <string name="TIMESHEET_PREFS">TIMESHEET_PREFS</string>
     <string name="NOTIFICATION_STUDENT">NOTIFICATION_STUDENT</string>
+    <string name="NOTIFICATION_TEACHER">NOTIFICATION_TEACHER</string>
     <string name="NOTIFICATION_TOTAL">NOTIFICATION_TOTAL</string>
 
     <!--Intent Key-->
@@ -37,6 +38,9 @@
     <string name="TS_DETAILS_FROM_NEWS">TS_DETAILS_FROM_NEWS</string>
     <string name="LIST_STUDENT">LIST_STUDENT</string>
     <string name="SUBJECT_CODE">SUBJECT_CODE</string>
+    <string name="SUBJECT_NAME">SUBJECT_NAME</string>
+    <string name="FROM_ADD_NOTIFICATION">FROM_ADD_NOTIFICATION</string>
+    <string name="FROM_NOTIFICATION">FROM_NOTIFICATION</string>
 
     <!--Child database value-->
     <string name="CHILD_SUBJECTS">Subjects</string>

@@ -1,5 +1,6 @@
 package com.project.thienphan.teacher.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -30,6 +31,11 @@ public class TeacherActivity extends AppCompatActivity implements IBottomClickLi
     }
 
     private void addControls() {
+        Boolean fromAddNotification = false;
+        Intent intent = getIntent();
+        if (intent != null){
+            fromAddNotification = intent.getBooleanExtra(getString(R.string.FROM_ADD_NOTIFICATION),false);
+        }
         menu = new ArrayList<>();
         menu.add(new BottomMenu(0L, new HomeFragment(), getString(R.string.teacher_home), R.drawable.ic_home_black_24dp, null));
         menu.add(new BottomMenu(1L, new ClassFragment(), getString(R.string.teacher_class), R.drawable.ic_class_black_24dp, null));
@@ -38,7 +44,12 @@ public class TeacherActivity extends AppCompatActivity implements IBottomClickLi
         bottom_navbar = findViewById(R.id.bottom_navbar);
         bottom_navbar.setFragmentManager(getSupportFragmentManager());
         bottom_navbar.setMenu(menu);
-        bottom_navbar.setSelected(0);
+        if (!fromAddNotification){
+            bottom_navbar.setSelected(0);
+        }
+        else {
+            bottom_navbar.setSelected(2);
+        }
         bottom_navbar.setMenuClickListener(this);
     }
 

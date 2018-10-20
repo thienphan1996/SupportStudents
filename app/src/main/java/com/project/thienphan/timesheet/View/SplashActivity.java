@@ -17,6 +17,7 @@ public class SplashActivity extends Activity {
 
     LinearLayout lnSplashActivity;
     TimesheetPreferences timesheetPreferences;
+    Boolean fromNotification = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,10 @@ public class SplashActivity extends Activity {
         timesheetPreferences = new TimesheetPreferences(this);
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.in);
         lnSplashActivity.setAnimation(animation);
+        Intent i = getIntent();
+        if (i != null){
+            fromNotification = i.getBooleanExtra(getString(R.string.FROM_NOTIFICATION),false);
+        }
 
         CountDownTimer timer = new CountDownTimer(1500,1000) {
             @Override
@@ -37,7 +42,10 @@ public class SplashActivity extends Activity {
             public void onFinish() {
                 Intent intent = null;
                 String savePassword = timesheetPreferences.get(getString(R.string.SAVE_PASSWORD),String.class);
-                if (savePassword == null || savePassword.isEmpty()){
+                if (fromNotification){
+                    intent = new Intent(getApplicationContext(),NotifictionActivity.class);
+                }
+                else if (savePassword == null || savePassword.isEmpty()){
                     intent = new Intent(getApplicationContext(), LoginActivity.class);
                 }
                 else if (savePassword != null && savePassword.length() > 2 && savePassword.toLowerCase().substring(0,2).equals("tc")){

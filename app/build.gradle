@@ -35,7 +35,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:17.3.2'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.wrapp.floatlabelededittext:library:0.0.6'
-    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'org.jsoup:jsoup:1.10.1'
     implementation 'com.subkhansarif.libs:bottomnavbarlib:1.1.4'
 }

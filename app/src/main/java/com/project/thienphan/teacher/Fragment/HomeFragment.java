@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.Adapter.TeacherAdapter;
 import com.project.thienphan.teacher.View.CheckStudentActivity;
+import com.project.thienphan.teacher.View.SendNofication;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.ClassItem;
 import com.project.thienphan.timesheet.Model.Subject;
@@ -37,12 +38,14 @@ public class HomeFragment extends Fragment {
     String teacherID = "TC123";
 
     TimesheetProgressDialog dialog;
+    Boolean fromAddNotificationActivity;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,container,false);
         rcvTeacher = view.findViewById(R.id.rcv_teacher);
+        fromAddNotificationActivity = getArguments() != null ? getArguments().getBoolean(getString(R.string.FROM_ADD_NOTIFICATION)) : false;
         addControls();
         dialog.show(getFragmentManager(),"");
         return view;
@@ -58,10 +61,18 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String students = lstClass.get(i).getStudents();
                 if (students != null){
-                    Intent intent = new Intent(getActivity(), CheckStudentActivity.class);
-                    intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
-                    intent.putExtra(getString(R.string.LIST_STUDENT),students);
-                    startActivity(intent);
+                    if (fromAddNotificationActivity){
+                        Intent intent = new Intent(getActivity(), SendNofication.class);
+                        intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
+                        intent.putExtra(getString(R.string.SUBJECT_NAME),lstClass.get(i).getSubjectName());
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(getActivity(), CheckStudentActivity.class);
+                        intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
+                        intent.putExtra(getString(R.string.LIST_STUDENT),students);
+                        startActivity(intent);
+                    }
                 }
             }
         });
