@@ -25,13 +25,6 @@ public class AddNotification extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(this,TeacherActivity.class);
-        intent.putExtra(getString(R.string.FROM_ADD_NOTIFICATION),true);
-        startActivity(intent);
-        finish();
-    }
-    @Override
     public boolean onSupportNavigateUp(){
         finish();
         return true;

@@ -85,7 +85,11 @@
         <activity
             android:name="com.project.thienphan.teacher.View.SendNofication"
             android:label="Gửi thông báo"
-            android:parentActivityName="com.project.thienphan.teacher.View.AddNotification"></activity>
+            android:parentActivityName="com.project.thienphan.teacher.View.AddNotification" />
+        <activity
+            android:name="com.project.thienphan.teacher.View.ChairmanClassAcitivity"
+            android:label="Cố vấn"
+            android:parentActivityName="com.project.thienphan.teacher.View.TeacherActivity"></activity>
     </application>
 
 </manifest>

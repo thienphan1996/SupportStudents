@@ -9,17 +9,27 @@ public class TeacherInfo {
     private String birthDay;
     private String phoneNumber;
     private ArrayList<Subject> subject;
+    private String classCode;
 
     public TeacherInfo() {
     }
 
-    public TeacherInfo(String teacherCode, String teacherName, String sex, String birthDay, String phoneNumber, ArrayList<Subject> subject) {
+    public TeacherInfo(String teacherCode, String teacherName, String sex, String birthDay, String phoneNumber, ArrayList<Subject> subject,String classCode) {
         this.teacherCode = teacherCode;
         this.teacherName = teacherName;
         this.sex = sex;
         this.birthDay = birthDay;
         this.phoneNumber = phoneNumber;
         this.subject = subject;
+        this.classCode = classCode;
+    }
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
     }
 
     public String getTeacherCode() {

@@ -4,8 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Custom activity"/>
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/action_avatar">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_avatar"
+            android:foreground="@drawable/bg_avatar"
+            android:layout_margin="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_customize_teacher_name"
+            android:textStyle="bold"
+            android:text="Phan Hữu Thiện"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rcv_customize_teacher_activity"
+        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

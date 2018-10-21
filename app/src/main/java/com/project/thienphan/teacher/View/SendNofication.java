@@ -56,4 +56,10 @@ public class SendNofication extends AppCompatActivity {
         PushNotificationService service = new PushNotificationService(getSupportFragmentManager(),this);
         service.Send(subjectName,subject,title,message,topic);
     }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 }

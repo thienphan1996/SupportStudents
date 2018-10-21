@@ -1,8 +1,14 @@
 package com.project.thienphan.timesheet.View;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +28,8 @@ import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.UserAccount;
 import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 import com.rilixtech.materialfancybutton.MaterialFancyButton;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 

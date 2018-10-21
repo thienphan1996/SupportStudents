@@ -1,5 +1,6 @@
 package com.project.thienphan.timesheet.View;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -7,10 +8,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,12 +51,15 @@ import com.project.thienphan.timesheet.Adapter.HomeAdapter;
 import com.project.thienphan.timesheet.Adapter.TimesheetAdapter;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
+import com.project.thienphan.timesheet.Model.StudentInfomation;
 import com.project.thienphan.timesheet.Model.TimesheetItem;
 import com.project.thienphan.timesheet.Notification.TimesheetReceiver;
 import com.project.thienphan.timesheet.Support.InfoDialog;
+import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity
@@ -68,9 +77,12 @@ public class HomeActivity extends AppCompatActivity
     Button btnActive = null;
     //Button btnCreate;
     //Button btnCustom;
-    TextView txtListEmpty,txtNotificationTotal;
+    TextView txtListEmpty,txtNotificationTotal,txtName;
     int backClick = 0;
     ArrayList<String> lstSubjectCode;
+    String userCode = "";
+    String classCode = "";
+    TimesheetProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +107,8 @@ public class HomeActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
+        txtName = header.findViewById(R.id.tv_header_name);
         navigationView.setNavigationItemSelectedListener(this);
         addControls();
         addEvents();
@@ -139,8 +153,12 @@ public class HomeActivity extends AppCompatActivity
         txtListEmpty = findViewById(R.id.tv_ts_empty_list);
         txtNotificationTotal = findViewById(R.id.tv_notification_total);
         rcvTimesheet = findViewById(R.id.rcv_timesheet);
+        timesheetPreferences = new TimesheetPreferences(getApplicationContext());
+        dialog = new TimesheetProgressDialog();
+        GetUserCode();
         SetupButton();
         timesheetList = new ArrayList<>();
+        lstSubjectCode = new ArrayList<>();
         homeAdapter = new HomeAdapter(timesheetList, new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -155,8 +173,41 @@ public class HomeActivity extends AppCompatActivity
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvTimesheet.setLayoutManager(layoutManager);
         rcvTimesheet.setAdapter(homeAdapter);
-        timesheetPreferences = new TimesheetPreferences(getApplicationContext());
         gson = new Gson();
+        if (Build.VERSION.SDK_INT >= 25) {
+            createShorcut();
+        }
+    }
+
+    private void GetUserCode() {
+        userCode = timesheetPreferences.get(getString(R.string.USER),String.class);
+        if (!userCode.isEmpty()){
+            GetStudentInfo();
+        }
+    }
+
+    private void GetStudentInfo() {
+        mydb.child(getString(R.string.CHILD_STUDENTINFO)).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot item: dataSnapshot.getChildren()){
+                    StudentInfomation student = item.getValue(StudentInfomation.class);
+                    if (student != null){
+                        if (student.getMaSV().toUpperCase().equals(userCode.toUpperCase())){
+                            txtName.setText(student.getHoTen());
+                            classCode = student.getLopHoc().toUpperCase();
+                            RegisterNotification(classCode);
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -300,39 +351,44 @@ public class HomeActivity extends AppCompatActivity
 
     private void GetData(final int dayofweek) {
         txtListEmpty.setVisibility(View.GONE);
-        this.mydb.child(getString(R.string.CHILD_TIMESHEET)).child("thienphan").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                timesheetList.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren()){
-                    TimesheetItem item = child.getValue(TimesheetItem.class);
-                    timesheetList.add(item);
-                }
-                String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
-                if (mytimesheet.isEmpty() && timesheetList != null){
-                    String data = gson.toJson(timesheetList);
-                    timesheetPreferences.put(getString(R.string.MY_TIMESHEET),data);
-                    //subscribe TOPIC
-                    for (TimesheetItem item: timesheetList){
-                        RegisterNotification(item.getSubjectCode().toUpperCase());
-                        lstSubjectCode.add(item.getSubjectCode().toUpperCase());
+        dialog.show(getSupportFragmentManager(),"dialog");
+        if (!userCode.isEmpty()){
+            this.mydb.child(getString(R.string.CHILD_TIMESHEET)).child(userCode.toUpperCase()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    timesheetList.clear();
+                    for (DataSnapshot child : dataSnapshot.getChildren()){
+                        TimesheetItem item = child.getValue(TimesheetItem.class);
+                        timesheetList.add(item);
                     }
+                    String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
+                    if (mytimesheet.isEmpty() && timesheetList != null){
+                        String data = gson.toJson(timesheetList);
+                        timesheetPreferences.put(getString(R.string.MY_TIMESHEET),data);
+                        //subscribe TOPIC
+                        for (TimesheetItem item: timesheetList){
+                            RegisterNotification(item.getSubjectCode().toUpperCase());
+                            lstSubjectCode.add(item.getSubjectCode().toUpperCase());
+                        }
+                    }
+                    ArrayList<TimesheetItem> temp = TimesheetItem.getTimesheetByDayofWeek(timesheetList,dayofweek);
+                    timesheetList.clear();
+                    timesheetList.addAll(temp);
+                    homeAdapter.notifyDataSetChanged();
+                    if (timesheetList.size()==0){
+                        txtListEmpty.setVisibility(View.VISIBLE);
+                    }
+                    dialog.dismiss();
+                    //GenerateNotification();
                 }
-                ArrayList<TimesheetItem> temp = TimesheetItem.getTimesheetByDayofWeek(timesheetList,dayofweek);
-                timesheetList.clear();
-                timesheetList.addAll(temp);
-                homeAdapter.notifyDataSetChanged();
-                if (timesheetList.size()==0){
-                    txtListEmpty.setVisibility(View.VISIBLE);
-                }
-                //GenerateNotification();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                InfoDialog.ShowInfoDiaLog(HomeActivity.this,"Lỗi",databaseError.toString());
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    InfoDialog.ShowInfoDiaLog(HomeActivity.this,"Lỗi",databaseError.toString());
+                    dialog.dismiss();
+                }
+            });
+        }
     }
 
     private void setActionButton(Button button,int dayofweek) {
@@ -342,6 +398,40 @@ public class HomeActivity extends AppCompatActivity
         btnActive = button;
         button.setEnabled(false);
         button.setTextColor(getResources().getColor(R.color.colorPrimary));
+    }
+
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void createShorcut() {
+        ShortcutManager sM = getSystemService(ShortcutManager.class);
+
+        Intent intent1 = new Intent(getApplicationContext(), SplashActivity.class);
+        intent1.putExtra(getString(R.string.FROM_NOTIFICATION),true);
+        intent1.setAction(Intent.ACTION_VIEW);
+
+        ShortcutInfo shortcut1 = new ShortcutInfo.Builder(this, "shortcut1")
+                .setIntent(intent1)
+                .setShortLabel("Thông báo")
+                .setLongLabel("Thông báo")
+                .setDisabledMessage("Đăng nhập để mở shortcut")
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_notifications_black_24dp))
+                .build();
+
+        Intent intent2 = new Intent(getApplicationContext(),SplashActivity.class);
+        intent2.putExtra(getString(R.string.FROM_SHORTCUT_NEWS),true);
+        intent2.setAction(Intent.ACTION_VIEW);
+        ShortcutInfo shortcut2 = new ShortcutInfo.Builder(this, "shortcut2")
+                .setIntent(intent2)
+                .setShortLabel("Tin tức")
+                .setLongLabel("Tin tức")
+                .setDisabledMessage("Đăng nhập để mở shortcut")
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_fiber_new_black_24dp))
+                .build();
+        ArrayList<ShortcutInfo> lstShortcut = new ArrayList<>();
+        lstShortcut.add(shortcut1);
+        lstShortcut.add(shortcut2);
+
+        sM.setDynamicShortcuts(lstShortcut);
     }
 
     @Override
@@ -419,6 +509,7 @@ public class HomeActivity extends AppCompatActivity
                                 for (String code : lstSubjectCode){
                                     DeleteNotification(code);
                                 }
+                                removeShorcuts();
                             }catch (Exception e){
                             }
                             SharedPreferences preferences = getSharedPreferences(getString(R.string.TIMESHEET_PREFS), 0);
@@ -456,5 +547,14 @@ public class HomeActivity extends AppCompatActivity
                         //Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    @TargetApi(25)
+    private void removeShorcuts() {
+        ArrayList<String> lstShortcut = new ArrayList<>();
+        lstShortcut.add("shortcut1");
+        lstShortcut.add("shortcut2");
+        ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+        shortcutManager.disableShortcuts(lstShortcut);
+        shortcutManager.removeAllDynamicShortcuts();
     }
 }

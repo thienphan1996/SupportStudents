@@ -33,7 +33,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final HomeViewHolder homeViewHolder, int i) {
-        homeViewHolder.tvSubjectCode.setText(this.Data.get(i).getSubjectCode());
         homeViewHolder.tvSubjectName.setText(this.Data.get(i).getSubjectName());
         homeViewHolder.tvSubjectGroup.setText(this.Data.get(i).getSubjectGroup() + "");
         homeViewHolder.tvSubjectTeacher.setText(this.Data.get(i).getSubjectTeacher());
@@ -53,12 +52,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     }
 
     public class HomeViewHolder extends RecyclerView.ViewHolder {
-        TextView tvSubjectCode, tvSubjectName, tvSubjectGroup, tvSubjectTeacher, tvSubjectTime, tvSubjectLocation;
+        TextView tvSubjectName, tvSubjectGroup, tvSubjectTeacher, tvSubjectTime, tvSubjectLocation;
         View container;
         public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView;
-            tvSubjectCode = itemView.findViewById(R.id.tv_item_ts_subject_code);
             tvSubjectName = itemView.findViewById(R.id.tv_item_ts_subject_name);
             tvSubjectGroup = itemView.findViewById(R.id.tv_item_ts_group);
             tvSubjectTeacher = itemView.findViewById(R.id.tv_item_ts_teacher_name);

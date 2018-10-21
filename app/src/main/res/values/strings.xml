@@ -29,6 +29,8 @@
     <string name="NOTIFICATION_STUDENT">NOTIFICATION_STUDENT</string>
     <string name="NOTIFICATION_TEACHER">NOTIFICATION_TEACHER</string>
     <string name="NOTIFICATION_TOTAL">NOTIFICATION_TOTAL</string>
+    <string name="TEACHER_INFO">TEACHER_INFO</string>
+    <string name="STUDENT_INFO">STUDENT_INFO</string>
 
     <!--Intent Key-->
     <string name="NOTICATION_TITLE">NOTICATION_TITLE</string>
@@ -41,6 +43,8 @@
     <string name="SUBJECT_NAME">SUBJECT_NAME</string>
     <string name="FROM_ADD_NOTIFICATION">FROM_ADD_NOTIFICATION</string>
     <string name="FROM_NOTIFICATION">FROM_NOTIFICATION</string>
+    <string name="FROM_SHORTCUT_NEWS">FROM_SHORTCUT_NEWS</string>
+    <string name="FROM_SHORTCUT_ADD_NOTIFY">FROM_SHORTCUT_ADD_NOTIFY</string>
 
     <!--Child database value-->
     <string name="CHILD_SUBJECTS">Subjects</string>
@@ -68,4 +72,5 @@
     <string name="teacher_custom">Tuỳ chọn</string>
     <string name="action_settings">Settings</string>
     <string name="report_sheet">Thống kê</string>
+    <string name="send_notification">Gửi thông báo</string>
 </resources>

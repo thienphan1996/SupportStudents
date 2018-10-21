@@ -37,7 +37,6 @@ public class TimesheetAdapter extends RecyclerView.Adapter<TimesheetAdapter.Time
 
     @Override
     public void onBindViewHolder(@NonNull final TimesheetHolder timesheetHolder, int i) {
-        timesheetHolder.tvSubjectCode.setText(this.Data.get(i).getSubjectCode());
         timesheetHolder.tvSubjectName.setText(this.Data.get(i).getSubjectName());
         timesheetHolder.tvSubjectGroup.setText(this.Data.get(i).getSubjectGroup() + "");
         timesheetHolder.tvSubjectTeacher.setText(this.Data.get(i).getSubjectTeacher());
@@ -65,13 +64,12 @@ public class TimesheetAdapter extends RecyclerView.Adapter<TimesheetAdapter.Time
 
     public class TimesheetHolder extends RecyclerView.ViewHolder {
 
-        TextView tvSubjectCode, tvSubjectName, tvSubjectGroup, tvSubjectTeacher, tvSubjectTime, tvSubjectLocation;
+        TextView tvSubjectName, tvSubjectGroup, tvSubjectTeacher, tvSubjectTime, tvSubjectLocation;
         View container;
         ImageView imgChecked;
         public TimesheetHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView;
-            tvSubjectCode = itemView.findViewById(R.id.tv_item_ts_subject_code);
             tvSubjectName = itemView.findViewById(R.id.tv_item_ts_subject_name);
             tvSubjectGroup = itemView.findViewById(R.id.tv_item_ts_group);
             tvSubjectTeacher = itemView.findViewById(R.id.tv_item_ts_teacher_name);

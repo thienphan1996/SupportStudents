@@ -17,13 +17,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.Adapter.TeacherAdapter;
 import com.project.thienphan.teacher.View.CheckStudentActivity;
 import com.project.thienphan.teacher.View.SendNofication;
+import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.ClassItem;
 import com.project.thienphan.timesheet.Model.Subject;
+import com.project.thienphan.timesheet.Model.TeacherInfo;
 import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 
 import java.util.ArrayList;
@@ -35,10 +38,12 @@ public class HomeFragment extends Fragment {
     ArrayList<Subject> lstSubject;
     TeacherAdapter teacherAdapter;
     DatabaseReference mydb;
-    String teacherID = "TC123";
+    String teacherID = "";
 
     TimesheetProgressDialog dialog;
     Boolean fromAddNotificationActivity;
+    TimesheetPreferences timesheetPreferences;
+    Gson gson;
 
     @Nullable
     @Override
@@ -53,6 +58,12 @@ public class HomeFragment extends Fragment {
 
     private void addControls() {
         mydb = TimesheetDatabase.getTimesheetDatabase();
+        timesheetPreferences = new TimesheetPreferences(getContext());
+        teacherID = timesheetPreferences.get(getString(R.string.USER),String.class);
+        if (teacherID != null && !teacherID.isEmpty()){
+            teacherID = teacherID.toUpperCase();
+        }
+        gson = new Gson();
         dialog = new TimesheetProgressDialog();
         lstClass = new ArrayList<>();
         lstSubject = new ArrayList<>();
@@ -81,7 +92,30 @@ public class HomeFragment extends Fragment {
         rcvTeacher.setLayoutManager(layoutManager);
         rcvTeacher.setAdapter(teacherAdapter);
         getTeacherClass();
+        getTeacherInfo();
     }
+
+    private void getTeacherInfo() {
+        if (teacherID != null){
+            mydb.child(getString(R.string.CHILD_TEACHER)).child(teacherID).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    TeacherInfo teacherInfo = dataSnapshot.getValue(TeacherInfo.class);
+                    String info = gson.toJson(teacherInfo);
+                    if (teacherInfo != null){
+                        timesheetPreferences.put(getString(R.string.TEACHER_INFO),info);
+                    }
+                    Log.d("TEACHER",teacherInfo.toString());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
     private void getTeacherClass() {
         if (teacherID != null){
             mydb.child(getString(R.string.CHILD_TEACHER)).child(teacherID).child("subjects").addValueEventListener(new ValueEventListener() {
