@@ -41,6 +41,79 @@ public class ClassItem {
         this.subjectCode = subjectCode;
     }
 
+    public static ArrayList<ClassItem> SortTeacherClass(ArrayList<ClassItem> list){
+        ArrayList<ClassItem> temp = new ArrayList<>(12);
+        for (ClassItem item : list){
+            if (item.getDayofWeek() == 2){
+                if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
+                    int time = Integer.parseInt(item.getSubjectTime().substring(0,1));
+                    if (time < 6){
+                        temp.set(0,item);
+                    }
+                    else {
+                        temp.set(6,item);
+                    }
+                }
+            }
+            else if (item.getDayofWeek() == 3){
+                if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
+                    int time = Integer.parseInt(item.getSubjectTime().substring(0,1));
+                    if (time < 6){
+                        temp.set(1,item);
+                    }
+                    else {
+                        temp.set(7,item);
+                    }
+                }
+            }
+            else if (item.getDayofWeek() == 4){
+                if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
+                    int time = Integer.parseInt(item.getSubjectTime().substring(0,1));
+                    if (time < 6){
+                        temp.set(2,item);
+                    }
+                    else {
+                        temp.set(8,item);
+                    }
+                }
+            }
+            else if (item.getDayofWeek() == 5){
+                if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
+                    int time = Integer.parseInt(item.getSubjectTime().substring(0,1));
+                    if (time < 6){
+                        temp.set(3,item);
+                    }
+                    else {
+                        temp.set(9,item);
+                    }
+                }
+            }
+            else if (item.getDayofWeek() == 6){
+                if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
+                    int time = Integer.parseInt(item.getSubjectTime().substring(0,1));
+                    if (time < 6){
+                        temp.set(4,item);
+                    }
+                    else {
+                        temp.set(10,item);
+                    }
+                }
+            }
+            else {
+                if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
+                    int time = Integer.parseInt(item.getSubjectTime().substring(0,1));
+                    if (time < 6){
+                        temp.set(5,item);
+                    }
+                    else {
+                        temp.set(11,item);
+                    }
+                }
+            }
+        }
+        return temp;
+    }
+
     public Long getDayofWeek() {
         return DayofWeek;
     }

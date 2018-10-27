@@ -9,4 +9,10 @@
     <color name="dayofweek">#0091EA</color>
     <color name="bg_gray">#E3F2FD</color>
     <color name="bg_gray_light">#EEEEEE</color>
+    <color name="bg_monday">#EF5350</color>
+    <color name="bg_tuesday">#EC407A</color>
+    <color name="bg_webnesday">#AB47BC</color>
+    <color name="bg_thursday">#1E88E5</color>
+    <color name="bg_friday">#43A047</color>
+    <color name="bg_satuday">#8D6E63</color>
 </resources>

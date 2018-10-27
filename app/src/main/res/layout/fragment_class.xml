@@ -4,8 +4,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Class Activity"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/bg_gray_light"
+            android:padding="10dp"
+            android:text="Thứ 2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/bg_gray_light"
+            android:text="Thứ 3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/bg_gray_light"
+            android:text="Thứ 4"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/bg_gray_light"
+            android:text="Thứ 5"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/bg_gray_light"
+            android:text="Thứ 6"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="12dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/bg_gray_light"
+            android:text="Thứ 7"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rcv_teacher_class">
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>
