@@ -1,5 +1,6 @@
 package com.project.thienphan.teacher.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.Adapter.TeacherClassAdapter;
+import com.project.thienphan.teacher.View.CheckStudentActivity;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.ClassItem;
@@ -49,7 +52,18 @@ public class ClassFragment extends Fragment {
         teacherCode = timesheetPreferences.get(getString(R.string.USER), String.class);
         rcvTeacherClass = view.findViewById(R.id.rcv_teacher_class);
         lstTeacherClass = new ArrayList<>();
-        teacherClassAdapter = new TeacherClassAdapter(lstTeacherClass,getResources());
+        teacherClassAdapter = new TeacherClassAdapter(lstTeacherClass, getResources(), new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String students = lstTeacherClass.get(i).getStudents();
+                if (students != null && !students.isEmpty()){
+                    Intent intent = new Intent(getActivity(), CheckStudentActivity.class);
+                    intent.putExtra(getString(R.string.SUBJECT_CODE),lstTeacherClass.get(i).getSubjectCode());
+                    intent.putExtra(getString(R.string.LIST_STUDENT),students);
+                    startActivity(intent);
+                }
+            }
+        });
         rcvTeacherClass.setLayoutManager(new GridLayoutManager(getContext(), 6));
         rcvTeacherClass.setAdapter(teacherClassAdapter);
         getData();
@@ -94,7 +108,7 @@ public class ClassFragment extends Fragment {
                         ArrayList<ClassItem> list = new ArrayList<>();
                         list.addAll(lstTeacherClass);
                         lstTeacherClass.clear();
-                        lstTeacherClass = ClassItem.SortTeacherClass(list);
+                        lstTeacherClass.addAll(ClassItem.SortTeacherClass(list));
                         teacherClassAdapter.notifyDataSetChanged();
                     }
                 }

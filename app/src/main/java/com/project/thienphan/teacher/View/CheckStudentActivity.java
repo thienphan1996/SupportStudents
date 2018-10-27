@@ -172,4 +172,10 @@ public class CheckStudentActivity extends AppCompatActivity {
         }
         checkStudentAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 }

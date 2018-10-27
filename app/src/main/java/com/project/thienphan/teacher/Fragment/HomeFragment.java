@@ -71,17 +71,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String students = lstClass.get(i).getStudents();
-                if (students != null){
+                if (students != null && !students.isEmpty()){
                     if (fromAddNotificationActivity){
                         Intent intent = new Intent(getActivity(), SendNofication.class);
                         intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
                         intent.putExtra(getString(R.string.SUBJECT_NAME),lstClass.get(i).getSubjectName());
-                        startActivity(intent);
-                    }
-                    else {
-                        Intent intent = new Intent(getActivity(), CheckStudentActivity.class);
-                        intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
-                        intent.putExtra(getString(R.string.LIST_STUDENT),students);
                         startActivity(intent);
                     }
                 }

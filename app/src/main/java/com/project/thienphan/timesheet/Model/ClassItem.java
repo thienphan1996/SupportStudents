@@ -42,7 +42,10 @@ public class ClassItem {
     }
 
     public static ArrayList<ClassItem> SortTeacherClass(ArrayList<ClassItem> list){
-        ArrayList<ClassItem> temp = new ArrayList<>(12);
+        ArrayList<ClassItem> temp = new ArrayList<>();
+        for (int i = 0 ; i < list.size()*2; i++){
+            temp.add(new ClassItem("", (long)0, null, (long) 0, (long) 0, "", "", "", "", "", ""));
+        }
         for (ClassItem item : list){
             if (item.getDayofWeek() == 2){
                 if (item.getSubjectTime() != null && item.getSubjectTime().length() > 1){
