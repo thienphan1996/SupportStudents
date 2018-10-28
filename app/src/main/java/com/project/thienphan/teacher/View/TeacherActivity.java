@@ -41,8 +41,8 @@ public class TeacherActivity extends AppCompatActivity implements IBottomClickLi
     private void addControls() {
         Boolean fromAddNotification = false;
         menu = new ArrayList<>();
-        menu.add(new BottomMenu(0L, new HomeFragment(), getString(R.string.teacher_home), R.drawable.ic_home_black_24dp, null));
-        menu.add(new BottomMenu(1L, new ClassFragment(), getString(R.string.teacher_class), R.drawable.ic_class_black_24dp, null));
+        menu.add(new BottomMenu(0L, new ClassFragment(), getString(R.string.teacher_home), R.drawable.ic_home_black_24dp, null));
+        menu.add(new BottomMenu(1L, new HomeFragment(), getString(R.string.teacher_class), R.drawable.ic_class_black_24dp, null));
         menu.add(new BottomMenu(2L, new NotifyFragment(), getString(R.string.teacher_notify), R.drawable.ic_chat_bubble_black_24dp, null));
         menu.add(new BottomMenu(3L, new CustomFragment(), getString(R.string.teacher_custom), R.drawable.ic_more_horiz_black_24dp, null));
         bottom_navbar = findViewById(R.id.bottom_navbar);

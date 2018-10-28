@@ -506,6 +506,7 @@ public class HomeActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int id) {
                         if (type == 1){
                             try {
+                                DeleteNotification(classCode);
                                 for (String code : lstSubjectCode){
                                     DeleteNotification(code);
                                 }

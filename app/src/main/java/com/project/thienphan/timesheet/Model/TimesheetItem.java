@@ -34,6 +34,22 @@ public class TimesheetItem implements Serializable {
                 listItem.add(item);
             }
         }
+        if (listItem.size() > 0){
+            for (int i = 0; i < listItem.size(); i++)
+                for (int j = i + 1; j < listItem.size(); j++){
+                    if (listItem.get(i).getSubjectTime() != null && listItem.get(j).getSubjectTime() != null
+                            && listItem.get(i).getSubjectTime().length() > 1
+                            && listItem.get(j).getSubjectTime().length() > 1){
+                        int iItem = Integer.parseInt(listItem.get(i).getSubjectTime().substring(0,1));
+                        int jItem = Integer.parseInt(listItem.get(j).getSubjectTime().substring(0,1));
+                        if (iItem > jItem){
+                            TimesheetItem temp = listItem.get(j);
+                            listItem.set(j,listItem.get(i));
+                            listItem.set(i,temp);
+                        }
+                    }
+                }
+        }
         return listItem;
     }
 

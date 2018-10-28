@@ -1,6 +1,7 @@
 package com.project.thienphan.timesheet.Model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ClassItem {
 
@@ -198,12 +199,17 @@ public class ClassItem {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ClassItem)) return false;
+        ClassItem classItem = (ClassItem) o;
+        return Objects.equals(getSubjectName(), classItem.getSubjectName()) ||
+                Objects.equals(getSubjectTeacher(), classItem.getSubjectTeacher());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+
+        return Objects.hash(getSubjectCode(), getDayofWeek(), getListStudent(), getStudentNumber(), getSubjectGroup(), getSubjectLocation(), getSubjectName(), getSubjectTeacher(), getSubjectTime(), getTeacherCode(), getStudents());
     }
 }

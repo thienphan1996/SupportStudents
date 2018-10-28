@@ -26,136 +26,146 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="15dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/view_item_timesheet"
+                    android:background="@color/colorPrimary"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1"
-                    android:orientation="horizontal">
+                    android:background="?android:attr/selectableItemBackground"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="16dp"
-                            android:textColor="@color/colorPrimary"
-                            android:id="@+id/tv_item_ts_subject_name"
-                            android:text="Lập trình Java "/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:weightSum="1"
+                        android:orientation="horizontal">
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Nhóm: "/>
+                            android:orientation="vertical">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
-                                android:text="3"
-                                android:id="@+id/tv_item_ts_group"/>
+                                android:textSize="16dp"
+                                android:textColor="@color/colorPrimary"
+                                android:id="@+id/tv_item_ts_subject_name"
+                                android:text="Lập trình Java "/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/ic_person_black_18dp"/>
-                            <TextView
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
-                                android:text="Nguyễn Văn A"
-                                android:id="@+id/tv_item_ts_teacher_name"/>
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nhóm: "/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:text="3"
+                                    android:id="@+id/tv_item_ts_group"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/ic_person_black_18dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:text="Nguyễn Văn A"
+                                    android:id="@+id/tv_item_ts_teacher_name"/>
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/ic_timer_black_18dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_item_ts_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:text="678"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/ic_room_black_18dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_item_ts_location"
+                                    android:layout_marginLeft="3dp"
+                                    android:textStyle="bold"
+                                    android:text="110/C1"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/ic_timer_black_18dp" />
-
-                            <TextView
-                                android:id="@+id/tv_item_ts_time"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
-                                android:text="678"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/ic_room_black_18dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tv_item_ts_location"
-                                android:layout_marginLeft="3dp"
-                                android:textStyle="bold"
-                                android:text="110/C1"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
             </LinearLayout>
             <ImageView
                 android:layout_width="18dp"

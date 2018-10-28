@@ -1,5 +1,6 @@
 package com.project.thienphan.teacher.Adapter;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -44,6 +45,19 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherH
                 onClick.onItemClick(null,view,teacherHolder.getAdapterPosition(),0);
             }
         });
+        SetColorForClass(teacherHolder.bgClass, this.Data.get(i).getSubjectTime());
+    }
+
+    private void SetColorForClass(View bgClass, String subjectTime) {
+        if (subjectTime != null && subjectTime.length() > 1){
+            int time = Integer.parseInt(subjectTime.substring(0,1));
+            if (time < 6){
+                bgClass.setBackgroundColor(Color.parseColor("#0091EA"));
+            }
+            else {
+                bgClass.setBackgroundColor(Color.parseColor("#43A047"));
+            }
+        }
     }
 
     @Override
@@ -53,7 +67,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherH
 
     public class TeacherHolder extends RecyclerView.ViewHolder {
         TextView tvSubName,tvStuNumber,tvRoom,tvDayOfWeek,tvTime;
-        View container;
+        View container,bgClass;
         public TeacherHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView;
@@ -62,6 +76,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherH
             tvRoom = itemView.findViewById(R.id.tv_item_teacher_room);
             tvDayOfWeek = itemView.findViewById(R.id.tv_item_teacher_dayofweek);
             tvTime = itemView.findViewById(R.id.tv_item_teacher_time);
+            bgClass = itemView.findViewById(R.id.view_item_class);
         }
     }
 }

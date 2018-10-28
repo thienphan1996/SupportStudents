@@ -20,14 +20,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.Adapter.TeacherAdapter;
-import com.project.thienphan.teacher.View.CheckStudentActivity;
 import com.project.thienphan.teacher.View.SendNofication;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.ClassItem;
 import com.project.thienphan.timesheet.Model.Subject;
 import com.project.thienphan.timesheet.Model.TeacherInfo;
-import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
+import com.project.thienphan.timesheet.View.TimesheetDetails;
 
 import java.util.ArrayList;
 
@@ -40,7 +39,6 @@ public class HomeFragment extends Fragment {
     DatabaseReference mydb;
     String teacherID = "";
 
-    TimesheetProgressDialog dialog;
     Boolean fromAddNotificationActivity;
     TimesheetPreferences timesheetPreferences;
     Gson gson;
@@ -52,7 +50,6 @@ public class HomeFragment extends Fragment {
         rcvTeacher = view.findViewById(R.id.rcv_teacher);
         fromAddNotificationActivity = getArguments() != null ? getArguments().getBoolean(getString(R.string.FROM_ADD_NOTIFICATION)) : false;
         addControls();
-        dialog.show(getFragmentManager(),"");
         return view;
     }
 
@@ -64,7 +61,6 @@ public class HomeFragment extends Fragment {
             teacherID = teacherID.toUpperCase();
         }
         gson = new Gson();
-        dialog = new TimesheetProgressDialog();
         lstClass = new ArrayList<>();
         lstSubject = new ArrayList<>();
         teacherAdapter = new TeacherAdapter(lstClass, new AdapterView.OnItemClickListener() {
@@ -76,6 +72,13 @@ public class HomeFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), SendNofication.class);
                         intent.putExtra(getString(R.string.SUBJECT_CODE),lstClass.get(i).getSubjectCode());
                         intent.putExtra(getString(R.string.SUBJECT_NAME),lstClass.get(i).getSubjectName());
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(getContext(),TimesheetDetails.class);
+                        String subCode = lstClass.get(i).getSubjectCode();
+                        String url = getString(R.string.sebject_doc_url) + subCode + ".pdf";
+                        intent.putExtra(getString(R.string.TS_DETAILS),url);
                         startActivity(intent);
                     }
                 }
@@ -143,7 +146,6 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void run() {
                             teacherAdapter.notifyDataSetChanged();
-                            dialog.dismiss();
                         }
                     });
                 }

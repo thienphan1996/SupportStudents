@@ -72,6 +72,10 @@ public class CheckStudentActivity extends AppCompatActivity {
         if (intent != null){
             students = intent.getStringExtra(getString(R.string.LIST_STUDENT));
             subject = intent.getStringExtra(getString(R.string.SUBJECT_CODE));
+            String subjectName = intent.getStringExtra(getString(R.string.SUBJECT_NAME));
+            if (!subjectName.isEmpty()){
+                getSupportActionBar().setTitle("Điểm danh, " + subjectName);
+            }
             GetListStudents();
         }
 

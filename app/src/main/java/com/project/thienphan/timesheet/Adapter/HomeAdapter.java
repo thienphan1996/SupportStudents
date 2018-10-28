@@ -1,5 +1,6 @@
 package com.project.thienphan.timesheet.Adapter;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -44,6 +45,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 onClickListener.onItemClick(null,view,homeViewHolder.getAdapterPosition(),0);
             }
         });
+        SetColorForSubjectTime(homeViewHolder.bgSubjectTime,this.Data.get(i).getSubjectTime());
+    }
+
+    private void SetColorForSubjectTime(View bgSubjectTime,String subjectTime) {
+        if (subjectTime != null && subjectTime.length() > 1){
+            int time = Integer.parseInt(subjectTime.substring(0,1));
+            if (time < 6){
+                bgSubjectTime.setBackgroundColor(Color.parseColor("#0091EA"));
+            }
+            else {
+                bgSubjectTime.setBackgroundColor(Color.parseColor("#43A047"));
+            }
+        }
     }
 
     @Override
@@ -53,7 +67,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     public class HomeViewHolder extends RecyclerView.ViewHolder {
         TextView tvSubjectName, tvSubjectGroup, tvSubjectTeacher, tvSubjectTime, tvSubjectLocation;
-        View container;
+        View container,bgSubjectTime;
         public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView;
@@ -62,6 +76,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             tvSubjectTeacher = itemView.findViewById(R.id.tv_item_ts_teacher_name);
             tvSubjectTime = itemView.findViewById(R.id.tv_item_ts_time);
             tvSubjectLocation = itemView.findViewById(R.id.tv_item_ts_location);
+            bgSubjectTime = itemView.findViewById(R.id.view_item_timesheet);
         }
     }
 }

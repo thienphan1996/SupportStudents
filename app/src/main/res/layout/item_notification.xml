@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/ln_item_notification"
         android:background="@android:color/white"
+        android:minHeight="80dp"
         android:padding="5dp"
         android:weightSum="1"
         android:gravity="center_vertical"
@@ -54,7 +55,6 @@
                 android:id="@+id/tv_item_notification_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 android:text="Chao cac em chung ta se thi giua ki" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:layout_height="match_parent"
                 android:text="15:00"
                 android:textColor="@color/colorPrimary"
-                android:textSize="8dp" />
+                android:textSize="9dp" />
         </LinearLayout>
     </LinearLayout>
     <View

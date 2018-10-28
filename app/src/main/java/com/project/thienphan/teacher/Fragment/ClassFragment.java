@@ -23,6 +23,7 @@ import com.project.thienphan.teacher.View.CheckStudentActivity;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.ClassItem;
+import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -37,6 +38,8 @@ public class ClassFragment extends Fragment {
     DatabaseReference mydb;
     String teacherCode = "";
 
+    TimesheetProgressDialog dialog;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class ClassFragment extends Fragment {
     }
 
     private void addControls() {
+        dialog = new TimesheetProgressDialog();
+        dialog.show(getFragmentManager(),"dialog");
         timesheetPreferences = new TimesheetPreferences(getContext());
         mydb = TimesheetDatabase.getTimesheetDatabase();
         teacherCode = timesheetPreferences.get(getString(R.string.USER), String.class);
@@ -60,6 +65,7 @@ public class ClassFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), CheckStudentActivity.class);
                     intent.putExtra(getString(R.string.SUBJECT_CODE),lstTeacherClass.get(i).getSubjectCode());
                     intent.putExtra(getString(R.string.LIST_STUDENT),students);
+                    intent.putExtra(getString(R.string.SUBJECT_NAME),lstTeacherClass.get(i).getSubjectName());
                     startActivity(intent);
                 }
             }
@@ -110,6 +116,7 @@ public class ClassFragment extends Fragment {
                         lstTeacherClass.clear();
                         lstTeacherClass.addAll(ClassItem.SortTeacherClass(list));
                         teacherClassAdapter.notifyDataSetChanged();
+                        dialog.dismiss();
                     }
                 }
 
