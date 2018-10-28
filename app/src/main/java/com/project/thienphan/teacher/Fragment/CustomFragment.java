@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ShortcutManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -92,6 +94,7 @@ public class CustomFragment extends Fragment {
     }
 
     @TargetApi(25)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void removeShorcuts() {
         ArrayList<String> lstShortcut = new ArrayList<>();
         lstShortcut.add("shortcut1");
@@ -107,7 +110,9 @@ public class CustomFragment extends Fragment {
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                removeShorcuts();
+                if (Build.VERSION.SDK_INT >= 25) {
+                    removeShorcuts();
+                }
                 SharedPreferences preferences = getActivity().getSharedPreferences(getString(R.string.TIMESHEET_PREFS), 0);
                 preferences.edit().clear().commit();
                 Intent intent = new Intent(getContext(), LoginActivity.class);
