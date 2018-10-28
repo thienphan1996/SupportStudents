@@ -98,6 +98,7 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
                 NotificationCompat.Builder(this)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setTicker(title)
                 .setSmallIcon(R.drawable.education_icon)
                 .setLargeIcon(BitmapFactory.decodeResource( this.getResources(), R.drawable.education_icon));

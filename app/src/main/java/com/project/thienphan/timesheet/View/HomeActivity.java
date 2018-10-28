@@ -110,42 +110,25 @@ public class HomeActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         txtName = header.findViewById(R.id.tv_header_name);
         navigationView.setNavigationItemSelectedListener(this);
+        GenerateNotification();
         addControls();
         addEvents();
     }
 
 
     private void GenerateNotification() {
-        String mytimesheet = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
-        if (!mytimesheet.isEmpty()){
-            String ts = timesheetPreferences.get(getString(R.string.MY_TIMESHEET),String.class);
-            Type myType = new TypeToken<ArrayList<TimesheetItem>>(){}.getType();
-            ArrayList<TimesheetItem> tsList = (ArrayList<TimesheetItem>) gson.fromJson(ts,myType);
+        try {
             Calendar calendar = Calendar.getInstance();
-            if (tsList != null){
-                try {
-                    for (int i = 0; i < tsList.size(); i++){
-                        TimesheetItem item = tsList.get(i);
-                        int repeat = (item.getDayofWeek()+7) - Calendar.DAY_OF_WEEK;
-                        float session = Integer.parseInt(item.getSubjectTime()) < 678 ? 6.5f : 13;
-                        Calendar nextWeek = Calendar.getInstance();
-                        nextWeek.set(Calendar.YEAR,Calendar.MONTH,Calendar.DATE + repeat);
-                        Intent alertIntent = new Intent(getApplicationContext(), TimesheetReceiver.class);
-                        int id = Integer.parseInt(item.getSubjectCode().substring(2,5));
-                        alertIntent.putExtra(getString(R.string.NOTICATION_ID), id);
-                        alertIntent.putExtra(getString(R.string.NOTICATION_TITLE),item.getSubjectName());
-                        alertIntent.putExtra(getString(R.string.NOTICATION_BODY),"Bạn ơi sắp đến giờ học môn "+item.getSubjectName()+" rồi.");
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_HOUR,
-                                AlarmManager.INTERVAL_HALF_HOUR, pendingIntent);
-                    }
-                }
-                catch (Exception e){
-                    InfoDialog.ShowInfoDiaLog(this,"Error",e.getMessage());
-                }
-            }
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, 6);
+            Intent alertIntent = new Intent(getApplicationContext(), TimesheetReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+        catch (Exception e){
+            InfoDialog.ShowInfoDiaLog(this,"Error",e.getMessage());
         }
     }
 
@@ -447,7 +430,7 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
@@ -467,7 +450,7 @@ public class HomeActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
