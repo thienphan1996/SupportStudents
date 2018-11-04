@@ -25,6 +25,7 @@
     <string name="EXIST_TIMESHEET">EXIST_TIMESHEET</string>
     <string name="USER">USER</string>
     <string name="SAVE_PASSWORD">SAVE_PASSWORD</string>
+    <string name="FIRST_LOGIN">FIRST_LOGIN</string>
     <string name="TIMESHEET_PREFS">TIMESHEET_PREFS</string>
     <string name="NOTIFICATION_STUDENT">NOTIFICATION_STUDENT</string>
     <string name="NOTIFICATION_TEACHER">NOTIFICATION_TEACHER</string>

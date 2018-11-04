@@ -82,7 +82,7 @@ public class LeaveReportActivity extends AppCompatActivity {
                                 }
                                 else {
                                     for (LeaveStudentModel content : lstLeaveStudent){
-                                        if (content.getStudentCode().equals(stdCode)){
+                                        if (content.getStudentCode().trim().equals(stdCode.trim())){
                                             content.setLeaveDayTotal(content.getLeaveDayTotal()+1);
                                             continue;
                                         }

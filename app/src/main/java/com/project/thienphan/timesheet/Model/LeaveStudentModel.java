@@ -55,8 +55,7 @@ public class LeaveStudentModel {
         if (this == o) return true;
         if (!(o instanceof LeaveStudentModel)) return false;
         LeaveStudentModel that = (LeaveStudentModel) o;
-        return Objects.equals(getStudentCode(), that.getStudentCode()) &&
-                Objects.equals(getStudentName(), that.getStudentName());
+        return Objects.equals(getStudentCode().trim(), that.getStudentCode().trim());
     }
 
     @Override

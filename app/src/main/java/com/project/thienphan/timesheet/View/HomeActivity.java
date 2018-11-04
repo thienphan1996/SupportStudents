@@ -110,22 +110,27 @@ public class HomeActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         txtName = header.findViewById(R.id.tv_header_name);
         navigationView.setNavigationItemSelectedListener(this);
-        GenerateNotification();
         addControls();
         addEvents();
+        GenerateNotification();
     }
 
 
     private void GenerateNotification() {
         try {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, 6);
-            Intent alertIntent = new Intent(getApplicationContext(), TimesheetReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent);
+            boolean firstLogin = timesheetPreferences.get(getString(R.string.FIRST_LOGIN),Boolean.class);
+            String savePassword = timesheetPreferences.get(getString(R.string.SAVE_PASSWORD),String.class);
+            if (!firstLogin && !savePassword.isEmpty()){
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(System.currentTimeMillis());
+                calendar.set(Calendar.HOUR_OF_DAY, 6);
+                Intent alertIntent = new Intent(getApplicationContext(), TimesheetReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                        AlarmManager.INTERVAL_DAY, pendingIntent);
+                timesheetPreferences.put(getString(R.string.FIRST_LOGIN),true);
+            }
         }
         catch (Exception e){
             InfoDialog.ShowInfoDiaLog(this,"Error",e.getMessage());
@@ -519,6 +524,10 @@ public class HomeActivity extends AppCompatActivity
         alert.show();
     }
     private void DeleteNotification(String topic) {
+        Intent alertIntent = new Intent(getApplicationContext(), TimesheetReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
         FirebaseMessaging.getInstance().unsubscribeFromTopic(topic)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

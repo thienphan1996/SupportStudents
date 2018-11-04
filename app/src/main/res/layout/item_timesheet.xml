@@ -104,6 +104,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textStyle="bold"
                                     android:layout_marginLeft="3dp"
                                     android:text="Nguyễn Văn A"
                                     android:id="@+id/tv_item_ts_teacher_name"/>
@@ -115,7 +116,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal">
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -135,9 +135,11 @@
                                     android:id="@+id/tv_item_ts_time"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:background="@drawable/bg_tv_item_timesheet"
                                     android:layout_marginLeft="3dp"
-                                    android:text="678"
-                                    android:textStyle="bold" />
+                                    android:textColor="@android:color/white"
+                                    android:padding="3dp"
+                                    android:text="678"/>
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
@@ -159,7 +161,9 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/tv_item_ts_location"
                                     android:layout_marginLeft="3dp"
-                                    android:textStyle="bold"
+                                    android:background="@drawable/bg_tv_item_timesheet"
+                                    android:textColor="@android:color/white"
+                                    android:padding="3dp"
                                     android:text="110/C1"/>
                             </LinearLayout>
                         </LinearLayout>

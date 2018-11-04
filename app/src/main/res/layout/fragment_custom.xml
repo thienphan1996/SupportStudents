@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/ic_avatar"
+            android:src="@drawable/teacher_avatar"
             android:foreground="@drawable/bg_avatar"
             android:layout_margin="15dp"/>
         <TextView
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_customize_teacher_name"
             android:textStyle="bold"
-            android:text="Phan Hữu Thiện"/>
+            android:text="Huỳnh Trọng Nghĩa"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
