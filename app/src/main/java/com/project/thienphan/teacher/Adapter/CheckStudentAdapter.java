@@ -39,14 +39,21 @@ public class CheckStudentAdapter extends RecyclerView.Adapter<CheckStudentAdapte
     @Override
     public void onBindViewHolder(@NonNull final CheckStudentViewHolder checkStudentViewHolder, final int i) {
         checkStudentViewHolder.tvNameCheckStudent.setText(Data.get(i).getHoTen());
+        checkStudentViewHolder.tvCodeCheckStudent.setText(Data.get(i).getMaSV());
         if (Data.get(i).getGioiTinh().equals("Nữ")){
-            checkStudentViewHolder.imgCheckStudent.setImageDrawable(resources.getDrawable(R.drawable.ic_female));
+            checkStudentViewHolder.imgCheckStudent.setImageDrawable(resources.getDrawable(R.drawable.ic_female_checked));
         }
         else {
-            checkStudentViewHolder.imgCheckStudent.setImageDrawable(resources.getDrawable(R.drawable.ic_male));
+            checkStudentViewHolder.imgCheckStudent.setImageDrawable(resources.getDrawable(R.drawable.ic_male_checked));
         }
         if (!Data.get(i).isCheck()){
             checkStudentViewHolder.lnCheckStudent.setBackgroundColor(resources.getColor(R.color.bg_gray_light));
+            if (Data.get(i).getGioiTinh().equals("Nữ")){
+                checkStudentViewHolder.imgCheckStudent.setImageDrawable(resources.getDrawable(R.drawable.ic_female));
+            }
+            else {
+                checkStudentViewHolder.imgCheckStudent.setImageDrawable(resources.getDrawable(R.drawable.ic_male));
+            }
         }
         else {
             checkStudentViewHolder.lnCheckStudent.setBackground(resources.getDrawable(R.drawable.bg_img_student_leave));
@@ -66,7 +73,7 @@ public class CheckStudentAdapter extends RecyclerView.Adapter<CheckStudentAdapte
 
     public class CheckStudentViewHolder extends RecyclerView.ViewHolder {
         ImageView imgCheckStudent;
-        TextView tvNameCheckStudent;
+        TextView tvNameCheckStudent,tvCodeCheckStudent;
         LinearLayout lnCheckStudent;
         View container;
         public CheckStudentViewHolder(@NonNull View itemView) {
@@ -75,6 +82,7 @@ public class CheckStudentAdapter extends RecyclerView.Adapter<CheckStudentAdapte
             lnCheckStudent = itemView.findViewById(R.id.ln_item_check_student);
             imgCheckStudent = itemView.findViewById(R.id.img_item_check_student);
             tvNameCheckStudent = itemView.findViewById(R.id.tv_item_name_check_student);
+            tvCodeCheckStudent = itemView.findViewById(R.id.tv_item_check_student_code);
         }
     }
 }

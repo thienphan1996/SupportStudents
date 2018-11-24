@@ -86,7 +86,7 @@ public class PushNotificationService {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
-        NotificationItem item = new NotificationItem(subjectCode,title,message,sdfDate.format(calendar.getTime()) + "  " + sdfTime.format(calendar.getTime()),true);
+        NotificationItem item = new NotificationItem(subjectCode,title,message,sdfDate.format(calendar.getTime()) + "  " + sdfTime.format(calendar.getTime()),false);
         Gson gson = new Gson();
         String notifications = timesheetPreferences.get("NOTIFICATION_TEACHER",String.class);
         if (notifications.isEmpty()){
