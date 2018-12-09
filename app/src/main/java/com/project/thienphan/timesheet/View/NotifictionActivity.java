@@ -1,5 +1,6 @@
 package com.project.thienphan.timesheet.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -94,9 +95,11 @@ public class NotifictionActivity extends AppCompatActivity {
             notificationAdapter.notifyDataSetChanged();
         }
     }
+
     @Override
-    public boolean onSupportNavigateUp(){
+    public void onBackPressed() {
+        Intent intent = new Intent(NotifictionActivity.this, HomeActivity.class);
+        startActivity(intent);
         finish();
-        return true;
     }
 }

@@ -112,7 +112,7 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         addControls();
         addEvents();
-        GenerateNotification();
+        //GenerateNotification();
     }
 
 
