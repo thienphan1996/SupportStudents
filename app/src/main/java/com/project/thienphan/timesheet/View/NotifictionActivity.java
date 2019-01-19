@@ -96,10 +96,16 @@ public class NotifictionActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         Intent intent = new Intent(NotifictionActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();
+    }*/
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }

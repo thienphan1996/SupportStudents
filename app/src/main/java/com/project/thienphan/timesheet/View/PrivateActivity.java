@@ -59,6 +59,9 @@ public class PrivateActivity extends AppCompatActivity {
         mydb = TimesheetDatabase.getTimesheetDatabase();
         timesheetPreferences = new TimesheetPreferences(this);
         user = timesheetPreferences.get(getString(R.string.USER),String.class);
+        if(!user.isEmpty() && user.length() > 2 && user.substring(0,2).toLowerCase().equals("ph")){
+            user = user.substring(2,user.length());
+        }
 
         rcvSubjects = findViewById(R.id.rcv_private);
         lstSubjects = new ArrayList<>();

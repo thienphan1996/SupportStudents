@@ -89,7 +89,15 @@
         <activity
             android:name="com.project.thienphan.teacher.View.ChairmanClassAcitivity"
             android:label="Cố vấn"
-            android:parentActivityName="com.project.thienphan.teacher.View.TeacherActivity"></activity>
+            android:parentActivityName="com.project.thienphan.teacher.View.TeacherActivity" />
+        <activity
+            android:name="com.project.thienphan.parent.ParentActivity"
+            android:label="@string/timesheet"
+            android:theme="@style/AppTheme.Parents" />
+        <activity
+            android:name="com.project.thienphan.parent.View.LearningResultActivity"
+            android:label="Kết quả học tập"
+            android:parentActivityName="com.project.thienphan.parent.ParentActivity"></activity>
     </application>
 
 </manifest>

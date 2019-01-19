@@ -43,7 +43,7 @@ public class LeaveReportActivity extends AppCompatActivity {
 
     private void addControls() {
         timesheetPreferences = new TimesheetPreferences(getApplicationContext());
-        account = timesheetPreferences.get(getString(R.string.SAVE_PASSWORD),String.class);
+        account = timesheetPreferences.get(getString(R.string.USER),String.class);
         dialog = new TimesheetProgressDialog();
         mydb = TimesheetDatabase.getTimesheetDatabase();
         Intent intent = getIntent();

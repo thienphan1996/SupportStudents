@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
+import com.project.thienphan.parent.ParentActivity;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.View.AddNotification;
 import com.project.thienphan.teacher.View.TeacherActivity;
@@ -60,6 +61,9 @@ public class SplashActivity extends Activity {
                 }
                 else if (savePassword != null && savePassword.length() > 2 && savePassword.toLowerCase().substring(0,2).equals("tc")){
                     intent = new Intent(getApplicationContext(), TeacherActivity.class);
+                }
+                else if (savePassword != null && savePassword.length() > 2 && savePassword.toLowerCase().substring(0,2).equals("ph")){
+                    intent = new Intent(getApplicationContext(), ParentActivity.class);
                 }
                 else {
                     intent = new Intent(getApplicationContext(), HomeActivity.class);

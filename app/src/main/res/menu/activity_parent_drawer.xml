@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_parents_score"
+            android:icon="@drawable/ic_filter_9_plus_black_24dp"
+            android:title="@string/hischool_results"/>
+        <item
+            android:id="@+id/nav_parents_child_info"
+            android:icon="@drawable/ic_person_black_18dp"
+            android:title="@string/hischool_info"/>
+        <item
+            android:id="@+id/nav_parents_news"
+            android:icon="@drawable/ic_fiber_new_black_18dp"
+            android:title="@string/title_news"/>
+        <item
+            android:id="@+id/nav_parents_sign_out"
+            android:icon="@drawable/ic_reply_black_24dp"
+            android:title="@string/title_sign_out"/>
+    </group>
+</menu>

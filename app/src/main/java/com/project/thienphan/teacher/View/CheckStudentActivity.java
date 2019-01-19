@@ -141,7 +141,7 @@ public class CheckStudentActivity extends AppCompatActivity {
     }
 
     private void SubmitLeaveStudent() {
-        String account = timesheetPreferences.get(getString(R.string.SAVE_PASSWORD),String.class);
+        String account = timesheetPreferences.get(getString(R.string.USER),String.class);
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar = Calendar.getInstance();
         String time = sdf.format(calendar.getTime());

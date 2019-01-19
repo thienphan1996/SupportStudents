@@ -5,4 +5,12 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+    <style name="AppTheme.Parents">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorPrimary">@color/colorPrimaryParents</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkParents</item>
+        <item name="colorAccent">@color/colorAccentParents</item>
+    </style>
 </resources>

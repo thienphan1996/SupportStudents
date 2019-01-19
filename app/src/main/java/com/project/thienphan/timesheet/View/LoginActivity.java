@@ -24,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.project.thienphan.parent.ParentActivity;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.View.TeacherActivity;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
@@ -93,6 +94,9 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intent;
                                 if ( account.toLowerCase().substring(0,2).equals("tc") ){
                                     intent = new Intent(LoginActivity.this,TeacherActivity.class);
+                                }
+                                else if( account.toLowerCase().substring(0,2).equals("ph") ){
+                                    intent = new Intent(LoginActivity.this, ParentActivity.class);
                                 }
                                 else {
                                     intent = new Intent(LoginActivity.this,HomeActivity.class);

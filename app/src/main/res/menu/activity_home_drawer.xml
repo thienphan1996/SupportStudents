@@ -5,38 +5,38 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_score"
+            android:icon="@drawable/ic_filter_9_plus_black_24dp"
+            android:title="@string/hischool_results"
+            android:iconTint="@color/colorPrimary"/>
+        <item
             android:id="@+id/nav_news"
             android:icon="@drawable/ic_fiber_new_black_18dp"
-            android:title="Tin tức"
+            android:title="@string/title_news"
             android:iconTint="@color/colorPrimary"/>
         <item
             android:id="@+id/nav_private"
             android:icon="@drawable/ic_person_black_18dp"
-            android:title="Cá nhân"
+            android:title="@string/title_private"
             android:iconTint="@color/colorPrimary"/>
         <item
             android:id="@+id/nav_elctu"
             android:icon="@drawable/ic_link_black_24dp"
-            android:title="Liên kết"
+            android:title="@string/title_links"
             android:iconTint="@color/colorPrimary"/>
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_reply_black_24dp"
-            android:title="Đăng xuất"
+            android:title="@string/title_sign_out"
             android:iconTint="@color/colorPrimary"/>
     </group>
 
-    <item android:title="Tuỳ chọn">
+    <item android:title="@string/title_customer">
         <menu>
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_info_black_24dp"
                 android:title="About"
-                android:iconTint="@color/colorPrimary"/>
-            <item
-                android:id="@+id/nav_out"
-                android:icon="@drawable/ic_power_settings_new_black_24dp"
-                android:title="Thoát"
                 android:iconTint="@color/colorPrimary"/>
         </menu>
     </item>

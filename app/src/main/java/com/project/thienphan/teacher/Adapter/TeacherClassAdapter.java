@@ -20,11 +20,13 @@ public class TeacherClassAdapter extends RecyclerView.Adapter<TeacherClassAdapte
     ArrayList<ClassItem> Data;
     Resources resources;
     AdapterView.OnItemClickListener onClick;
+    int fromActivity = 0;
 
-    public TeacherClassAdapter(ArrayList<ClassItem> data, Resources resources, AdapterView.OnItemClickListener onItemClickListener) {
+    public TeacherClassAdapter(int from, ArrayList<ClassItem> data, Resources resources, AdapterView.OnItemClickListener onItemClickListener) {
         Data = data;
         this.resources = resources;
         onClick = onItemClickListener;
+        this.fromActivity = from;
     }
 
     @NonNull
@@ -42,7 +44,18 @@ public class TeacherClassAdapter extends RecyclerView.Adapter<TeacherClassAdapte
                 teacherClassViewHolder.tvClassName.setVisibility(View.GONE);
                 teacherClassViewHolder.tvClassTime.setVisibility(View.GONE);
                 teacherClassViewHolder.tvClassLocation.setVisibility(View.GONE);
-                teacherClassViewHolder.lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_gray_light));
+                teacherClassViewHolder.tvLableTime.setVisibility(View.GONE);
+                if (this.fromActivity == 1){
+                    teacherClassViewHolder.lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_gray_light));
+                }
+                else {
+                    if (i <= 5){
+                        teacherClassViewHolder.lnTeacherClass.setBackground(resources.getDrawable(R.drawable.bg_dayofweek_morning_disable));
+                    }
+                    else {
+                        teacherClassViewHolder.lnTeacherClass.setBackground(resources.getDrawable(R.drawable.bg_dayofweek_afternoon_disable));
+                    }
+                }
             }
             else {
                 teacherClassViewHolder.lnTeacherClass.setVisibility(View.GONE);
@@ -52,7 +65,7 @@ public class TeacherClassAdapter extends RecyclerView.Adapter<TeacherClassAdapte
             teacherClassViewHolder.tvClassName.setText(Data.get(i).getSubjectName());
             teacherClassViewHolder.tvClassTime.setText(Data.get(i).getSubjectTime());
             teacherClassViewHolder.tvClassLocation.setText(Data.get(i).getSubjectLocation());
-            SetBackgroundColor(teacherClassViewHolder.lnTeacherClass, Data.get(i).getDayofWeek());
+            SetBackgroundColor(teacherClassViewHolder.lnTeacherClass, Data.get(i).getDayofWeek(), i);
         }
         teacherClassViewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,26 +75,36 @@ public class TeacherClassAdapter extends RecyclerView.Adapter<TeacherClassAdapte
         });
     }
 
-    private void SetBackgroundColor(LinearLayout lnTeacherClass,long dayofweek) {
-        switch ((int)dayofweek){
-            case 2:
-                lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_monday));
-                break;
-            case 3:
-                lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_tuesday));
-                break;
-            case 4:
-                lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_webnesday));
-                break;
-            case 5:
-                lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_thursday));
-                break;
-            case 6:
-                lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_friday));
-                break;
-            case 7:
-                lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_satuday));
-                break;
+    private void SetBackgroundColor(LinearLayout lnTeacherClass,long dayofweek, int index) {
+        if (this.fromActivity == 1){
+            switch ((int)dayofweek){
+                case 2:
+                    lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_monday));
+                    break;
+                case 3:
+                    lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_tuesday));
+                    break;
+                case 4:
+                    lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_webnesday));
+                    break;
+                case 5:
+                    lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_thursday));
+                    break;
+                case 6:
+                    lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_friday));
+                    break;
+                case 7:
+                    lnTeacherClass.setBackground(resources.getDrawable(R.color.bg_satuday));
+                    break;
+            }
+        }
+        else if (fromActivity == 2){
+            if (index <= 5){
+                lnTeacherClass.setBackground(resources.getDrawable(R.drawable.bg_dayofweek_morning));
+            }
+            else {
+                lnTeacherClass.setBackground(resources.getDrawable(R.drawable.bg_dayofweek_afternoon));
+            }
         }
     }
 
@@ -93,7 +116,7 @@ public class TeacherClassAdapter extends RecyclerView.Adapter<TeacherClassAdapte
     public class TeacherClassViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout lnTeacherClass;
-        TextView tvClassName, tvClassTime, tvClassLocation;
+        TextView tvClassName, tvClassTime, tvClassLocation, tvLableTime;
         View container;
         public TeacherClassViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,6 +124,7 @@ public class TeacherClassAdapter extends RecyclerView.Adapter<TeacherClassAdapte
             lnTeacherClass = itemView.findViewById(R.id.ln_item_teacher_class);
             tvClassName = itemView.findViewById(R.id.tv_item_teacher_class_name);
             tvClassTime = itemView.findViewById(R.id.tv_item_teacher_class_time);
+            tvLableTime = itemView.findViewById(R.id.tv_item_lable_class_time);
             tvClassLocation = itemView.findViewById(R.id.tv_item_teacher_class_location);
         }
     }

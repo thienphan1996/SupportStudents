@@ -57,7 +57,8 @@ public class ClassFragment extends Fragment {
         teacherCode = timesheetPreferences.get(getString(R.string.USER), String.class);
         rcvTeacherClass = view.findViewById(R.id.rcv_teacher_class);
         lstTeacherClass = new ArrayList<>();
-        teacherClassAdapter = new TeacherClassAdapter(lstTeacherClass, getResources(), new AdapterView.OnItemClickListener() {
+        int fromActivity = 1;
+        teacherClassAdapter = new TeacherClassAdapter(fromActivity, lstTeacherClass, getResources(), new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String students = lstTeacherClass.get(i).getStudents();

@@ -36,6 +36,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -45,6 +47,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.project.thienphan.parent.View.LearningResultActivity;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.teacher.Service.PushNotificationService;
 import com.project.thienphan.timesheet.Adapter.HomeAdapter;
@@ -466,6 +469,9 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_news) {
             Intent intent = new Intent(HomeActivity.this, NewsActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_score) {
+            Intent intent = new Intent(HomeActivity.this,LearningResultActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_private) {
             Intent intent = new Intent(HomeActivity.this,PrivateActivity.class);
             startActivity(intent);
@@ -477,8 +483,6 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             Intent intent = new Intent(HomeActivity.this,AboutActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_out) {
-            showConfirmDialog(getString(R.string.QUICK_CONFIRM),2);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -491,6 +495,7 @@ public class HomeActivity extends AppCompatActivity
         builder.setMessage(message)
                 .setCancelable(false)
                 .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
                     public void onClick(DialogInterface dialog, int id) {
                         if (type == 1){
                             try {
@@ -505,12 +510,6 @@ public class HomeActivity extends AppCompatActivity
                             preferences.edit().clear().commit();
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
                             startActivity(intent);
-                            finish();
-                        }
-                        else if (type == 2){
-                            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                            drawer.closeDrawer(GravityCompat.START);
-                            dialog.dismiss();
                             finish();
                         }
                     }
@@ -542,12 +541,22 @@ public class HomeActivity extends AppCompatActivity
                 });
     }
     @TargetApi(25)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void removeShorcuts() {
-        ArrayList<String> lstShortcut = new ArrayList<>();
-        lstShortcut.add("shortcut1");
-        lstShortcut.add("shortcut2");
-        ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
-        shortcutManager.disableShortcuts(lstShortcut);
-        shortcutManager.removeAllDynamicShortcuts();
+        try {
+            GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+            int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+            if (resultCode == ConnectionResult.SUCCESS){
+                ArrayList<String> lstShortcut = new ArrayList<>();
+                lstShortcut.add("shortcut1");
+                lstShortcut.add("shortcut2");
+                ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
+                shortcutManager.disableShortcuts(lstShortcut);
+                shortcutManager.removeAllDynamicShortcuts();
+            }
+        }
+        catch (Exception e){
+
+        }
     }
 }

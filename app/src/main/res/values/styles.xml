@@ -18,6 +18,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.Parents">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimaryParents</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkParents</item>
+        <item name="colorAccent">@color/colorAccentParents</item>
+    </style>
+
     <style name="MySwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">#18FFFF</item>
