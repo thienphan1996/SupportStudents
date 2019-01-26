@@ -45,11 +45,10 @@ public class LearningResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_learning_result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //addControls();
-        addEvents();
+        addControls();
     }
 
-    private void addEvents() {
+    private void addControls() {
         pager = findViewById(R.id.vpg_learning_result);
         tabLayout = findViewById(R.id.tab_learning_result);
         FragmentManager manager = getSupportFragmentManager();
@@ -60,46 +59,6 @@ public class LearningResultActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
     }
 
-    private void addControls() {
-        //rcvLearningResult = findViewById(R.id.rcv_learning_result);
-        lstLearningResult = new ArrayList<>();
-        adapterLearningResult = new LearningResultAdapter(lstLearningResult);
-        timesheetPreferences = new TimesheetPreferences(this);
-        dialog = new TimesheetProgressDialog();
-        mydb = TimesheetDatabase.getTimesheetDatabase();
-        user = timesheetPreferences.get(getString(R.string.USER),String.class);
-        if(!user.isEmpty() && user.length() > 2 && user.substring(0,2).toLowerCase().equals("ph")){
-            user = user.substring(2,user.length());
-        }
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rcvLearningResult.setLayoutManager(layoutManager);
-        rcvLearningResult.setAdapter(adapterLearningResult);
-        GetData();
-    }
-
-    private void GetData() {
-        this.dialog.show(getSupportFragmentManager(),"dialog");
-        this.mydb.child(getString(R.string.CHILD_LEARNING_RESULT)).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot child : dataSnapshot.getChildren()){
-                    LearningResult item = child.getValue(LearningResult.class);
-                    if (item != null){
-                        lstLearningResult.add(item);
-                    }
-                }
-                adapterLearningResult.notifyDataSetChanged();
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
     @Override
     public boolean onSupportNavigateUp(){
         finish();

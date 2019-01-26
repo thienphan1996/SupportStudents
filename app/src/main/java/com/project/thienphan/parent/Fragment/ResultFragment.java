@@ -9,12 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.parent.Adapter.LearningResultAdapter;
+import com.project.thienphan.parent.Model.NotifyMessage;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
@@ -49,7 +51,13 @@ public class ResultFragment extends Fragment {
     private void addControls() {
         rcvLearningResult = view.findViewById(R.id.rcv_learning_result);
         lstLearningResult = new ArrayList<>();
-        adapterLearningResult = new LearningResultAdapter(lstLearningResult);
+        adapterLearningResult = new LearningResultAdapter(lstLearningResult, new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                lstLearningResult.get(i).setShowModal(!lstLearningResult.get(i).isShowModal());
+                adapterLearningResult.notifyDataSetChanged();
+            }
+        });
         timesheetPreferences = new TimesheetPreferences(getContext());
         dialog = new TimesheetProgressDialog();
         mydb = TimesheetDatabase.getTimesheetDatabase();
@@ -66,18 +74,17 @@ public class ResultFragment extends Fragment {
     }
 
     private void GetData() {
-        this.dialog.show(getFragmentManager(),"dialog");
         this.mydb.child(getString(R.string.CHILD_LEARNING_RESULT)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot child : dataSnapshot.getChildren()){
                     LearningResult item = child.getValue(LearningResult.class);
-                    if (item != null){
+                    if (item != null && item.getMSSV().toLowerCase().equals(user.toLowerCase())){
+                        item.setShowModal(false);
                         lstLearningResult.add(item);
                     }
                 }
-                adapterLearningResult.notifyDataSetChanged();
-                dialog.dismiss();
+                getLastCommentBySubjectCode();
             }
 
             @Override
@@ -85,5 +92,31 @@ public class ResultFragment extends Fragment {
 
             }
         });
+    }
+
+    private void getLastCommentBySubjectCode() {
+        if (lstLearningResult != null && lstLearningResult.size() > 0){
+            for (final LearningResult item : lstLearningResult){
+                mydb.child(getString(R.string.CHILD_TEACHER_COMMENT)).child(user.toUpperCase()).child(item.getSubjectCode().toUpperCase() + "/messages").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot result : dataSnapshot.getChildren()){
+                            NotifyMessage message = result.getValue(NotifyMessage.class);
+                            String lastComment = "";
+                            if (!message.isParent()){
+                                lastComment = "Nhận xét " + (message.getId()+1) + " : " + message.getMessage();
+                                item.setLastComment(lastComment);
+                            }
+                        }
+                        adapterLearningResult.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        }
     }
 }

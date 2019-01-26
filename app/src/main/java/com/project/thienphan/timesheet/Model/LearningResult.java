@@ -4,20 +4,15 @@ public class LearningResult {
     private String MSSV;
     private String subjectCode;
     private String subjectName;
-    private Double giuaKy;
-    private Double cuoiKy;
-    private Double trungBinh;
+    private String lastComment;
+    private Double killNumberFive;
+    private Double killNumberFour;
+    private Double killNumberOne;
+    private Double killNumberThree;
+    private Double killNumberTwo;
+    private boolean showModal;
 
     public LearningResult() {
-    }
-
-    public LearningResult(String MSSV, String subjectCode, String subjectName, Double giuaKy, Double cuoiKy, Double trungBinh) {
-        this.MSSV = MSSV;
-        this.subjectCode = subjectCode;
-        this.subjectName = subjectName;
-        this.giuaKy = giuaKy;
-        this.cuoiKy = cuoiKy;
-        this.trungBinh = trungBinh;
     }
 
     public String getMSSV() {
@@ -44,27 +39,59 @@ public class LearningResult {
         this.subjectName = subjectName;
     }
 
-    public Double getGiuaKy() {
-        return giuaKy;
+    public Double getKillNumberFive() {
+        return killNumberFive;
     }
 
-    public void setGiuaKy(Double giuaKy) {
-        this.giuaKy = giuaKy;
+    public void setKillNumberFive(Double killNumberFive) {
+        this.killNumberFive = killNumberFive;
     }
 
-    public Double getCuoiKy() {
-        return cuoiKy;
+    public Double getKillNumberFour() {
+        return killNumberFour;
     }
 
-    public void setCuoiKy(Double cuoiKy) {
-        this.cuoiKy = cuoiKy;
+    public void setKillNumberFour(Double killNumberFour) {
+        this.killNumberFour = killNumberFour;
     }
 
-    public Double getTrungBinh() {
-        return trungBinh;
+    public Double getKillNumberOne() {
+        return killNumberOne;
     }
 
-    public void setTrungBinh(Double trungBinh) {
-        this.trungBinh = trungBinh;
+    public void setKillNumberOne(Double killNumberOne) {
+        this.killNumberOne = killNumberOne;
+    }
+
+    public Double getKillNumberThree() {
+        return killNumberThree;
+    }
+
+    public void setKillNumberThree(Double killNumberThree) {
+        this.killNumberThree = killNumberThree;
+    }
+
+    public Double getKillNumberTwo() {
+        return killNumberTwo;
+    }
+
+    public void setKillNumberTwo(Double killNumberTwo) {
+        this.killNumberTwo = killNumberTwo;
+    }
+
+    public String getLastComment() {
+        return lastComment;
+    }
+
+    public void setLastComment(String lastComment) {
+        this.lastComment = lastComment;
+    }
+
+    public boolean isShowModal() {
+        return showModal;
+    }
+
+    public void setShowModal(boolean showModal) {
+        this.showModal = showModal;
     }
 }

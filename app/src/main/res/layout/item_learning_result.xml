@@ -9,75 +9,180 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
-        android:background="?attr/selectableItemBackground"
         card_view:cardCornerRadius="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:background="@color/bg_gray"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:paddingLeft="5dp"
-                android:text="Lập trình căn bản"
-                android:id="@+id/tv_item_learning_result_sub_name"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:text="Lập trình căn bản"
+                    android:textColor="@color/colorPrimary"
+                    android:id="@+id/tv_item_learning_result_sub_name"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:padding="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Giữa kỳ: "/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/ln_item_learning_result_num_one"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="2dp"
+                            android:textStyle="bold"
+                            android:text="KN1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_item_learning_result_score_one"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textStyle="bold"
+                            android:text="20.5"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_item_learning_result_giua_ky"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/holo_red_light"
-                        android:text="2.5"/>
+                        android:id="@+id/ln_item_learning_result_num_two"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="2dp"
+                            android:text="KN2"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_item_learning_result_score_two"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textStyle="bold"
+                            android:text="20.5"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ln_item_learning_result_num_three"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="2dp"
+                            android:textStyle="bold"
+                            android:text="KN3"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_item_learning_result_score_three"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textStyle="bold"
+                            android:text="20.5"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ln_item_learning_result_num_four"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="2dp"
+                            android:textStyle="bold"
+                            android:text="KN4"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_item_learning_result_score_four"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textStyle="bold"
+                            android:text="20.5"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ln_item_learning_result_num_five"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="2dp"
+                            android:textStyle="bold"
+                            android:text="KN5"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_item_learning_result_score_five"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textStyle="bold"
+                            android:text="20.5"/>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
+                    android:padding="5dp"
+                    android:animateLayoutChanges="true"
+                    android:id="@+id/ln_item_learning_result_modal"
+                    android:orientation="vertical">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cuối kỳ: "/>
+                        android:gravity="center_horizontal"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:text="TỔNG ĐIỂM:"/>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_item_learning_result_cuoi_ky"
-                        android:textStyle="bold"
+                        android:id="@+id/tv_item_learning_result_sum_score"
+                        android:gravity="center_horizontal"
                         android:textColor="@android:color/holo_red_light"
-                        android:text="4.5"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Trung bình: "/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tv_item_learning_result_trung_binh"
+                        android:textSize="20dp"
                         android:textStyle="bold"
-                        android:textColor="@android:color/holo_red_light"
-                        android:text="6.5"/>
+                        android:text="80"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_last_comment"
+                        android:textColor="#2E7D32"
+                        android:id="@+id/tv_item_learning_result_last_comment"
+                        android:text="test"
+                        android:padding="12dp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

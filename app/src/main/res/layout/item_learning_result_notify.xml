@@ -4,33 +4,33 @@
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
+    android:background="@color/bg_gray"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:orientation="horizontal">
+        android:background="?android:attr/selectableItemBackground">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
             android:id="@+id/tv_item_learning_result_sub_title"
-            android:padding="10dp"/>
+            android:padding="15dp"/>
         <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_margin="5dp"
             android:id="@+id/img_item_learning_result_modal"
-            android:src="@drawable/ic_chevron_right_black_24dp"/>
+            android:src="@drawable/ic_keyboard_arrow_down_black_36dp"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/bg_gray"
+        android:animateLayoutChanges="true"
         android:id="@+id/ln_item_learning_result_modal"
         android:orientation="vertical">
         <android.support.v7.widget.RecyclerView
@@ -42,13 +42,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/edt_parent_message"
+                android:paddingLeft="3dp"
                 android:hint="Nội dung"
                 android:textColor="@color/colorPrimary"/>
 
@@ -59,9 +59,10 @@
                 android:layout_gravity="right"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:padding="5dp"
-                fancy:mfb_defaultColor="@color/colorPrimary"
+                fancy:mfb_defaultColor="#64DD17"
                 fancy:mfb_focusColor="@color/bg_gray"
                 fancy:mfb_radius="5dp"
                 fancy:mfb_text="Phản hồi"

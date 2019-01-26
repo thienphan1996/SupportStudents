@@ -11,11 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.parent.Adapter.CommentAdapter;
 import com.project.thienphan.parent.Model.Comment;
 import com.project.thienphan.parent.Model.NotifyMessage;
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.timesheet.Common.TimesheetPreferences;
+import com.project.thienphan.timesheet.Database.TimesheetDatabase;
+import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class NotifyFragment extends Fragment {
@@ -24,6 +32,10 @@ public class NotifyFragment extends Fragment {
     RecyclerView rcvNotify;
     CommentAdapter commentAdapter;
     ArrayList<Comment> lstSubject;
+    DatabaseReference mydb;
+    TimesheetProgressDialog dialog;
+    String user = "";
+    TimesheetPreferences timesheetPreferences;
 
     public NotifyFragment() {
 
@@ -40,8 +52,12 @@ public class NotifyFragment extends Fragment {
     private void addControls() {
         rcvNotify = view.findViewById(R.id.rcv_learning_result_notify);
         lstSubject = new ArrayList<>();
+        mydb = TimesheetDatabase.getTimesheetDatabase();
+        dialog = new TimesheetProgressDialog();
+        timesheetPreferences = new TimesheetPreferences(getContext());
+        user = timesheetPreferences.get(getString(R.string.USER),String.class);
         getData();
-        commentAdapter = new CommentAdapter(lstSubject, getContext(), new AdapterView.OnItemClickListener() {
+        commentAdapter = new CommentAdapter(lstSubject, getContext(), getActivity(), new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 lstSubject.get(i).setShowModal(!lstSubject.get(i).isShowModal());
@@ -56,16 +72,27 @@ public class NotifyFragment extends Fragment {
     }
 
     private void getData() {
-        ArrayList<NotifyMessage> list = new ArrayList<>();
-        list.add(new NotifyMessage("Kính chào quý PH. Kính gửi quý phụ huynh quá trình học của bé...", false));
-        ArrayList<NotifyMessage> list1 = new ArrayList<>();
-        list.add(new NotifyMessage("Cảm ơn thầy, cô...", true));
-        this.lstSubject.add(new Comment("Kids - Family and Friends 2", false, list));
-        this.lstSubject.add(new Comment("Kids - Family&Friends 2B", false, list1));
-        this.lstSubject.add(new Comment("Kids - Family&Friends 2A", false, list));
-        this.lstSubject.add(new Comment("Kids - Canbridge Starter 6 weeks", false, list1));
-        this.lstSubject.add(new Comment("Kids - Family&Friends 1B", false, list));
-        this.lstSubject.add(new Comment("Kids - Family&Friends 1A", false, list1));
-        this.lstSubject.add(new Comment("Kids - Family and Friends Starter", false, list));
+        dialog.show(getFragmentManager(), "dialog");
+        String key = !user.isEmpty() ? user.toUpperCase() : "";
+        if (!key.isEmpty()){
+            this.mydb.child(getString(R.string.CHILD_TEACHER_COMMENT)).child(key).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    lstSubject.clear();
+                    for(DataSnapshot data : dataSnapshot.getChildren()){
+                        Comment item = data.getValue(Comment.class);
+                        item.setShowModal(false);
+                        lstSubject.add(item);
+                    }
+                    commentAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 }

@@ -57,6 +57,7 @@
     <string name="CHILD_ALLCLASS">AllClass</string>
     <string name="CHILD_LEAVESTUDENT">LeaveStudent</string>
     <string name="CHILD_LEARNING_RESULT">LearningResult</string>
+    <string name="CHILD_TEACHER_COMMENT">TeacherComment</string>
 
     <!--Navigation title-->
     <string name="title_activity_home">HomeActivity</string>
