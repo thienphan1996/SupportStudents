@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    android:layout_margin="3dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:padding="5dp"
+            android:id="@+id/tv_item_learning_result_parent_message"
+            android:background="@drawable/bg_message_parent"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/img_item_learning_result_parent_message"
+            android:src="@drawable/ctu_logo"
+            android:layout_margin="3dp"/>
+    </LinearLayout>
+</LinearLayout>

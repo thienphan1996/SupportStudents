@@ -1,23 +1,20 @@
-package com.project.thienphan.parent.View;
+package com.project.thienphan.parent.Fragment;
 
-import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.project.thienphan.parent.Adapter.LearningResultAdapter;
-import com.project.thienphan.parent.Adapter.PagerAdapter;
 import com.project.thienphan.supportstudent.R;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
 import com.project.thienphan.timesheet.Database.TimesheetDatabase;
@@ -26,7 +23,9 @@ import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
 
 import java.util.ArrayList;
 
-public class LearningResultActivity extends AppCompatActivity {
+public class ResultFragment extends Fragment {
+
+    View view;
 
     RecyclerView rcvLearningResult;
     ArrayList<LearningResult> lstLearningResult;
@@ -35,36 +34,23 @@ public class LearningResultActivity extends AppCompatActivity {
     TimesheetPreferences timesheetPreferences;
     DatabaseReference mydb;
     TimesheetProgressDialog dialog;
+    public ResultFragment() {
 
-    ViewPager pager;
-    TabLayout tabLayout;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learning_result);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //addControls();
-        addEvents();
     }
 
-    private void addEvents() {
-        pager = findViewById(R.id.vpg_learning_result);
-        tabLayout = findViewById(R.id.tab_learning_result);
-        FragmentManager manager = getSupportFragmentManager();
-        PagerAdapter adapter = new PagerAdapter(manager);
-        pager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(pager);
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_learning_result, container, false);
+        addControls();
+        return view;
     }
 
     private void addControls() {
-        //rcvLearningResult = findViewById(R.id.rcv_learning_result);
+        rcvLearningResult = view.findViewById(R.id.rcv_learning_result);
         lstLearningResult = new ArrayList<>();
         adapterLearningResult = new LearningResultAdapter(lstLearningResult);
-        timesheetPreferences = new TimesheetPreferences(this);
+        timesheetPreferences = new TimesheetPreferences(getContext());
         dialog = new TimesheetProgressDialog();
         mydb = TimesheetDatabase.getTimesheetDatabase();
         user = timesheetPreferences.get(getString(R.string.USER),String.class);
@@ -72,7 +58,7 @@ public class LearningResultActivity extends AppCompatActivity {
             user = user.substring(2,user.length());
         }
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvLearningResult.setLayoutManager(layoutManager);
         rcvLearningResult.setAdapter(adapterLearningResult);
@@ -80,7 +66,7 @@ public class LearningResultActivity extends AppCompatActivity {
     }
 
     private void GetData() {
-        this.dialog.show(getSupportFragmentManager(),"dialog");
+        this.dialog.show(getFragmentManager(),"dialog");
         this.mydb.child(getString(R.string.CHILD_LEARNING_RESULT)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,10 +85,5 @@ public class LearningResultActivity extends AppCompatActivity {
 
             }
         });
-    }
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
     }
 }
