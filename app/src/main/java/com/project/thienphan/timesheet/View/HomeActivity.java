@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void addControls() {
         txtListEmpty = findViewById(R.id.tv_ts_empty_list);
-        txtNotificationTotal = findViewById(R.id.tv_notification_total);
+        //txtNotificationTotal = findViewById(R.id.tv_notification_total);
         rcvTimesheet = findViewById(R.id.rcv_timesheet);
         timesheetPreferences = new TimesheetPreferences(getApplicationContext());
         dialog = new TimesheetProgressDialog();
@@ -204,7 +204,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        GetNotificationTotal();
+        //GetNotificationTotal();
     }
 
     private void GetNotificationTotal() {

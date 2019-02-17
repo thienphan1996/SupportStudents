@@ -10,9 +10,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <receiver android:name="com.project.thienphan.timesheet.Notification.TimesheetReceiver" />
 
@@ -98,7 +98,11 @@
         <activity
             android:name="com.project.thienphan.parent.View.LearningResultActivity"
             android:label="Kết quả học tập"
-            android:parentActivityName="com.project.thienphan.parent.ParentActivity"></activity>
+            android:parentActivityName="com.project.thienphan.parent.ParentActivity" />
+        <activity
+            android:name="com.project.thienphan.timesheet.View.NotificationDetails"
+            android:label="Chi tiết thông báo"
+            android:parentActivityName="com.project.thienphan.timesheet.View.NotifictionActivity"></activity>
     </application>
 
 </manifest>

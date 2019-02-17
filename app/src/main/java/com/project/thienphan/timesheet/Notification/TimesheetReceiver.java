@@ -75,7 +75,7 @@ public class TimesheetReceiver extends BroadcastReceiver {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setTicker(title)
                 .setSmallIcon(R.drawable.education_icon)
-                .setLargeIcon(BitmapFactory.decodeResource( context.getResources(), R.mipmap.ic_launcher));
+                .setLargeIcon(BitmapFactory.decodeResource( context.getResources(), R.drawable.gv_logo));
         mBuilder.setChannelId(channelId);
         mBuilder.setContentIntent(notificIntent);
         mBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);

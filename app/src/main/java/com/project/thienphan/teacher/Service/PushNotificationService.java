@@ -1,14 +1,27 @@
 package com.project.thienphan.teacher.Service;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.project.thienphan.parent.Model.Comment;
+import com.project.thienphan.parent.Model.NotifyMessage;
 import com.project.thienphan.supportstudent.R;
+import com.project.thienphan.teacher.View.TeacherActivity;
 import com.project.thienphan.timesheet.Common.TimesheetPreferences;
+import com.project.thienphan.timesheet.Database.TimesheetDatabase;
 import com.project.thienphan.timesheet.Model.NotificationItem;
 import com.project.thienphan.timesheet.Support.InfoDialog;
 import com.project.thienphan.timesheet.Support.TimesheetProgressDialog;
@@ -37,11 +50,14 @@ public class PushNotificationService {
     FragmentManager fmManager;
     TimesheetPreferences timesheetPreferences;
     Activity activity;
+    DatabaseReference mydb;
+    boolean hasSave = false;
 
     public PushNotificationService(FragmentManager fmManager,Activity activity) {
         this.fmManager = fmManager;
         dialog = new TimesheetProgressDialog();
         this.activity = activity;
+        mydb = TimesheetDatabase.getTimesheetDatabase();
         timesheetPreferences = new TimesheetPreferences(activity.getApplicationContext());
     }
 
@@ -69,7 +85,7 @@ public class PushNotificationService {
                     int responeCode = result;
                     if (responeCode == 200){
                         AddNotificationToSharePreferences(subject,subjectName +" - "+ title,message);
-                        InfoDialog.ShowInfoDiaLog(activity,"Thông báo","Gửi thông báo thành công.");
+                        SaveNotificationMessage(subject, message);
                     }
                     else {
                         InfoDialog.ShowInfoDiaLog(activity,"Lỗi","Gửi thông báo thất bại.");
@@ -82,11 +98,78 @@ public class PushNotificationService {
         }.execute();
     }
 
+    private void SaveNotificationMessage(final String subject, final String message){
+        mydb.child(activity.getString(R.string.CHILD_TEACHER_COMMENT)).child("B1411358").child(subject.toUpperCase()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Comment comment = dataSnapshot.getValue(Comment.class);
+                if (comment != null){
+                    ArrayList<NotifyMessage> messages = comment.getMessages();
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
+                    if (messages != null){
+                        Long id = Long.valueOf(-1);
+                        for (NotifyMessage item : messages){
+                            if (!item.isParent())
+                                id = item.getId();
+                        }
+                        if (id >= 0 && !hasSave){
+                            NotifyMessage notifyMessage = new NotifyMessage();
+                            notifyMessage.setMessage(message);
+                            notifyMessage.setId(id+1);
+                            notifyMessage.setParent(false);
+                            notifyMessage.setHasReply(false);
+                            notifyMessage.setCreateAt(sdfDate.format(calendar.getTime()) + " " + sdfTime.format(calendar.getTime()));
+                            notifyMessage.setCreateAtMilisecons(calendar.getTimeInMillis());
+                            messages.add(notifyMessage);
+                            hasSave = true;
+                            SaveNewMessages(subject, messages);
+                        }
+                    }
+                    else {
+                        messages = new ArrayList<>();
+                        NotifyMessage notifyMessage = new NotifyMessage();
+                        notifyMessage.setMessage(message);
+                        notifyMessage.setId(Long.valueOf(0));
+                        notifyMessage.setParent(false);
+                        notifyMessage.setHasReply(false);
+                        messages.add(notifyMessage);
+                        hasSave = true;
+                        SaveNewMessages(subject, messages);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void SaveNewMessages(String subject, ArrayList<NotifyMessage> messages) {
+        mydb.child(activity.getString(R.string.CHILD_TEACHER_COMMENT)).child("B1411358").child(subject.toUpperCase()).child("messages").setValue(messages, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                InfoDialog.ShowComfirmDiaLog(activity, "Thông báo", "Gửi thông báo thành công.", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        Intent intent = new Intent(activity, TeacherActivity.class);
+                        activity.startActivity(intent);
+                        activity.finish();
+                    }
+                });
+            }
+        });
+    }
+
     private void AddNotificationToSharePreferences(String subjectCode, String title, String message) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
-        NotificationItem item = new NotificationItem(subjectCode,title,message,sdfDate.format(calendar.getTime()) + "  " + sdfTime.format(calendar.getTime()),false);
+        NotificationItem item = new NotificationItem(subjectCode,title,message,sdfDate.format(calendar.getTime()) + "  " + sdfTime.format(calendar.getTime()),false, Long.valueOf(0));
         Gson gson = new Gson();
         String notifications = timesheetPreferences.get("NOTIFICATION_TEACHER",String.class);
         if (notifications.isEmpty()){

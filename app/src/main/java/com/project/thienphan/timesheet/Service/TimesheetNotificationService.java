@@ -43,7 +43,7 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
             String title = data.get("title");
             String message = data.get("message");
             if (title != null && message != null){
-                Calendar calendar = Calendar.getInstance();
+                /*Calendar calendar = Calendar.getInstance();
                 TimesheetPreferences timesheetPreferences = new TimesheetPreferences(getApplicationContext());
                 int notificationTotal = timesheetPreferences.get(getString(R.string.NOTIFICATION_TOTAL),Integer.class);
                 if (notificationTotal >= 0){
@@ -68,7 +68,7 @@ public class TimesheetNotificationService extends FirebaseMessagingService {
                         String listToString = gson.toJson(notificationList);
                         timesheetPreferences.put(getString(R.string.NOTIFICATION_STUDENT),listToString);
                     }
-                }
+                }*/
                 sendNotification(title,message, remoteMessage.getData().toString());
             }
         }

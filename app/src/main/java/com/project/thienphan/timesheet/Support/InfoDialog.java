@@ -27,6 +27,21 @@ public class InfoDialog {
         dialogDisplay.show();
     }
 
+    public static void ShowComfirmDiaLog(Activity activity, String title, String message, final DialogInterface.OnClickListener onClickListener){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
+        dialog.setTitle(title);
+        dialog.setMessage(message);
+        dialog.setCancelable(true);
+        dialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                onClickListener.onClick(dialogInterface, i);
+            }
+        });
+        Dialog dialogDisplay = dialog.create();
+        dialogDisplay.show();
+    }
+
     public static void ShowProgressDialog(Activity activity, boolean isShow){
         Dialog dialog = new Dialog(activity);
         //dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

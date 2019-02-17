@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void getClassFromSubject(Subject subject) {
-        mydb.child(getString(R.string.CHILD_ALLCLASS)).child(subject.getSubCode()).child(teacherID).addValueEventListener(new ValueEventListener() {
+        mydb.child(getString(R.string.CHILD_ALLCLASS)).child(subject.getSubCode().toUpperCase()).child(teacherID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot != null){

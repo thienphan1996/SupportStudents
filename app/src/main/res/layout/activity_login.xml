@@ -17,19 +17,20 @@
             android:padding="40dp"
             android:gravity="center"
             android:background="@drawable/login_background">
+
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/education_icon"/>
+                android:layout_height="123dp"
+                android:src="@drawable/gv_logo_white" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_ts_ctu_name"
-                android:text="Can Tho University"
+                android:text="Vì mục tiêu chất lượng, \nChúng tôi tự tin bước vào tương lai!"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"/>
+                android:textSize="16dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="13dp"
                 android:paddingTop="13dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:maxLength="45"
                 android:background="@drawable/text_input"
                 android:drawableLeft="@drawable/ic_person_white_18dp"

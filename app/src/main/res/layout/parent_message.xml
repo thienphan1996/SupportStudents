@@ -19,12 +19,23 @@
             android:id="@+id/tv_item_learning_result_parent_message"
             android:background="@drawable/bg_message_parent"
             android:textColor="@android:color/white"/>
-
-        <ImageView
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/img_item_learning_result_parent_message"
-            android:src="@drawable/ctu_logo"
-            android:layout_margin="3dp"/>
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:elevation="12dp"
+            android:id="@+id/view2"
+            card_view:cardCornerRadius="10dp"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:id="@+id/img_item_learning_result_parent_message"
+                android:src="@drawable/teacher_avatar"/>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </LinearLayout>

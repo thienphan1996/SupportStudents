@@ -13,14 +13,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ctu_logo"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:background="@drawable/gv_logo"
+        android:orientation="vertical"></LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Can Tho University"
-        android:textColor="#0288D1"
-        android:textSize="30dp"/>
+        android:text="Anh ngữ Gia Việt"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25dp"/>
 </LinearLayout>

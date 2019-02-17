@@ -203,13 +203,11 @@ public class ClassItem {
         if (this == o) return true;
         if (!(o instanceof ClassItem)) return false;
         ClassItem classItem = (ClassItem) o;
-        return Objects.equals(getSubjectName(), classItem.getSubjectName()) ||
-                Objects.equals(getSubjectTeacher(), classItem.getSubjectTeacher());
+        return Objects.equals(getSubjectName(), classItem.getSubjectName());
     }
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getSubjectCode(), getDayofWeek(), getListStudent(), getStudentNumber(), getSubjectGroup(), getSubjectLocation(), getSubjectName(), getSubjectTeacher(), getSubjectTime(), getTeacherCode(), getStudents());
     }
 }

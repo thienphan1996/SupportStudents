@@ -5,12 +5,16 @@ public class NotifyMessage {
     private boolean parent;
     private boolean hasReply;
     private Long id;
+    private Long createAtMilisecons;
+    private String createAt;
 
-    public NotifyMessage(String message, boolean isParent, boolean hasReply, Long id) {
+    public NotifyMessage(String message, boolean parent, boolean hasReply, Long id, Long createAtMilisecons, String createAt) {
         this.message = message;
-        this.parent = isParent;
+        this.parent = parent;
         this.hasReply = hasReply;
         this.id = id;
+        this.createAtMilisecons = createAtMilisecons;
+        this.createAt = createAt;
     }
 
     public NotifyMessage() {
@@ -46,5 +50,21 @@ public class NotifyMessage {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getCreateAtMilisecons() {
+        return createAtMilisecons;
+    }
+
+    public void setCreateAtMilisecons(Long createAtMilisecons) {
+        this.createAtMilisecons = createAtMilisecons;
+    }
+
+    public String getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
     }
 }

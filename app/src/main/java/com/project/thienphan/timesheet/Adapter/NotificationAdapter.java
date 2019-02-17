@@ -38,23 +38,23 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final NotificationViewHolder notificationViewHolder, int i) {
-        notificationViewHolder.tvSubject.setText(Data.get(i).getSubject());
-        notificationViewHolder.tvTitle.setText(Data.get(i).getTitle());
-        notificationViewHolder.tvMessage.setText(Data.get(i).getMessage());
-        notificationViewHolder.tvTime.setText(Data.get(i).getTime());
-        if (!Data.get(i).isSeen()){
-            notificationViewHolder.lnNotification.setBackgroundColor(resources.getColor(R.color.bg_gray_light));
+        NotificationItem item = Data.get(i);
+        String message = item.getMessage();
+        if (message.length() > 100){
+            String shortMessage = item.getMessage().substring(0, 100);
+            message = shortMessage.substring(0, shortMessage.lastIndexOf(' ')) + " ...";
         }
-        else {
-            notificationViewHolder.lnNotification.setBackgroundColor(resources.getColor(android.R.color.white));
-        }
+        notificationViewHolder.tvSubject.setText(item.getSubject());
+        notificationViewHolder.tvTitle.setText(item.getTitle());
+        notificationViewHolder.tvMessage.setText(message);
+        notificationViewHolder.tvTime.setText(item.getTime());
         notificationViewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClick.onItemClick(null,view,notificationViewHolder.getAdapterPosition(),0);
             }
         });
-        setImageFromTitle(Data.get(i).getTitle(),notificationViewHolder.imgNotification);
+        //setImageFromTitle(Data.get(i).getTitle(),notificationViewHolder.imgNotification);
     }
 
     private void setImageFromTitle(String title,ImageView imageView) {
