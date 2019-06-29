@@ -1,0 +1,1305 @@
+{
+  "Accounts" : {
+    "B1411358" : {
+      "Account" : "b1411358",
+      "Password" : "1"
+    },
+    "PHB1411358" : {
+      "Account" : "phb1411358",
+      "Password" : "1"
+    },
+    "TC123" : {
+      "Account" : "tc123",
+      "Password" : "1"
+    }
+  },
+  "AllClass" : {
+    "CT054H" : {
+      "TC123" : {
+        "DayofWeek" : 2,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "206",
+        "subjectName" : "Family & Friends Starters B",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "678",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "DayofWeek" : 4,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "103/B1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Hoàng Văn Tiến",
+        "subjectTime" : "345"
+      },
+      "TC125" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "204/C1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "678"
+      },
+      "TC126" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 4,
+        "subjectLocation" : "201/B1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Trần Văn Vũ",
+        "subjectTime" : "123"
+      }
+    },
+    "CT054H2" : {
+      "TC123" : {
+        "DayofWeek" : 6,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "302",
+        "subjectName" : "Family & Friends Starters B",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "123",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "DayofWeek" : 4,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "103/B1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Hoàng Văn Tiến",
+        "subjectTime" : "345"
+      },
+      "TC125" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "204/C1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "678"
+      },
+      "TC126" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 4,
+        "subjectLocation" : "201/B1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Trần Văn Vũ",
+        "subjectTime" : "123"
+      }
+    },
+    "CT102H" : {
+      "TC123" : {
+        "DayofWeek" : 2,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "102",
+        "subjectName" : "Kids - Family&Friends 2B",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "123",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "DayofWeek" : 4,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "103/B1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Hoàng Văn Tiến",
+        "subjectTime" : "345"
+      },
+      "TC125" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "204/C1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "678"
+      },
+      "TC126" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 4,
+        "subjectLocation" : "201/B1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Trần Văn Vũ",
+        "subjectTime" : "123"
+      }
+    },
+    "CT102H2" : {
+      "TC123" : {
+        "DayofWeek" : 3,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "202",
+        "subjectName" : "Kids - Family&Friends 2B",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "678",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "DayofWeek" : 4,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "103/B1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Hoàng Văn Tiến",
+        "subjectTime" : "345"
+      },
+      "TC125" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "204/C1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "678"
+      },
+      "TC126" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 4,
+        "subjectLocation" : "201/B1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Trần Văn Vũ",
+        "subjectTime" : "123"
+      }
+    },
+    "CT103H" : {
+      "TC123" : {
+        "DayofWeek" : 7,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT103H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "103",
+        "subjectName" : "Kids - Family&Friends 1A",
+        "subjectTeacher" : "Trần Thị Thuý Nga",
+        "subjectTime" : "345",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "dayofWeek" : 4,
+        "subjectCode" : "CT103H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "103/A3",
+        "subjectName" : "Nền tảng công nghệ thông tin",
+        "subjectTeacher" : "Huỳnh Văn Linh",
+        "subjectTime" : "123"
+      },
+      "TC125" : {
+        "dayofWeek" : 7,
+        "subjectCode" : "CT103H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "201/C3",
+        "subjectName" : "Nền tảng công nghệ thông tin",
+        "subjectTeacher" : "Ngô Tuấn Anh",
+        "subjectTime" : "678"
+      },
+      "TC126" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT103H",
+        "subjectGroup" : 4,
+        "subjectLocation" : "304/C1",
+        "subjectName" : "Nền tảng công nghệ thông tin",
+        "subjectTeacher" : "Phạm Văn Đô",
+        "subjectTime" : "123"
+      }
+    },
+    "CT108H" : {
+      "TC123" : {
+        "DayofWeek" : 5,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "301",
+        "subjectName" : "Kids - Cambridge Starters - 6 Weeks",
+        "subjectTeacher" : "Lê Minh Dương",
+        "subjectTime" : "123",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "303/C1",
+        "subjectName" : "Lập trình hướng đối tượng",
+        "subjectTeacher" : "Lê Thị Trúc Mai",
+        "subjectTime" : "678"
+      },
+      "TC125" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "104/B1",
+        "subjectName" : "Lập trình hướng đối tượng",
+        "subjectTeacher" : "Huỳnh Minh Tâm",
+        "subjectTime" : "123"
+      }
+    },
+    "CT108H2" : {
+      "TC123" : {
+        "DayofWeek" : 7,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "205",
+        "subjectName" : "Kids - Cambridge Starters - 6 Weeks",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "678",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "303/C1",
+        "subjectName" : "Lập trình hướng đối tượng",
+        "subjectTeacher" : "Lê Thị Trúc Mai",
+        "subjectTime" : "678"
+      },
+      "TC125" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "104/B1",
+        "subjectName" : "Lập trình hướng đối tượng",
+        "subjectTeacher" : "Huỳnh Minh Tâm",
+        "subjectTime" : "123"
+      }
+    },
+    "CT112H" : {
+      "TC123" : {
+        "DayofWeek" : 4,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT112H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "207",
+        "subjectName" : "Kids - Family&Friends 2A",
+        "subjectTeacher" : "Lê Minh Dương",
+        "subjectTime" : "123",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT112H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "303/C1",
+        "subjectName" : "Phân tích thiết kế hệ thống thông tin",
+        "subjectTeacher" : "Lê Thị Trúc Mai",
+        "subjectTime" : "678"
+      },
+      "TC125" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "CT112H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "104/B1",
+        "subjectName" : "Phân tích thiết kế hệ thống thông tin",
+        "subjectTeacher" : "Huỳnh Minh Tâm",
+        "subjectTime" : "123"
+      }
+    },
+    "CT173" : {
+      "TC123" : {
+        "DayofWeek" : 6,
+        "studentNumber" : 45,
+        "students" : "B1411358,B1411359,B1411360,B1411361,B1411362,B1411363,B1411364,B1411365,B1411366,B1411367,B1411368,B1411369,B1411370,B1411371,B1411372,B1411373,B1411374,B1411375,B1411376,B1411377,B1411378,B1411379,B1411380,B1411381,B1411382,B1411383,B1411384,B1411385,B1411386,B1411387,B1411388,B1411389,B1411390,B1411391,B1411392,B1411393,B1411394,B1411395,B1411396,B1411397,B1411398,B1411399",
+        "subjectCode" : "CT173",
+        "subjectGroup" : 1,
+        "subjectLocation" : "202/C1",
+        "subjectName" : "Kiến trúc máy tính",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "678",
+        "teacherCode" : "TC123"
+      },
+      "TC124" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT173",
+        "subjectGroup" : 2,
+        "subjectLocation" : "303/C1",
+        "subjectName" : "Kiến trúc máy tính",
+        "subjectTeacher" : "Lê Thị Trúc Mai",
+        "subjectTime" : "678"
+      },
+      "TC125" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "CT173",
+        "subjectGroup" : 3,
+        "subjectLocation" : "104/B1",
+        "subjectName" : "Kiến trúc máy tính",
+        "subjectTeacher" : "Huỳnh Minh Tâm",
+        "subjectTime" : "123"
+      }
+    },
+    "CT175" : {
+      "-LIWPZy0E_lp1JfrVeFQ" : {
+        "DayofWeek" : 6,
+        "subjectCode" : "CT175",
+        "subjectGroup" : 1,
+        "subjectLocation" : "103/B1",
+        "subjectName" : "Lý thuyết đồ thị",
+        "subjectTeacher" : "Phạm Hoàng Long",
+        "subjectTime" : "123"
+      },
+      "-LJ33E9c-oKbCCzap0QK" : {
+        "dayofWeek" : 7,
+        "subjectCode" : "CT175",
+        "subjectGroup" : 2,
+        "subjectLocation" : "201/B1",
+        "subjectName" : "Lý thuyết đồ thị",
+        "subjectTeacher" : "Nguyễn Văn Khoa",
+        "subjectTime" : "678"
+      },
+      "-LJ33Eeg387vxyTgg_MK" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT175",
+        "subjectGroup" : 3,
+        "subjectLocation" : "302/C1",
+        "subjectName" : "Lý thuyết đồ thị",
+        "subjectTeacher" : "Trần Tiến Minh",
+        "subjectTime" : "345"
+      },
+      "-LJ33EnOufSqBZSQ9iUs" : {
+        "dayofWeek" : 4,
+        "subjectCode" : "CT175",
+        "subjectGroup" : 4,
+        "subjectLocation" : "103/B1",
+        "subjectName" : "Lý thuyết đồ thị",
+        "subjectTeacher" : "Ngô Hồng Hạnh",
+        "subjectTime" : "678"
+      }
+    },
+    "CT214H" : {
+      "-LIWP_S9beecUELahDGx" : {
+        "DayofWeek" : 7,
+        "subjectCode" : "CT214H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "205/C1",
+        "subjectName" : "Lập trình Web",
+        "subjectTeacher" : "Hồ Thị Huỳnh Như",
+        "subjectTime" : "123"
+      },
+      "-LJ33GU-nRBen6VFWMrJ" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT214H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "301/B1",
+        "subjectName" : "Lập trình Web",
+        "subjectTeacher" : "Nguyễn Hoàng Sơn",
+        "subjectTime" : "678"
+      },
+      "-LJ33Gcv-EFmnsIzapvd" : {
+        "dayofWeek" : 6,
+        "subjectCode" : "CT214H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "102/B1",
+        "subjectName" : "Lập trình Web",
+        "subjectTeacher" : "Hà Thanh Nguyên",
+        "subjectTime" : "123"
+      },
+      "-LJ33GlJojrlDx6PaitT" : {
+        "dayofWeek" : 4,
+        "subjectCode" : "CT214H",
+        "subjectGroup" : 4,
+        "subjectLocation" : "203/A3",
+        "subjectName" : "Lập trình Web",
+        "subjectTeacher" : "Trần Văn Tâm",
+        "subjectTime" : "345"
+      }
+    },
+    "CT272" : {
+      "-LIWPakqO_adezHxZxdB" : {
+        "DayofWeek" : 4,
+        "subjectCode" : "CT272",
+        "subjectGroup" : 1,
+        "subjectLocation" : "102/B1",
+        "subjectName" : "Thương mại điện tử",
+        "subjectTeacher" : "Nguyễn Hoàng Sang",
+        "subjectTime" : "678"
+      },
+      "-LJ33NFRlIDlR6UweJE6" : {
+        "dayofWeek" : 7,
+        "subjectCode" : "CT272",
+        "subjectGroup" : 2,
+        "subjectLocation" : "202/B1",
+        "subjectName" : "Thương mại điện tử",
+        "subjectTeacher" : "Trần Văn Thanh",
+        "subjectTime" : "123"
+      },
+      "-LJ33NMhnCP77X9O7da1" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT272",
+        "subjectGroup" : 2,
+        "subjectLocation" : "204/B1",
+        "subjectName" : "Thương mại điện tử",
+        "subjectTeacher" : "Ngô Thanh Tuấn",
+        "subjectTime" : "123"
+      },
+      "-LJ33NVHnXbOyCbW9oBe" : {
+        "dayofWeek" : 6,
+        "subjectCode" : "CT272",
+        "subjectGroup" : 3,
+        "subjectLocation" : "205/B1",
+        "subjectName" : "Thương mại điện tử",
+        "subjectTeacher" : "Trịnh Thị Thuý Nhi",
+        "subjectTime" : "345"
+      }
+    },
+    "TN001" : {
+      "-LIWP_qRct1AUz7tVUBO" : {
+        "DayofWeek" : 2,
+        "subjectCode" : "TN001",
+        "subjectGroup" : 1,
+        "subjectLocation" : "201/KH",
+        "subjectName" : "Vi tích phân A1",
+        "subjectTeacher" : "Nguyễn Văn Tình",
+        "subjectTime" : "678"
+      },
+      "-LJ33HkFhohYzKoVBsHP" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "TN001",
+        "subjectGroup" : 2,
+        "subjectLocation" : "201/KH",
+        "subjectName" : "Vi tích phân A1",
+        "subjectTeacher" : "Trịnh Văn Toàn",
+        "subjectTime" : "123"
+      },
+      "-LJ33HopWGgHuA2HY2Lo" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "TN001",
+        "subjectGroup" : 3,
+        "subjectLocation" : "201/KH",
+        "subjectName" : "Vi tích phân A1",
+        "subjectTeacher" : "Ngô Hoàng Linh",
+        "subjectTime" : "345"
+      }
+    }
+  },
+  "LearningResult" : [ null, {
+    "MSSV" : "B1411358",
+    "killNumberFive" : 0,
+    "killNumberFour" : 21.5,
+    "killNumberOne" : 22,
+    "killNumberThree" : 23,
+    "killNumberTwo" : 24.5,
+    "subjectCode" : "CT102H",
+    "subjectName" : "Kids - Family&Friends 2B"
+  }, {
+    "MSSV" : "B1411358",
+    "killNumberFive" : 0,
+    "killNumberFour" : 21,
+    "killNumberOne" : 22.5,
+    "killNumberThree" : 19,
+    "killNumberTwo" : 20.5,
+    "subjectCode" : "CT112H",
+    "subjectName" : "Kids - Family&Friends 2A"
+  }, {
+    "MSSV" : "B1411358",
+    "killNumberFive" : 20,
+    "killNumberFour" : 21.5,
+    "killNumberOne" : 23,
+    "killNumberThree" : 24.5,
+    "killNumberTwo" : 20,
+    "subjectCode" : "CT108H",
+    "subjectName" : "Kids - Cambridge Starters - 6 Weeks"
+  }, {
+    "MSSV" : "B1411358",
+    "killNumberFive" : 10,
+    "killNumberFour" : 18,
+    "killNumberOne" : 20,
+    "killNumberThree" : 21.5,
+    "killNumberTwo" : 20.5,
+    "subjectCode" : "CT172",
+    "subjectName" : "Kids - Family&Friends 1B"
+  }, {
+    "MSSV" : "B1411358",
+    "killNumberFive" : 0,
+    "killNumberFour" : 20,
+    "killNumberOne" : 21.5,
+    "killNumberThree" : 19.5,
+    "killNumberTwo" : 21,
+    "subjectCode" : "CT103H",
+    "subjectName" : "Kids - Family&Friends 1A"
+  } ],
+  "LeaveStudent" : {
+    "TC123" : {
+      "CT054H" : {
+        "04-11-2018" : "[B1411359, B1411362, B1411363, B1411365]",
+        "09-12-2018" : "[B1411359]",
+        "14-10-2018" : "[B1411360, B1411363, B1411366]",
+        "15-10-2018" : "[B1411360, B1411363, B1411359, B1411362, B1411365, B1411364]",
+        "17-10-2018" : "[B1411360, B1411363, B1411365, B1411362, B1411359, B1411369, B1411358]",
+        "18-10-2018" : "[B1411360, B1411360]",
+        "19-01-2019" : "[B1411358]",
+        "20-10-2018" : "[B1411366, B1411366, B1411363, B1411360, B1411359, B1411359, B1411362, B1411363, B1411366, B1411365]",
+        "21-10-2018" : "[B1411359, B1411362]",
+        "27-01-2019" : "[B1411359, B1411360]",
+        "27-10-2018" : "[B1411363, B1411366, B1411365, B1411362]",
+        "28-10-2018" : "[B1411360, B1411363, B1411366, B1411365, B1411362, B1411359]"
+      },
+      "CT102H" : {
+        "09-12-2018" : "[B1411358, B1411362, B1411359]",
+        "20-01-2019" : "[B1411362, B1411365, B1411364]",
+        "29-06-2019" : "[B1411359, B1411362, B1411362, B1411365, B1411363, B1411366, B1411369, B1411368, B1411365]"
+      },
+      "CT103H" : {
+        "28-10-2018" : "[B1411380, B1411381, B1411384, B1411383]"
+      },
+      "CT108H" : {
+        "09-12-2018" : "[B1411359, B1411362]",
+        "10-12-2018" : "[B1411359, B1411362]"
+      },
+      "CT112H" : {
+        "04-11-2018" : "[B1411359, B1411362]",
+        "11-11-2018" : "[B1411359, B1411362, B1411365, B1411368, B1411371]"
+      }
+    }
+  },
+  "StudentInfomation" : {
+    "B1411358" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Phan Hữu Thiện",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411358",
+      "NgaySinh" : "00/00/1996"
+    },
+    "B1411359" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Văn Lâm",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411359",
+      "NgaySinh" : "10/05/1996"
+    },
+    "B1411360" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Trần Thị Hồng Nga",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411360",
+      "NgaySinh" : "11/02/1996"
+    },
+    "B1411361" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Thuý Huỳnh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411361",
+      "NgaySinh" : "10/08/1995"
+    },
+    "B1411362" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Huỳnh Văn Tiến",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411362",
+      "NgaySinh" : "10/10/1996"
+    },
+    "B1411363" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Trần Thị Tuyết Anh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B3",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411363",
+      "NgaySinh" : "15/11/1996"
+    },
+    "B1411364" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Phạm Quốc Thiên",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411364",
+      "NgaySinh" : "15/02/1996"
+    },
+    "B1411365" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Thành Quang",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411365",
+      "NgaySinh" : "12/09/1994"
+    },
+    "B1411366" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Thị Thuỳ Trang",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411366",
+      "NgaySinh" : "02/11/1996"
+    },
+    "B1411367" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Thị Hồng Luyến",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411367",
+      "NgaySinh" : "04/12/1996"
+    },
+    "B1411368" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Hoàng Linh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411368",
+      "NgaySinh" : "25/12/1996"
+    },
+    "B1411369" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Tuấn Anh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411369",
+      "NgaySinh" : "24/09/1996"
+    },
+    "B1411370" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Thị Tuyết Anh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411370",
+      "NgaySinh" : "02/10/1996"
+    },
+    "B1411371" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Hoàng Long",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411371",
+      "NgaySinh" : "08/09/1996"
+    },
+    "B1411372" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Thành Nam",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411372",
+      "NgaySinh" : "10/05/1995"
+    },
+    "B1411373" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Phạm Văn Tâm",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411373",
+      "NgaySinh" : "10/09/1996"
+    },
+    "B1411374" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Mộng Giao",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411374",
+      "NgaySinh" : "15/04/1995"
+    },
+    "B1411375" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Huỳnh Trọng Nghĩa",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411375",
+      "NgaySinh" : "07/09/1996"
+    },
+    "B1411376" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Huỳnh Văn Tính",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411376",
+      "NgaySinh" : "14/08/1996"
+    },
+    "B1411377" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Văn Mẫn",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411377",
+      "NgaySinh" : "10/03/1996"
+    },
+    "B1411378" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Ngọc Trân",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411378",
+      "NgaySinh" : "03/11/1996"
+    },
+    "B1411379" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Trần Quốc Huy",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411379",
+      "NgaySinh" : "20/08/1996"
+    },
+    "B1411380" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Tiến Minh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411380",
+      "NgaySinh" : "10/05/1996"
+    },
+    "B1411381" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Trần Thị Bích Châm",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411381",
+      "NgaySinh" : "11/02/1996"
+    },
+    "B1411382" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Hoàng Lợi",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411382",
+      "NgaySinh" : "10/08/1995"
+    },
+    "B1411383" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Huỳnh Thị Minh Anh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411383",
+      "NgaySinh" : "10/10/1996"
+    },
+    "B1411384" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Ngô Thị Thuỳ Trang",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411384",
+      "NgaySinh" : "15/11/1996"
+    },
+    "B1411385" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Phạm Minh Quang",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411385",
+      "NgaySinh" : "15/02/1996"
+    },
+    "B1411386" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Ngọc Bích Tuyền",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411386",
+      "NgaySinh" : "12/09/1994"
+    },
+    "B1411387" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Thị Thuý Nga",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411387",
+      "NgaySinh" : "02/11/1996"
+    },
+    "B1411388" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Hoàng Tính",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411388",
+      "NgaySinh" : "04/12/1996"
+    },
+    "B1411389" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Quốc Long",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411389",
+      "NgaySinh" : "25/12/1996"
+    },
+    "B1411390" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Lê Trần Tiến",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411390",
+      "NgaySinh" : "24/09/1996"
+    },
+    "B1411391" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Thị Ái Ngọc",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411391",
+      "NgaySinh" : "02/10/1996"
+    },
+    "B1411392" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Văn Chung",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411392",
+      "NgaySinh" : "08/09/1996"
+    },
+    "B1411393" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Ngô Hoàng Vinh",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411393",
+      "NgaySinh" : "10/05/1995"
+    },
+    "B1411394" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Phạm Văn Vũ",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Truyền thông và mạng máy tính",
+      "MaSV" : "B1411394",
+      "NgaySinh" : "10/09/1996"
+    },
+    "B1411395" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Trịnh Văn Khoa",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411395",
+      "NgaySinh" : "15/04/1995"
+    },
+    "B1411396" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Đỗ Trúc Ly",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B1",
+      "MaNganh" : "95 - Kỹ thuật phần mềm",
+      "MaSV" : "B1411396",
+      "NgaySinh" : "07/09/1996"
+    },
+    "B1411397" : {
+      "GioiTinh" : "Nam",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Huỳnh Trọng Hoàng",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495B2",
+      "MaNganh" : "95 - Công nghệ thông tin",
+      "MaSV" : "B1411397",
+      "NgaySinh" : "14/08/1996"
+    },
+    "B1411398" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Phạm Thị Hồng Thư",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411398",
+      "NgaySinh" : "10/03/1996"
+    },
+    "B1411399" : {
+      "GioiTinh" : "Nữ",
+      "HeDaoTao" : "Chính qui",
+      "HoTen" : "Nguyễn Trần Bảo Ngọc",
+      "KhoaHoc" : 40,
+      "LopHoc" : "DI1495A1",
+      "MaNganh" : "95 - Hệ thống thông tin",
+      "MaSV" : "B1411399",
+      "NgaySinh" : "03/11/1996"
+    }
+  },
+  "Subjects" : {
+    "CT054H" : {
+      "BoMon" : "Công nghệ phần mềm",
+      "Khoa" : "Công nghệ thông tin và truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 60 tiết thực hành, ...tiết thực tế, ...tiết đồ án, ...tiết niên luận, ...tiết tiểu luận tốt nghiệp, ...tiết luận văn tốt nghiệp, ...tiết...và 120 tiết tự học.",
+      "SubjectName" : "Lập trình căn bản",
+      "TinChi" : 4
+    },
+    "CT102H" : {
+      "BoMon" : "Công nghệ phần mềm",
+      "Khoa" : "Công nghệ thông tin và truyền thông",
+      "SoTiet" : "45 tiết lý thuyết, 30 tiết thực hành",
+      "SubjectName" : "Cấu trúc dữ liệu",
+      "TinChi" : 4
+    },
+    "CT103H" : {
+      "BoMon" : "Công nghệ thông tin",
+      "Khoa" : "Khoa Công nghệ Thông tin và Truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 30 tiết thực hành",
+      "SubjectName" : "Nền tảng công nghệ thông tin",
+      "TinChi" : 3
+    },
+    "CT108H" : {
+      "BoMon" : "Mạng máy tính và Truyền thông",
+      "Khoa" : "Công nghệ thông tin và truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 30 tiết thực hành và đồ án, 80tiết tự học",
+      "SubjectName" : "Lập trình Hướng đối tượng",
+      "TinChi" : 3
+    },
+    "CT112H" : {
+      "BoMon" : "Hệ thống thông tin",
+      "Khoa" : "Khoa Công nghệ Thông tin và Truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 30 tiết đồ án",
+      "SubjectName" : "Phân tích thiết kế hệ thống thông tin",
+      "TinChi" : 3
+    },
+    "CT173" : {
+      "BoMon" : "Mạng máy tính & Truyền thông",
+      "Khoa" : "Khoa Công nghệ Thông tin và Truyền thông",
+      "SoTiet" : "45 tiết lý thuyết",
+      "SubjectName" : "Kiến trúc máy tính",
+      "TinChi" : 3
+    },
+    "CT175" : {
+      "BoMon" : "Khoa học máy tính",
+      "Khoa" : "Công nghệ thông tin và truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 30 tiết thực hành, và 60 tiết tự học",
+      "SubjectName" : "Lý Thuyết Đồ Thị",
+      "TinChi" : 3
+    },
+    "CT214H" : {
+      "BoMon" : "Mạng máy tính và Truyền thông",
+      "Khoa" : "Công nghệ thông tin và truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 30 tiết thực hành, và 60 tiết tự học",
+      "SubjectName" : "Lập trình Web",
+      "TinChi" : 3
+    },
+    "CT272" : {
+      "BoMon" : "Hệ thống thông tin",
+      "Khoa" : "Khoa Công nghệ Thông tin và Truyền thông",
+      "SoTiet" : "30 tiết lý thuyết, 30 tiết thực hành",
+      "SubjectName" : "Thương mại điện tử - CNTT",
+      "TinChi" : 3
+    },
+    "TN001" : {
+      "BoMon" : "Toán",
+      "Khoa" : "Khoa  KHTN",
+      "SoTiet" : "tiết lý thuyết  45",
+      "SubjectName" : "Vi Tích Phân A1",
+      "TinChi" : 3
+    }
+  },
+  "TeacherComment" : {
+    "B1411358" : {
+      "CT102H" : {
+        "messages" : [ {
+          "createAt" : "2019/01/27 10:20",
+          "createAtMilisecons" : 20,
+          "hasReply" : true,
+          "id" : 0,
+          "message" : "Kính chào quý PH. Kính gửi quý phụ huynh quá trình học của bé: Tuần 9,10; Ưu điểm: Đi học đểu và đúng giờ. Hạn chế: Bé chưa tập trung, ít phát biểu, không thuộc bài. Hỗ trợ: Nhờ phụ huynh nhắc bé: Viết từ vựng sau mỗi buổi học. Khoá học tiếp theo: Family & Friends 2B. Ngày khai giảng 24/4/2018. Cảm ơn phụ huynh đã xem tin.",
+          "parent" : false
+        }, {
+          "createAt" : "2019/01/10 18:00",
+          "createAtMilisecons" : 19,
+          "hasReply" : true,
+          "id" : 0,
+          "message" : "Cảm ơn thầy, cô.",
+          "parent" : true
+        }, {
+          "createAt" : "2019/01/08 17:10",
+          "createAtMilisecons" : 21,
+          "hasReply" : true,
+          "id" : 1,
+          "message" : "Chúc quý phụ huynh năm mới an khang thịnh vượng và thành công.",
+          "parent" : false
+        }, {
+          "createAt" : "27/01/2019 21:23",
+          "createAtMilisecons" : 1548642224984,
+          "hasReply" : true,
+          "id" : 2,
+          "message" : "noi dung thong bao: hom nay nghi hoc",
+          "parent" : false
+        }, {
+          "hasReply" : true,
+          "id" : 2,
+          "message" : "cho em hỏi",
+          "parent" : true
+        } ],
+        "subjectCode" : "CT102H",
+        "subjectName" : "Kids - Family&Friends 2B"
+      },
+      "CT103H" : {
+        "messages" : [ {
+          "createAt" : "2019/01/05 09:10",
+          "createAtMilisecons" : 17,
+          "hasReply" : true,
+          "id" : 0,
+          "message" : "Kính chào quý PH. Kính gửi quý phụ huynh khoá học mới của trung tâm sắp khai giảng: Family & Friends 2A. Ngày khai giảng 30/1/2019. Cảm ơn phụ huynh đã xem tin.",
+          "parent" : false
+        }, {
+          "createAt" : "27/01/2019 21:37",
+          "createAtMilisecons" : 1548643041809,
+          "hasReply" : false,
+          "id" : 1,
+          "message" : "thong bao hom nay nghi hoc",
+          "parent" : false
+        } ],
+        "subjectCode" : "CT103H",
+        "subjectName" : "Kids - Family&Friends 1A"
+      },
+      "CT105H" : {
+        "subjectCode" : "CT105H",
+        "subjectName" : "Kids - Family and Friends 2"
+      },
+      "CT108H" : {
+        "messages" : [ {
+          "createAt" : "2019/01/04 13:00",
+          "createAtMilisecons" : 16,
+          "hasReply" : true,
+          "id" : 0,
+          "message" : "Kính chào quý PH. Kính gửi quý phụ huynh quá trình học của bé: Tuần 1,2; Ưu điểm: Chịu khó, siêng năng. Hạn chế: Bé chưa tập trung, ít phát biểu. Hỗ trợ: Nhờ phụ huynh nhắc bé: Viết từ vựng sau mỗi buổi học. Khoá học tiếp theo: Family & Friends 2B. Ngày khai giảng 12/22/2019. Cảm ơn phụ huynh đã xem tin.",
+          "parent" : false
+        } ],
+        "subjectCode" : "CT108H",
+        "subjectName" : "Kids - Cambridge Starters - 6 Weeks"
+      },
+      "CT112H" : {
+        "messages" : [ {
+          "createAt" : "2019/01/02 14:30",
+          "createAtMilisecons" : 15,
+          "hasReply" : false,
+          "id" : 0,
+          "isParent" : false,
+          "message" : "Kính chào quý PH. Kính gửi quý phụ huynh quá trình học của bé: Tuần 910;. Ưu điểm: Đi học điểu và đúng giờ. Hạn chế: Bé chưa tập trung, ít phát biểu, không thuộc bài. Hỗ trợ: Nhờ phụ huynh nhắc bé: Viết từ vựng sau mỗi buổi học. Khoá học tiếp theo: Family & Friends 1B. Ngày khai giảng 20/2/2019. Cảm ơn phụ huynh đã xem tin."
+        } ],
+        "subjectCode" : "CT112H",
+        "subjectName" : "Kids - Family&Friends 2A"
+      },
+      "CT172" : {
+        "messages" : [ {
+          "createAt" : "2019/01/02 08:20",
+          "createAtMilisecons" : 14,
+          "hasReply" : false,
+          "id" : 0,
+          "isParent" : false,
+          "message" : "Kính chào quý PH. Kính gửi quý phụ huynh khoá học mới của trung tâm sắp khai giảng: Family & Friends 2B. Ngày khai giảng 20/2/2019. Cảm ơn phụ huynh đã xem tin."
+        } ],
+        "subjectCode" : "CT172",
+        "subjectName" : "Kids - Family&Friends 1B"
+      }
+    }
+  },
+  "TeacherInfo" : {
+    "TC123" : {
+      "birthDay" : "20/11/1975",
+      "classCode" : "DI1495A1",
+      "phoneNumber" : "0888820278",
+      "sex" : "Nam",
+      "subjects" : {
+        "CT054H" : "Lập trình căn bản",
+        "CT054H2" : "Lập trình căn bản",
+        "CT102H" : "Cấu trúc dữ liệu",
+        "CT102H2" : "Cấu trúc dữ liệu",
+        "CT103H" : "Nền tảng công nghệ thông tin",
+        "CT108H" : "Lập trình hướng đối tượng",
+        "CT108H2" : "Lập trình hướng đối tượng",
+        "CT112H" : "Phân tích và thiết kế hệ thống thông tin"
+      },
+      "teacherCode" : "TC123",
+      "teacherName" : "Huỳnh Trọng Nghĩa"
+    }
+  },
+  "Timesheet" : {
+    "B1411358" : {
+      "CT054H" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "201",
+        "subjectName" : "Family & Friends Starters B",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "678"
+      },
+      "CT102H" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "102",
+        "subjectName" : "Kids - Family&Friends 2B",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "123"
+      },
+      "CT103H" : {
+        "dayofWeek" : 7,
+        "subjectCode" : "CT103H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "205",
+        "subjectName" : "Kids - Family&Friends 1A",
+        "subjectTeacher" : "Ngô Tuấn Anh",
+        "subjectTime" : "678"
+      },
+      "CT108H" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "302",
+        "subjectName" : "Kids - Cambridge Starters - 6 Weeks",
+        "subjectTeacher" : "Lê Minh Dương",
+        "subjectTime" : "123"
+      },
+      "CT112H" : {
+        "dayofWeek" : 4,
+        "subjectCode" : "CT112H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "207",
+        "subjectName" : "Kids - Family&Friends 2A",
+        "subjectTeacher" : "Huỳnh Văn Nghiêm",
+        "subjectTime" : "123"
+      }
+    },
+    "thienphan" : {
+      "CT054H" : {
+        "dayofWeek" : 3,
+        "subjectCode" : "CT054H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "201/C1",
+        "subjectName" : "Lập trình căn bản",
+        "subjectTeacher" : "Huỳnh Trọng Nghĩa",
+        "subjectTime" : "678"
+      },
+      "CT102H" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT102H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "102/B1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "123"
+      },
+      "CT103H" : {
+        "dayofWeek" : 7,
+        "subjectCode" : "CT103H",
+        "subjectGroup" : 3,
+        "subjectLocation" : "201/C3",
+        "subjectName" : "Nền tảng công nghệ thông tin",
+        "subjectTeacher" : "Ngô Tuấn Anh",
+        "subjectTime" : "678"
+      },
+      "CT108H" : {
+        "dayofWeek" : 5,
+        "subjectCode" : "CT108H",
+        "subjectGroup" : 1,
+        "subjectLocation" : "202/C1",
+        "subjectName" : "Lập trình hướng đối tượng",
+        "subjectTeacher" : "Lê Minh Dương",
+        "subjectTime" : "123"
+      },
+      "CT112H" : {
+        "dayofWeek" : 4,
+        "subjectCode" : "CT112H",
+        "subjectGroup" : 2,
+        "subjectLocation" : "201/B1",
+        "subjectName" : "Phân tích thiết kế hệ thống thông tin",
+        "subjectTeacher" : "Huỳnh Văn Nghiêm",
+        "subjectTime" : "123"
+      },
+      "CT173" : {
+        "dayofWeek" : 7,
+        "subjectCode" : "CT173",
+        "subjectGroup" : 4,
+        "subjectLocation" : "202/C1",
+        "subjectName" : "Kiến trúc máy tính",
+        "subjectTeacher" : "Lê Thanh Hằng",
+        "subjectTime" : "123"
+      }
+    },
+    "votruong" : {
+      "-LJarnHKi6DIu8zpkqc7" : {
+        "dayofWeek" : 2,
+        "subjectCode" : "CT101",
+        "subjectGroup" : 1,
+        "subjectLocation" : "102/B1",
+        "subjectName" : "Cấu trúc dữ liệu",
+        "subjectTeacher" : "Nguyễn Thị Hồng Hạnh",
+        "subjectTime" : "123"
+      }
+    }
+  }
+}
